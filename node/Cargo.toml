@@ -79,7 +79,7 @@ sp-runtime = "3.0.0"
 sp-state-machine = "0.9.0"
 sp-transaction-pool = "3.0.0"
 sp-trie = "3.0.0"
-structopt = "0.3.22"
+structopt = "0.3.26"
 substrate-frame-rpc-system = "3.0.0"
 trie-root = "0.16.0"
 log = { version = "0.4.14", default-features = false }
@@ -89,5 +89,5 @@ env_logger = "0.9.0"
 [build-dependencies]
 frame-benchmarking-cli = { version = "3.0.0", default-features = false }
 sc-cli = "0.9.0"
-structopt = "0.3.22"
+structopt = "0.3.26"
 substrate-build-script-utils = "3.0.0"

@@ -126,7 +126,7 @@ pallet-timestamp = { version = "3.0.0", default-features = false }
 pallet-transaction-payment = { version = "3.0.0", default-features = false }
 pallet-transaction-payment-rpc-runtime-api = { version = "3.0.0", default-features = false }
 pallet-utility = { version = "3.0.0", default-features = false }
-parity-scale-codec = { version = "2.2.0", default-features = false, features = [
+parity-scale-codec = { version = "3.0.0", default-features = false, features = [
   "derive",
 ] }
 primitives = { default-features = false, path = "../../primitives" }

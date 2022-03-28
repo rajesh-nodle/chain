@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;h2-0.2.7&#x2F;src&#x2F;server.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>server.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../h2/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;h2-0.3.11&#x2F;src&#x2F;server.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>server.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../h2/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../h2/index.html"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1512,13 +1514,51 @@
 <span id="1512">1512</span>
 <span id="1513">1513</span>
 <span id="1514">1514</span>
-</pre><pre class="rust"><code><span class="doccomment">//! Server implementation of the HTTP/2.0 protocol.</span>
+<span id="1515">1515</span>
+<span id="1516">1516</span>
+<span id="1517">1517</span>
+<span id="1518">1518</span>
+<span id="1519">1519</span>
+<span id="1520">1520</span>
+<span id="1521">1521</span>
+<span id="1522">1522</span>
+<span id="1523">1523</span>
+<span id="1524">1524</span>
+<span id="1525">1525</span>
+<span id="1526">1526</span>
+<span id="1527">1527</span>
+<span id="1528">1528</span>
+<span id="1529">1529</span>
+<span id="1530">1530</span>
+<span id="1531">1531</span>
+<span id="1532">1532</span>
+<span id="1533">1533</span>
+<span id="1534">1534</span>
+<span id="1535">1535</span>
+<span id="1536">1536</span>
+<span id="1537">1537</span>
+<span id="1538">1538</span>
+<span id="1539">1539</span>
+<span id="1540">1540</span>
+<span id="1541">1541</span>
+<span id="1542">1542</span>
+<span id="1543">1543</span>
+<span id="1544">1544</span>
+<span id="1545">1545</span>
+<span id="1546">1546</span>
+<span id="1547">1547</span>
+<span id="1548">1548</span>
+<span id="1549">1549</span>
+<span id="1550">1550</span>
+<span id="1551">1551</span>
+<span id="1552">1552</span>
+</pre><pre class="rust"><code><span class="doccomment">//! Server implementation of the HTTP/2 protocol.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Getting started</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Running an HTTP/2.0 server requires the caller to manage accepting the</span>
+<span class="doccomment">//! Running an HTTP/2 server requires the caller to manage accepting the</span>
 <span class="doccomment">//! connections as well as getting the connections to a state that is ready to</span>
-<span class="doccomment">//! begin the HTTP/2.0 handshake. See [here](../index.html#handshake) for more</span>
+<span class="doccomment">//! begin the HTTP/2 handshake. See [here](../index.html#handshake) for more</span>
 <span class="doccomment">//! details.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! This could be as basic as using Tokio&#39;s [`TcpListener`] to accept</span>
@@ -1526,8 +1566,8 @@
 <span class="doccomment">//! upgrades.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! Once a connection is obtained, it is passed to [`handshake`],</span>
-<span class="doccomment">//! which will begin the [HTTP/2.0 handshake]. This returns a future that</span>
-<span class="doccomment">//! completes once the handshake process is performed and HTTP/2.0 streams may</span>
+<span class="doccomment">//! which will begin the [HTTP/2 handshake]. This returns a future that</span>
+<span class="doccomment">//! completes once the handshake process is performed and HTTP/2 streams may</span>
 <span class="doccomment">//! be received.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! [`handshake`] uses default configuration values. There are a number of</span>
@@ -1535,7 +1575,7 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Inbound streams</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The [`Connection`] instance is used to accept inbound HTTP/2.0 streams. It</span>
+<span class="doccomment">//! The [`Connection`] instance is used to accept inbound HTTP/2 streams. It</span>
 <span class="doccomment">//! does this by implementing [`futures::Stream`]. When a new stream is</span>
 <span class="doccomment">//! received, a call to [`Connection::accept`] will return `(request, response)`.</span>
 <span class="doccomment">//! The `request` handle (of type [`http::Request&lt;RecvStream&gt;`]) contains the</span>
@@ -1573,9 +1613,9 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Example</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! A basic HTTP/2.0 server example that runs over TCP and assumes [prior</span>
+<span class="doccomment">//! A basic HTTP/2 server example that runs over TCP and assumes [prior</span>
 <span class="doccomment">//! knowledge], i.e. both the client and the server assume that the TCP socket</span>
-<span class="doccomment">//! will use the HTTP/2.0 protocol without prior negotiation.</span>
+<span class="doccomment">//! will use the HTTP/2 protocol without prior negotiation.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```no_run</span>
 <span class="doccomment">//! use h2::server;</span>
@@ -1591,9 +1631,9 @@
 <span class="doccomment">//!         if let Ok((socket, _peer_addr)) = listener.accept().await {</span>
 <span class="doccomment">//!             // Spawn a new task to process each connection.</span>
 <span class="doccomment">//!             tokio::spawn(async {</span>
-<span class="doccomment">//!                 // Start the HTTP/2.0 connection handshake</span>
+<span class="doccomment">//!                 // Start the HTTP/2 connection handshake</span>
 <span class="doccomment">//!                 let mut h2 = server::handshake(socket).await.unwrap();</span>
-<span class="doccomment">//!                 // Accept all inbound HTTP/2.0 streams sent over the</span>
+<span class="doccomment">//!                 // Accept all inbound HTTP/2 streams sent over the</span>
 <span class="doccomment">//!                 // connection.</span>
 <span class="doccomment">//!                 while let Some(request) = h2.accept().await {</span>
 <span class="doccomment">//!                     let (request, mut respond) = request.unwrap();</span>
@@ -1618,7 +1658,7 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! [prior knowledge]: http://httpwg.org/specs/rfc7540.html#known-http</span>
 <span class="doccomment">//! [`handshake`]: fn.handshake.html</span>
-<span class="doccomment">//! [HTTP/2.0 handshake]: http://httpwg.org/specs/rfc7540.html#ConnectionHeader</span>
+<span class="doccomment">//! [HTTP/2 handshake]: http://httpwg.org/specs/rfc7540.html#ConnectionHeader</span>
 <span class="doccomment">//! [`Builder`]: struct.Builder.html</span>
 <span class="doccomment">//! [`Connection`]: struct.Connection.html</span>
 <span class="doccomment">//! [`Connection::poll`]: struct.Connection.html#method.poll</span>
@@ -1629,9 +1669,9 @@
 <span class="doccomment">//! [`SendStream`]: ../struct.SendStream.html</span>
 <span class="doccomment">//! [`TcpListener`]: https://docs.rs/tokio-core/0.1/tokio_core/net/struct.TcpListener.html</span>
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::codec</span>::{<span class="ident">Codec</span>, <span class="ident">RecvError</span>, <span class="ident">UserError</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::codec</span>::{<span class="ident">Codec</span>, <span class="ident">UserError</span>};
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::frame</span>::{<span class="self">self</span>, <span class="ident">Pseudo</span>, <span class="ident">PushPromiseHeaderError</span>, <span class="ident">Reason</span>, <span class="ident">Settings</span>, <span class="ident">StreamId</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::proto</span>::{<span class="self">self</span>, <span class="ident">Config</span>, <span class="ident">Prioritized</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::proto</span>::{<span class="self">self</span>, <span class="ident">Config</span>, <span class="ident">Error</span>, <span class="ident">Prioritized</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">FlowControl</span>, <span class="ident">PingPong</span>, <span class="ident">RecvStream</span>, <span class="ident">SendStream</span>};
 
 <span class="kw">use</span> <span class="ident">bytes</span>::{<span class="ident">Buf</span>, <span class="ident">Bytes</span>};
@@ -1640,11 +1680,11 @@
 <span class="kw">use</span> <span class="ident">std::pin::Pin</span>;
 <span class="kw">use</span> <span class="ident">std::task</span>::{<span class="ident">Context</span>, <span class="ident">Poll</span>};
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
-<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">convert</span>, <span class="ident">fmt</span>, <span class="ident">io</span>, <span class="ident">mem</span>};
-<span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>};
-<span class="kw">use</span> <span class="ident">tracing_futures</span>::{<span class="ident">Instrument</span>, <span class="ident">Instrumented</span>};
+<span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">fmt</span>, <span class="ident">io</span>};
+<span class="kw">use</span> <span class="ident">tokio::io</span>::{<span class="ident">AsyncRead</span>, <span class="ident">AsyncWrite</span>, <span class="ident">ReadBuf</span>};
+<span class="kw">use</span> <span class="ident">tracing::instrument</span>::{<span class="ident">Instrument</span>, <span class="ident">Instrumented</span>};
 
-<span class="doccomment">/// In progress HTTP/2.0 connection handshake future.</span>
+<span class="doccomment">/// In progress HTTP/2 connection handshake future.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This type implements `Future`, yielding a `Connection` instance once the</span>
 <span class="doccomment">/// handshake has completed.</span>
@@ -1668,10 +1708,10 @@
     <span class="ident">span</span>: <span class="ident">tracing::Span</span>,
 }
 
-<span class="doccomment">/// Accepts inbound HTTP/2.0 streams on a connection.</span>
+<span class="doccomment">/// Accepts inbound HTTP/2 streams on a connection.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// A `Connection` is backed by an I/O resource (usually a TCP socket) and</span>
-<span class="doccomment">/// implements the HTTP/2.0 server logic for that connection. It is responsible</span>
+<span class="doccomment">/// implements the HTTP/2 server logic for that connection. It is responsible</span>
 <span class="doccomment">/// for receiving inbound streams initiated by the client as well as driving the</span>
 <span class="doccomment">/// internal state forward.</span>
 <span class="doccomment">///</span>
@@ -1696,9 +1736,11 @@
 <span class="doccomment">/// # async fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T) {</span>
 <span class="doccomment">/// let mut server = server::handshake(my_io).await.unwrap();</span>
 <span class="doccomment">/// while let Some(request) = server.accept().await {</span>
-<span class="doccomment">///     let (request, respond) = request.unwrap();</span>
-<span class="doccomment">///     // Process the request and send the response back to the client</span>
-<span class="doccomment">///     // using `respond`.</span>
+<span class="doccomment">///     tokio::spawn(async move {</span>
+<span class="doccomment">///         let (request, respond) = request.unwrap();</span>
+<span class="doccomment">///         // Process the request and send the response back to the client</span>
+<span class="doccomment">///         // using `respond`.</span>
+<span class="doccomment">///     });</span>
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// # }</span>
 <span class="doccomment">/// #</span>
@@ -1714,7 +1756,7 @@
 <span class="doccomment">/// Methods can be chained in order to set the configuration values.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The server is constructed by calling [`handshake`] and passing the I/O</span>
-<span class="doccomment">/// handle that will back the HTTP/2.0 server.</span>
+<span class="doccomment">/// handle that will back the HTTP/2 server.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// New instances of `Builder` are obtained via [`Builder::new`].</span>
 <span class="doccomment">///</span>
@@ -1733,7 +1775,7 @@
 <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
 <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
 <span class="doccomment">/// # {</span>
-<span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+<span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
 <span class="doccomment">/// // handshake.</span>
 <span class="doccomment">/// let server_fut = Builder::new()</span>
 <span class="doccomment">///     .initial_window_size(1_000_000)</span>
@@ -1757,6 +1799,9 @@
 
     <span class="doccomment">/// Initial target window size for new connections.</span>
     <span class="ident">initial_target_connection_window_size</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
+
+    <span class="doccomment">/// Maximum amount of bytes to &quot;buffer&quot; for writing per stream.</span>
+    <span class="ident">max_send_buffer_size</span>: <span class="ident">usize</span>,
 }
 
 <span class="doccomment">/// Send a response back to the client</span>
@@ -1769,7 +1814,7 @@
 <span class="doccomment">/// stream.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// If the `SendResponse` instance is dropped without sending a response, then</span>
-<span class="doccomment">/// the HTTP/2.0 stream will be reset.</span>
+<span class="doccomment">/// the HTTP/2 stream will be reset.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See [module] level docs for more details.</span>
 <span class="doccomment">///</span>
@@ -1788,7 +1833,7 @@
 <span class="doccomment">/// It can not be used to initiate push promises.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// If the `SendPushedResponse` instance is dropped without sending a response, then</span>
-<span class="doccomment">/// the HTTP/2.0 stream will be reset.</span>
+<span class="doccomment">/// the HTTP/2 stream will be reset.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See [module] level docs for more details.</span>
 <span class="doccomment">///</span>
@@ -1799,7 +1844,7 @@
 
 <span class="comment">// Manual implementation necessary because of rust-lang/rust#26925</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">Buf</span> <span class="op">+</span> <span class="ident">fmt::Debug</span><span class="op">&gt;</span> <span class="ident">fmt::Debug</span> <span class="kw">for</span> <span class="ident">SendPushedResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;SendPushedResponse {{ {:?} }}&quot;</span>, <span class="self">self</span>.<span class="ident">inner</span>)
     }
 }
@@ -1810,8 +1855,8 @@
     <span class="ident">Flushing</span>(<span class="ident">Instrumented</span><span class="op">&lt;</span><span class="ident">Flush</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>),
     <span class="doccomment">/// State 2. Connection is waiting for the client preface.</span>
     <span class="ident">ReadingPreface</span>(<span class="ident">Instrumented</span><span class="op">&lt;</span><span class="ident">ReadPreface</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>),
-    <span class="doccomment">/// Dummy state for `mem::replace`.</span>
-    <span class="ident">Empty</span>,
+    <span class="doccomment">/// State 3. Handshake is done, polling again would panic.</span>
+    <span class="ident">Done</span>,
 }
 
 <span class="doccomment">/// Flush a Sink</span>
@@ -1830,18 +1875,18 @@
 
 <span class="kw">const</span> <span class="ident">PREFACE</span>: [<span class="ident">u8</span>; <span class="number">24</span>] <span class="op">=</span> <span class="kw-2">*</span><span class="string">b&quot;PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n&quot;</span>;
 
-<span class="doccomment">/// Creates a new configured HTTP/2.0 server with default configuration</span>
+<span class="doccomment">/// Creates a new configured HTTP/2 server with default configuration</span>
 <span class="doccomment">/// values backed by `io`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// It is expected that `io` already be in an appropriate state to commence</span>
-<span class="doccomment">/// the [HTTP/2.0 handshake]. See [Handshake] for more details.</span>
+<span class="doccomment">/// the [HTTP/2 handshake]. See [Handshake] for more details.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Returns a future which resolves to the [`Connection`] instance once the</span>
-<span class="doccomment">/// HTTP/2.0 handshake has been completed. The returned [`Connection`]</span>
+<span class="doccomment">/// HTTP/2 handshake has been completed. The returned [`Connection`]</span>
 <span class="doccomment">/// instance will be using default configuration values. Use [`Builder`] to</span>
 <span class="doccomment">/// customize the configuration values used by a [`Connection`] instance.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// [HTTP/2.0 handshake]: http://httpwg.org/specs/rfc7540.html#ConnectionHeader</span>
+<span class="doccomment">/// [HTTP/2 handshake]: http://httpwg.org/specs/rfc7540.html#ConnectionHeader</span>
 <span class="doccomment">/// [Handshake]: ../index.html#handshake</span>
 <span class="doccomment">/// [`Connection`]: struct.Connection.html</span>
 <span class="doccomment">///</span>
@@ -1855,13 +1900,13 @@
 <span class="doccomment">/// # async fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
 <span class="doccomment">/// # {</span>
 <span class="doccomment">/// let connection = server::handshake(my_io).await.unwrap();</span>
-<span class="doccomment">/// // The HTTP/2.0 handshake has completed, now use `connection` to</span>
-<span class="doccomment">/// // accept inbound HTTP/2.0 streams.</span>
+<span class="doccomment">/// // The HTTP/2 handshake has completed, now use `connection` to</span>
+<span class="doccomment">/// // accept inbound HTTP/2 streams.</span>
 <span class="doccomment">/// # }</span>
 <span class="doccomment">/// #</span>
 <span class="doccomment">/// # pub fn main() {}</span>
 <span class="doccomment">/// ```</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handshake</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">io</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Bytes</span><span class="op">&gt;</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handshake</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">io</span>: <span class="ident">T</span>) -&gt; <span class="ident">Handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Bytes</span><span class="op">&gt;</span>
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span> <span class="op">+</span> <span class="ident">Unpin</span>,
 {
@@ -1875,7 +1920,7 @@
     <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span> <span class="op">+</span> <span class="ident">Unpin</span>,
     <span class="ident">B</span>: <span class="ident">Buf</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
 {
-    <span class="kw">fn</span> <span class="ident">handshake2</span>(<span class="ident">io</span>: <span class="ident">T</span>, <span class="ident">builder</span>: <span class="ident">Builder</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">handshake2</span>(<span class="ident">io</span>: <span class="ident">T</span>, <span class="ident">builder</span>: <span class="ident">Builder</span>) -&gt; <span class="ident">Handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="macro">tracing::trace_span!</span>(<span class="string">&quot;server_handshake&quot;</span>, <span class="ident">io</span> <span class="op">=</span> <span class="op">%</span><span class="ident">std::any::type_name</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
         <span class="kw">let</span> <span class="ident">entered</span> <span class="op">=</span> <span class="ident">span</span>.<span class="ident">enter</span>();
 
@@ -1896,7 +1941,8 @@
             .<span class="ident">expect</span>(<span class="string">&quot;invalid SETTINGS frame&quot;</span>);
 
         <span class="comment">// Create the handshake future.</span>
-        <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span> <span class="ident">Handshaking::from</span>(<span class="ident">codec</span>);
+        <span class="kw">let</span> <span class="ident">state</span> <span class="op">=</span>
+            <span class="ident">Handshaking::Flushing</span>(<span class="ident">Flush::new</span>(<span class="ident">codec</span>).<span class="ident">instrument</span>(<span class="macro">tracing::trace_span!</span>(<span class="string">&quot;flush&quot;</span>)));
 
         <span class="ident">drop</span>(<span class="ident">entered</span>);
 
@@ -1909,16 +1955,16 @@
 
     <span class="doccomment">/// Accept the next incoming request on this connection.</span>
     <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">accept</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Request</span><span class="op">&lt;</span><span class="ident">RecvStream</span><span class="op">&gt;</span>, <span class="ident">SendResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Request</span><span class="op">&lt;</span><span class="ident">RecvStream</span><span class="op">&gt;</span>, <span class="ident">SendResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="ident">futures_util::future::poll_fn</span>(<span class="kw">move</span> <span class="op">|</span><span class="ident">cx</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">poll_accept</span>(<span class="ident">cx</span>)).<span class="kw">await</span>
     }
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_accept</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-        <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Request</span><span class="op">&lt;</span><span class="ident">RecvStream</span><span class="op">&gt;</span>, <span class="ident">SendResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+        <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>,
+    ) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Request</span><span class="op">&lt;</span><span class="ident">RecvStream</span><span class="op">&gt;</span>, <span class="ident">SendResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="comment">// Always try to advance the internal state. Getting Pending also is</span>
         <span class="comment">// needed to allow this function to return Pending.</span>
         <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Poll::Ready</span>(<span class="kw">_</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">poll_closed</span>(<span class="ident">cx</span>)<span class="question-mark">?</span> {
@@ -1958,7 +2004,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`FlowControl`]: ../struct.FlowControl.html</span>
     <span class="doccomment">/// [library level]: ../index.html#flow-control</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_target_window_size</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_target_window_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) {
         <span class="macro">assert!</span>(<span class="ident">size</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">proto::MAX_WINDOW_SIZE</span>);
         <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">set_target_window_size</span>(<span class="ident">size</span>);
     }
@@ -1976,9 +2022,22 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns an error if a previous call is still pending acknowledgement</span>
     <span class="doccomment">/// from the remote endpoint.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_initial_window_size</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_initial_window_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
         <span class="macro">assert!</span>(<span class="ident">size</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">proto::MAX_WINDOW_SIZE</span>);
         <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">set_initial_window_size</span>(<span class="ident">size</span>)<span class="question-mark">?</span>;
+        <span class="prelude-val">Ok</span>(())
+    }
+
+    <span class="doccomment">/// Enables the [extended CONNECT protocol].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [extended CONNECT protocol]: https://datatracker.ietf.org/doc/html/rfc8441#section-4</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Returns an error if a previous call is still pending acknowledgement</span>
+    <span class="doccomment">/// from the remote endpoint.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enable_connect_protocol</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">set_enable_connect_protocol</span>()<span class="question-mark">?</span>;
         <span class="prelude-val">Ok</span>(())
     }
 
@@ -1995,13 +2054,13 @@
     <span class="doccomment">/// [`poll_accept`]: struct.Connection.html#method.poll_accept</span>
     <span class="doccomment">/// [`RecvStream`]: ../struct.RecvStream.html</span>
     <span class="doccomment">/// [`SendStream`]: ../struct.SendStream.html</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_closed</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_closed</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">poll</span>(<span class="ident">cx</span>).<span class="ident">map_err</span>(<span class="ident">Into::into</span>)
     }
 
     <span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;renamed to poll_closed&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_close</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_close</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">poll_closed</span>(<span class="ident">cx</span>)
     }
 
@@ -2017,7 +2076,7 @@
     <span class="doccomment">/// handled.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// For graceful shutdowns, see [`graceful_shutdown`](Connection::graceful_shutdown).</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">abrupt_shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">reason</span>: <span class="ident">Reason</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">abrupt_shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">reason</span>: <span class="ident">Reason</span>) {
         <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">go_away_from_user</span>(<span class="ident">reason</span>);
     }
 
@@ -2031,7 +2090,7 @@
     <span class="doccomment">/// have completed, the connection is closed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [1]: http://httpwg.org/specs/rfc7540.html#GOAWAY</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">graceful_shutdown</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">graceful_shutdown</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">go_away_gracefully</span>();
     }
 
@@ -2040,8 +2099,36 @@
     <span class="doccomment">/// # Note</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This may only be called once. Calling multiple times will return `None`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ping_pong</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PingPong</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ping_pong</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PingPong</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">take_user_pings</span>().<span class="ident">map</span>(<span class="ident">PingPong::new</span>)
+    }
+
+    <span class="doccomment">/// Returns the maximum number of concurrent streams that may be initiated</span>
+    <span class="doccomment">/// by the server on this connection.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This limit is configured by the client peer by sending the</span>
+    <span class="doccomment">/// [`SETTINGS_MAX_CONCURRENT_STREAMS` parameter][1] in a `SETTINGS` frame.</span>
+    <span class="doccomment">/// This method returns the currently acknowledged value recieved from the</span>
+    <span class="doccomment">/// remote.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [1]: https://tools.ietf.org/html/rfc7540#section-5.1.2</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_concurrent_send_streams</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
+        <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">max_send_streams</span>()
+    }
+
+    <span class="doccomment">/// Returns the maximum number of concurrent streams that may be initiated</span>
+    <span class="doccomment">/// by the client on this connection.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This returns the value of the [`SETTINGS_MAX_CONCURRENT_STREAMS`</span>
+    <span class="doccomment">/// parameter][1] sent in a `SETTINGS` frame that has been</span>
+    <span class="doccomment">/// acknowledged by the remote peer. The value to be sent is configured by</span>
+    <span class="doccomment">/// the [`Builder::max_concurrent_streams`][2] method before handshaking</span>
+    <span class="doccomment">/// with the remote peer.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [1]: https://tools.ietf.org/html/rfc7540#section-5.1.2</span>
+    <span class="doccomment">/// [2]: ../struct.Builder.html#method.max_concurrent_streams</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_concurrent_recv_streams</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
+        <span class="self">self</span>.<span class="ident">connection</span>.<span class="ident">max_recv_streams</span>()
     }
 }
 
@@ -2053,7 +2140,7 @@
 {
     <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Request</span><span class="op">&lt;</span><span class="ident">RecvStream</span><span class="op">&gt;</span>, <span class="ident">SendResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>), <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll_next</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Item</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">poll_accept</span>(<span class="ident">cx</span>)
     }
 }
@@ -2063,7 +2150,7 @@
     <span class="ident">T</span>: <span class="ident">fmt::Debug</span>,
     <span class="ident">B</span>: <span class="ident">fmt::Debug</span> <span class="op">+</span> <span class="ident">Buf</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">fmt</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;Connection&quot;</span>)
             .<span class="ident">field</span>(<span class="string">&quot;connection&quot;</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">connection</span>)
             .<span class="ident">finish</span>()
@@ -2087,7 +2174,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .initial_window_size(1_000_000)</span>
@@ -2098,12 +2185,13 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="ident">Builder</span> {
         <span class="ident">Builder</span> {
             <span class="ident">reset_stream_duration</span>: <span class="ident">Duration::from_secs</span>(<span class="ident">proto::DEFAULT_RESET_STREAM_SECS</span>),
             <span class="ident">reset_stream_max</span>: <span class="ident">proto::DEFAULT_RESET_STREAM_MAX</span>,
             <span class="ident">settings</span>: <span class="ident">Settings::default</span>(),
             <span class="ident">initial_target_connection_window_size</span>: <span class="prelude-val">None</span>,
+            <span class="ident">max_send_buffer_size</span>: <span class="ident">proto::DEFAULT_MAX_SEND_BUFFER_SIZE</span>,
         }
     }
 
@@ -2126,7 +2214,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .initial_window_size(1_000_000)</span>
@@ -2136,7 +2224,7 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">initial_window_size</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">initial_window_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">settings</span>.<span class="ident">set_initial_window_size</span>(<span class="prelude-val">Some</span>(<span class="ident">size</span>));
         <span class="self">self</span>
     }
@@ -2160,7 +2248,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .initial_connection_window_size(1_000_000)</span>
@@ -2170,12 +2258,12 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">initial_connection_window_size</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">initial_connection_window_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">size</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">initial_target_connection_window_size</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">size</span>);
         <span class="self">self</span>
     }
 
-    <span class="doccomment">/// Indicates the size (in octets) of the largest HTTP/2.0 frame payload that the</span>
+    <span class="doccomment">/// Indicates the size (in octets) of the largest HTTP/2 frame payload that the</span>
     <span class="doccomment">/// configured server is able to accept.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The sender may send data frames that are **smaller** than this value,</span>
@@ -2193,7 +2281,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .max_frame_size(1_000_000)</span>
@@ -2208,7 +2296,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function panics if `max` is not within the legal range specified</span>
     <span class="doccomment">/// above.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_frame_size</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_frame_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">settings</span>.<span class="ident">set_max_frame_size</span>(<span class="prelude-val">Some</span>(<span class="ident">max</span>));
         <span class="self">self</span>
     }
@@ -2232,7 +2320,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .max_header_list_size(16 * 1024)</span>
@@ -2242,7 +2330,7 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_header_list_size</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_header_list_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">settings</span>.<span class="ident">set_max_header_list_size</span>(<span class="prelude-val">Some</span>(<span class="ident">max</span>));
         <span class="self">self</span>
     }
@@ -2267,7 +2355,7 @@
     <span class="doccomment">/// a protocol level error. Instead, the `h2` library will immediately reset</span>
     <span class="doccomment">/// the stream.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// See [Section 5.1.2] in the HTTP/2.0 spec for more details.</span>
+    <span class="doccomment">/// See [Section 5.1.2] in the HTTP/2 spec for more details.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// [Section 5.1.2]: https://http2.github.io/http2-spec/#rfc.section.5.1.2</span>
     <span class="doccomment">///</span>
@@ -2280,7 +2368,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .max_concurrent_streams(1000)</span>
@@ -2290,7 +2378,7 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_concurrent_streams</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_concurrent_streams</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">u32</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">settings</span>.<span class="ident">set_max_concurrent_streams</span>(<span class="prelude-val">Some</span>(<span class="ident">max</span>));
         <span class="self">self</span>
     }
@@ -2299,7 +2387,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// When a stream is explicitly reset by either calling</span>
     <span class="doccomment">/// [`SendResponse::send_reset`] or by dropping a [`SendResponse`] instance</span>
-    <span class="doccomment">/// before completing the stream, the HTTP/2.0 specification requires that</span>
+    <span class="doccomment">/// before completing the stream, the HTTP/2 specification requires that</span>
     <span class="doccomment">/// any further frames received for that stream must be ignored for &quot;some</span>
     <span class="doccomment">/// time&quot;.</span>
     <span class="doccomment">///</span>
@@ -2326,7 +2414,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .max_concurrent_reset_streams(1000)</span>
@@ -2336,8 +2424,26 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_concurrent_reset_streams</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_concurrent_reset_streams</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">reset_stream_max</span> <span class="op">=</span> <span class="ident">max</span>;
+        <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Sets the maximum send buffer size per stream.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Once a stream has buffered up to (or over) the maximum, the stream&#39;s</span>
+    <span class="doccomment">/// flow control will not &quot;poll&quot; additional capacity. Once bytes for the</span>
+    <span class="doccomment">/// stream have been written to the connection, the send buffer capacity</span>
+    <span class="doccomment">/// will be freed up again.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The default is currently ~400MB, but may change.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Panics</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function panics if `max` is larger than `u32::MAX`.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">max_send_buffer_size</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">max</span>: <span class="ident">usize</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
+        <span class="macro">assert!</span>(<span class="ident">max</span> <span class="op">&lt;</span><span class="op">=</span> <span class="ident">std::u32::MAX</span> <span class="kw">as</span> <span class="ident">usize</span>);
+        <span class="self">self</span>.<span class="ident">max_send_buffer_size</span> <span class="op">=</span> <span class="ident">max</span>;
         <span class="self">self</span>
     }
 
@@ -2345,7 +2451,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// When a stream is explicitly reset by either calling</span>
     <span class="doccomment">/// [`SendResponse::send_reset`] or by dropping a [`SendResponse`] instance</span>
-    <span class="doccomment">/// before completing the stream, the HTTP/2.0 specification requires that</span>
+    <span class="doccomment">/// before completing the stream, the HTTP/2 specification requires that</span>
     <span class="doccomment">/// any further frames received for that stream must be ignored for &quot;some</span>
     <span class="doccomment">/// time&quot;.</span>
     <span class="doccomment">///</span>
@@ -2373,7 +2479,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .reset_stream_duration(Duration::from_secs(10))</span>
@@ -2383,23 +2489,31 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reset_stream_duration</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">dur</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reset_stream_duration</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">dur</span>: <span class="ident">Duration</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
         <span class="self">self</span>.<span class="ident">reset_stream_duration</span> <span class="op">=</span> <span class="ident">dur</span>;
         <span class="self">self</span>
     }
 
-    <span class="doccomment">/// Creates a new configured HTTP/2.0 server backed by `io`.</span>
+    <span class="doccomment">/// Enables the [extended CONNECT protocol].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [extended CONNECT protocol]: https://datatracker.ietf.org/doc/html/rfc8441#section-4</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">enable_connect_protocol</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="self">Self</span> {
+        <span class="self">self</span>.<span class="ident">settings</span>.<span class="ident">set_enable_connect_protocol</span>(<span class="prelude-val">Some</span>(<span class="number">1</span>));
+        <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Creates a new configured HTTP/2 server backed by `io`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// It is expected that `io` already be in an appropriate state to commence</span>
-    <span class="doccomment">/// the [HTTP/2.0 handshake]. See [Handshake] for more details.</span>
+    <span class="doccomment">/// the [HTTP/2 handshake]. See [Handshake] for more details.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Returns a future which resolves to the [`Connection`] instance once the</span>
-    <span class="doccomment">/// HTTP/2.0 handshake has been completed.</span>
+    <span class="doccomment">/// HTTP/2 handshake has been completed.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This function also allows the caller to configure the send payload data</span>
     <span class="doccomment">/// type. See [Outbound data type] for more details.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// [HTTP/2.0 handshake]: http://httpwg.org/specs/rfc7540.html#ConnectionHeader</span>
+    <span class="doccomment">/// [HTTP/2 handshake]: http://httpwg.org/specs/rfc7540.html#ConnectionHeader</span>
     <span class="doccomment">/// [Handshake]: ../index.html#handshake</span>
     <span class="doccomment">/// [`Connection`]: struct.Connection.html</span>
     <span class="doccomment">/// [Outbound data type]: ../index.html#outbound-data-type.</span>
@@ -2415,7 +2529,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut = Builder::new()</span>
     <span class="doccomment">///     .handshake(my_io);</span>
@@ -2435,7 +2549,7 @@
     <span class="doccomment">/// # fn doc&lt;T: AsyncRead + AsyncWrite + Unpin&gt;(my_io: T)</span>
     <span class="doccomment">/// # -&gt; Handshake&lt;T, &amp;&#39;static [u8]&gt;</span>
     <span class="doccomment">/// # {</span>
-    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2.0</span>
+    <span class="doccomment">/// // `server_fut` is a future representing the completion of the HTTP/2</span>
     <span class="doccomment">/// // handshake.</span>
     <span class="doccomment">/// let server_fut: Handshake&lt;_, &amp;&#39;static [u8]&gt; = Builder::new()</span>
     <span class="doccomment">///     .handshake(my_io);</span>
@@ -2444,7 +2558,7 @@
     <span class="doccomment">/// #</span>
     <span class="doccomment">/// # pub fn main() {}</span>
     <span class="doccomment">/// ```</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">io</span>: <span class="ident">T</span>) -&gt; <span class="ident">Handshake</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span> <span class="op">+</span> <span class="ident">Unpin</span>,
         <span class="ident">B</span>: <span class="ident">Buf</span> <span class="op">+</span> <span class="lifetime">&#39;static</span>,
@@ -2454,7 +2568,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Builder</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Builder</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">Builder</span> {
         <span class="ident">Builder::new</span>()
     }
 }
@@ -2479,10 +2593,10 @@
     <span class="doccomment">/// [`SendStream`]: ../struct.SendStream.html</span>
     <span class="doccomment">/// [`send_reset`]: #method.send_reset</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_response</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">response</span>: <span class="ident">Response</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
         <span class="ident">end_of_stream</span>: <span class="ident">bool</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SendStream</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SendStream</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>
             .<span class="ident">send_response</span>(<span class="ident">response</span>, <span class="ident">end_of_stream</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">SendStream::new</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">clone</span>()))
@@ -2495,9 +2609,9 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`SendResponse`]: #</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_request</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">request</span>: <span class="ident">Request</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SendPushedResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SendPushedResponse</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>
             .<span class="ident">send_push_promise</span>(<span class="ident">request</span>)
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">inner</span><span class="op">|</span> <span class="ident">SendPushedResponse</span> {
@@ -2521,7 +2635,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`send_response`]: #method.send_response</span>
     <span class="doccomment">/// [`SendStream`]: ../struct.SendStream.html</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_reset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">reason</span>: <span class="ident">Reason</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_reset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">reason</span>: <span class="ident">Reason</span>) {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">send_reset</span>(<span class="ident">reason</span>)
     }
 
@@ -2537,7 +2651,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Calling this method after having called `send_response` will return</span>
     <span class="doccomment">/// a user error.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_reset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Reason</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_reset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Reason</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">poll_reset</span>(<span class="ident">cx</span>, <span class="ident">proto::PollReset::AwaitingHeaders</span>)
     }
 
@@ -2545,8 +2659,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If the lock on the strean store has been poisoned.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stream_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::StreamId</span> {
+    <span class="doccomment">/// If the lock on the stream store has been poisoned.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stream_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::StreamId</span> {
         <span class="ident"><span class="kw">crate</span>::StreamId::from_internal</span>(<span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">stream_id</span>())
     }
 }
@@ -2571,10 +2685,10 @@
     <span class="doccomment">/// [`SendStream`]: ../struct.SendStream.html</span>
     <span class="doccomment">/// [`send_reset`]: #method.send_reset</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_response</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">response</span>: <span class="ident">Response</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
         <span class="ident">end_of_stream</span>: <span class="ident">bool</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SendStream</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SendStream</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">send_response</span>(<span class="ident">response</span>, <span class="ident">end_of_stream</span>)
     }
 
@@ -2593,7 +2707,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`send_response`]: #method.send_response</span>
     <span class="doccomment">/// [`SendStream`]: ../struct.SendStream.html</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_reset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">reason</span>: <span class="ident">Reason</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">send_reset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">reason</span>: <span class="ident">Reason</span>) {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">send_reset</span>(<span class="ident">reason</span>)
     }
 
@@ -2609,7 +2723,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Calling this method after having called `send_response` will return</span>
     <span class="doccomment">/// a user error.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_reset</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Reason</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">poll_reset</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Reason</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">poll_reset</span>(<span class="ident">cx</span>)
     }
 
@@ -2617,8 +2731,8 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Panics</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// If the lock on the strean store has been poisoned.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stream_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="kw">crate</span>::StreamId</span> {
+    <span class="doccomment">/// If the lock on the stream store has been poisoned.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stream_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident"><span class="kw">crate</span>::StreamId</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">stream_id</span>()
     }
 }
@@ -2626,7 +2740,7 @@
 <span class="comment">// ===== impl Flush =====</span>
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span>: <span class="ident">Buf</span><span class="op">&gt;</span> <span class="ident">Flush</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">codec</span>: <span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">codec</span>: <span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">Flush</span> { <span class="ident">codec</span>: <span class="prelude-val">Some</span>(<span class="ident">codec</span>) }
     }
 }
@@ -2638,7 +2752,7 @@
 {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
         <span class="comment">// Flush the codec</span>
         <span class="macro">ready!</span>(<span class="self">self</span>.<span class="ident">codec</span>.<span class="ident">as_mut</span>().<span class="ident">unwrap</span>().<span class="ident">flush</span>(<span class="ident">cx</span>)).<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::from_io</span>)<span class="question-mark">?</span>;
 
@@ -2648,14 +2762,14 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span>: <span class="ident">Buf</span><span class="op">&gt;</span> <span class="ident">ReadPreface</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">codec</span>: <span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">codec</span>: <span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
         <span class="ident">ReadPreface</span> {
             <span class="ident">codec</span>: <span class="prelude-val">Some</span>(<span class="ident">codec</span>),
             <span class="ident">pos</span>: <span class="number">0</span>,
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">inner_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span> {
+    <span class="kw">fn</span> <span class="ident">inner_mut</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="kw-2">&amp;mut</span> <span class="ident">T</span> {
         <span class="self">self</span>.<span class="ident">codec</span>.<span class="ident">as_mut</span>().<span class="ident">unwrap</span>().<span class="ident">get_mut</span>()
     }
 }
@@ -2667,24 +2781,26 @@
 {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">24</span>];
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rem</span> <span class="op">=</span> <span class="ident">PREFACE</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="self">self</span>.<span class="ident">pos</span>;
 
         <span class="kw">while</span> <span class="ident">rem</span> <span class="op">&gt;</span> <span class="number">0</span> {
-            <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="ident">Pin::new</span>(<span class="self">self</span>.<span class="ident">inner_mut</span>()).<span class="ident">poll_read</span>(<span class="ident">cx</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buf</span>[..<span class="ident">rem</span>]))
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">buf</span> <span class="op">=</span> <span class="ident">ReadBuf::new</span>(<span class="kw-2">&amp;mut</span> <span class="ident">buf</span>[..<span class="ident">rem</span>]);
+            <span class="macro">ready!</span>(<span class="ident">Pin::new</span>(<span class="self">self</span>.<span class="ident">inner_mut</span>()).<span class="ident">poll_read</span>(<span class="ident">cx</span>, <span class="kw-2">&amp;mut</span> <span class="ident">buf</span>))
                 .<span class="ident">map_err</span>(<span class="ident"><span class="kw">crate</span>::Error::from_io</span>)<span class="question-mark">?</span>;
-            <span class="kw">if</span> <span class="ident">n</span> <span class="op">=</span><span class="op">=</span> <span class="number">0</span> {
+            <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">buf</span>.<span class="ident">filled</span>().<span class="ident">len</span>();
+            <span class="kw">if</span> <span class="ident">n</span> <span class="op">==</span> <span class="number">0</span> {
                 <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident"><span class="kw">crate</span>::Error::from_io</span>(<span class="ident">io::Error::new</span>(
                     <span class="ident">io::ErrorKind::UnexpectedEof</span>,
                     <span class="string">&quot;connection closed before reading preface&quot;</span>,
                 ))));
             }
 
-            <span class="kw">if</span> <span class="ident">PREFACE</span>[<span class="self">self</span>.<span class="ident">pos</span>..<span class="self">self</span>.<span class="ident">pos</span> <span class="op">+</span> <span class="ident">n</span>] <span class="op">!</span><span class="op">=</span> <span class="ident">buf</span>[..<span class="ident">n</span>] {
+            <span class="kw">if</span> <span class="kw-2">&amp;</span><span class="ident">PREFACE</span>[<span class="self">self</span>.<span class="ident">pos</span>..<span class="self">self</span>.<span class="ident">pos</span> <span class="op">+</span> <span class="ident">n</span>] <span class="op">!</span><span class="op">=</span> <span class="ident">buf</span>.<span class="ident">filled</span>() {
                 <span class="macro">proto_err!</span>(<span class="ident">conn</span>: <span class="string">&quot;read_preface: invalid preface&quot;</span>);
                 <span class="comment">// TODO: Should this just write the GO_AWAY frame directly?</span>
-                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">Reason::PROTOCOL_ERROR</span>.<span class="ident">into</span>()));
+                <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Err</span>(<span class="ident">Error::library_go_away</span>(<span class="ident">Reason::PROTOCOL_ERROR</span>).<span class="ident">into</span>()));
             }
 
             <span class="self">self</span>.<span class="ident">pos</span> <span class="op">+</span><span class="op">=</span> <span class="ident">n</span>;
@@ -2704,66 +2820,62 @@
 {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Connection</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span>;
 
-    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">poll</span>(<span class="kw-2">mut</span> <span class="self">self</span>: <span class="ident">Pin</span><span class="op">&lt;</span><span class="kw-2">&amp;mut</span> <span class="self">Self</span><span class="op">&gt;</span>, <span class="ident">cx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">Context</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="ident">Poll</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Output</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">span</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">span</span>.<span class="ident">clone</span>(); <span class="comment">// XXX(eliza): T_T</span>
         <span class="kw">let</span> <span class="ident">_e</span> <span class="op">=</span> <span class="ident">span</span>.<span class="ident">enter</span>();
         <span class="macro">tracing::trace!</span>(<span class="ident">state</span> <span class="op">=</span> <span class="question-mark">?</span><span class="self">self</span>.<span class="ident">state</span>);
-        <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::server::Handshaking</span>::<span class="kw-2">*</span>;
 
-        <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="ident">Flushing</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">flush</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">state</span> {
-            <span class="comment">// We&#39;re currently flushing a pending SETTINGS frame. Poll the</span>
-            <span class="comment">// flush future, and, if it&#39;s completed, advance our state to wait</span>
-            <span class="comment">// for the client preface.</span>
-            <span class="kw">let</span> <span class="ident">codec</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">Pin::new</span>(<span class="ident">flush</span>).<span class="ident">poll</span>(<span class="ident">cx</span>)<span class="question-mark">?</span> {
-                <span class="ident">Poll::Pending</span> <span class="op">=</span><span class="op">&gt;</span> {
-                    <span class="macro">tracing::trace!</span>(<span class="ident">flush</span>.<span class="ident">poll</span> <span class="op">=</span> <span class="op">%</span><span class="string">&quot;Pending&quot;</span>);
-                    <span class="kw">return</span> <span class="ident">Poll::Pending</span>;
+        <span class="kw">loop</span> {
+            <span class="kw">match</span> <span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">state</span> {
+                <span class="ident">Handshaking::Flushing</span>(<span class="ident">flush</span>) =&gt; {
+                    <span class="comment">// We&#39;re currently flushing a pending SETTINGS frame. Poll the</span>
+                    <span class="comment">// flush future, and, if it&#39;s completed, advance our state to wait</span>
+                    <span class="comment">// for the client preface.</span>
+                    <span class="kw">let</span> <span class="ident">codec</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">Pin::new</span>(<span class="ident">flush</span>).<span class="ident">poll</span>(<span class="ident">cx</span>)<span class="question-mark">?</span> {
+                        <span class="ident">Poll::Pending</span> =&gt; {
+                            <span class="macro">tracing::trace!</span>(<span class="ident">flush</span>.<span class="ident">poll</span> <span class="op">=</span> <span class="op">%</span><span class="string">&quot;Pending&quot;</span>);
+                            <span class="kw">return</span> <span class="ident">Poll::Pending</span>;
+                        }
+                        <span class="ident">Poll::Ready</span>(<span class="ident">flushed</span>) =&gt; {
+                            <span class="macro">tracing::trace!</span>(<span class="ident">flush</span>.<span class="ident">poll</span> <span class="op">=</span> <span class="op">%</span><span class="string">&quot;Ready&quot;</span>);
+                            <span class="ident">flushed</span>
+                        }
+                    };
+                    <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">Handshaking::ReadingPreface</span>(
+                        <span class="ident">ReadPreface::new</span>(<span class="ident">codec</span>).<span class="ident">instrument</span>(<span class="macro">tracing::trace_span!</span>(<span class="string">&quot;read_preface&quot;</span>)),
+                    );
                 }
-                <span class="ident">Poll::Ready</span>(<span class="ident">flushed</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                    <span class="macro">tracing::trace!</span>(<span class="ident">flush</span>.<span class="ident">poll</span> <span class="op">=</span> <span class="op">%</span><span class="string">&quot;Ready&quot;</span>);
-                    <span class="ident">flushed</span>
-                }
-            };
-            <span class="ident">Handshaking::from</span>(<span class="ident">ReadPreface::new</span>(<span class="ident">codec</span>))
-        } <span class="kw">else</span> {
-            <span class="comment">// Otherwise, we haven&#39;t actually advanced the state, but we have</span>
-            <span class="comment">// to replace it with itself, because we have to return a value.</span>
-            <span class="comment">// (note that the assignment to `self.state` has to be outside of</span>
-            <span class="comment">// the `if let` block above in order to placate the borrow checker).</span>
-            <span class="ident">mem::replace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">state</span>, <span class="ident">Handshaking::Empty</span>)
-        };
-        <span class="kw">let</span> <span class="ident">poll</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="ident">ReadingPreface</span>(<span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">read</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">state</span> {
-            <span class="comment">// We&#39;re now waiting for the client preface. Poll the `ReadPreface`</span>
-            <span class="comment">// future. If it has completed, we will create a `Connection` handle</span>
-            <span class="comment">// for the connection.</span>
-            <span class="ident">Pin::new</span>(<span class="ident">read</span>).<span class="ident">poll</span>(<span class="ident">cx</span>)
-        <span class="comment">// Actually creating the `Connection` has to occur outside of this</span>
-        <span class="comment">// `if let` block, because we&#39;ve borrowed `self` mutably in order</span>
-        <span class="comment">// to poll the state and won&#39;t be able to borrow the SETTINGS frame</span>
-        <span class="comment">// as well until we release the borrow for `poll()`.</span>
-        } <span class="kw">else</span> {
-            <span class="macro">unreachable!</span>(<span class="string">&quot;Handshake::poll() state was not advanced completely!&quot;</span>)
-        };
-        <span class="ident">poll</span><span class="question-mark">?</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">codec</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">connection</span> <span class="op">=</span> <span class="ident">proto::Connection::new</span>(
-                <span class="ident">codec</span>,
-                <span class="ident">Config</span> {
-                    <span class="ident">next_stream_id</span>: <span class="number">2</span>.<span class="ident">into</span>(),
-                    <span class="comment">// Server does not need to locally initiate any streams</span>
-                    <span class="ident">initial_max_send_streams</span>: <span class="number">0</span>,
-                    <span class="ident">reset_stream_duration</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">reset_stream_duration</span>,
-                    <span class="ident">reset_stream_max</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">reset_stream_max</span>,
-                    <span class="ident">settings</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">settings</span>.<span class="ident">clone</span>(),
-                },
-            );
+                <span class="ident">Handshaking::ReadingPreface</span>(<span class="ident">read</span>) =&gt; {
+                    <span class="kw">let</span> <span class="ident">codec</span> <span class="op">=</span> <span class="macro">ready!</span>(<span class="ident">Pin::new</span>(<span class="ident">read</span>).<span class="ident">poll</span>(<span class="ident">cx</span>)<span class="question-mark">?</span>);
 
-            <span class="macro">tracing::trace!</span>(<span class="string">&quot;connection established!&quot;</span>);
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span> { <span class="ident">connection</span> };
-            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">sz</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">initial_target_connection_window_size</span> {
-                <span class="ident">c</span>.<span class="ident">set_target_window_size</span>(<span class="ident">sz</span>);
+                    <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">Handshaking::Done</span>;
+
+                    <span class="kw">let</span> <span class="ident">connection</span> <span class="op">=</span> <span class="ident">proto::Connection::new</span>(
+                        <span class="ident">codec</span>,
+                        <span class="ident">Config</span> {
+                            <span class="ident">next_stream_id</span>: <span class="number">2</span>.<span class="ident">into</span>(),
+                            <span class="comment">// Server does not need to locally initiate any streams</span>
+                            <span class="ident">initial_max_send_streams</span>: <span class="number">0</span>,
+                            <span class="ident">max_send_buffer_size</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">max_send_buffer_size</span>,
+                            <span class="ident">reset_stream_duration</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">reset_stream_duration</span>,
+                            <span class="ident">reset_stream_max</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">reset_stream_max</span>,
+                            <span class="ident">settings</span>: <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">settings</span>.<span class="ident">clone</span>(),
+                        },
+                    );
+
+                    <span class="macro">tracing::trace!</span>(<span class="string">&quot;connection established!&quot;</span>);
+                    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span> { <span class="ident">connection</span> };
+                    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">sz</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">builder</span>.<span class="ident">initial_target_connection_window_size</span> {
+                        <span class="ident">c</span>.<span class="ident">set_target_window_size</span>(<span class="ident">sz</span>);
+                    }
+
+                    <span class="kw">return</span> <span class="ident">Poll::Ready</span>(<span class="prelude-val">Ok</span>(<span class="ident">c</span>));
+                }
+                <span class="ident">Handshaking::Done</span> =&gt; {
+                    <span class="macro">panic!</span>(<span class="string">&quot;Handshaking::poll() called again after handshaking was complete&quot;</span>)
+                }
             }
-            <span class="prelude-val">Ok</span>(<span class="ident">c</span>)
-        })
+        }
     }
 }
 
@@ -2772,7 +2884,7 @@
     <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span> <span class="op">+</span> <span class="ident">fmt::Debug</span>,
     <span class="ident">B</span>: <span class="ident">fmt::Debug</span> <span class="op">+</span> <span class="ident">Buf</span>,
 {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">fmt</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="macro">write!</span>(<span class="ident">fmt</span>, <span class="string">&quot;server::Handshake&quot;</span>)
     }
 }
@@ -2782,7 +2894,7 @@
         <span class="ident">id</span>: <span class="ident">StreamId</span>,
         <span class="ident">response</span>: <span class="ident">Response</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
         <span class="ident">end_of_stream</span>: <span class="ident">bool</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">frame::Headers</span> {
+    ) -&gt; <span class="ident">frame::Headers</span> {
         <span class="kw">use</span> <span class="ident">http::response::Parts</span>;
 
         <span class="comment">// Extract the components of the HTTP request</span>
@@ -2811,18 +2923,18 @@
         <span class="ident">stream_id</span>: <span class="ident">StreamId</span>,
         <span class="ident">promised_id</span>: <span class="ident">StreamId</span>,
         <span class="ident">request</span>: <span class="ident">Request</span><span class="op">&lt;</span>()<span class="op">&gt;</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">frame::PushPromise</span>, <span class="ident">UserError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">frame::PushPromise</span>, <span class="ident">UserError</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">http::request::Parts</span>;
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">frame::PushPromise::validate_request</span>(<span class="kw-2">&amp;</span><span class="ident">request</span>) {
             <span class="kw">use</span> <span class="ident">PushPromiseHeaderError</span>::<span class="kw-2">*</span>;
             <span class="kw">match</span> <span class="ident">e</span> {
-                <span class="ident">NotSafeAndCacheable</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">tracing::debug!</span>(
+                <span class="ident">NotSafeAndCacheable</span> =&gt; <span class="macro">tracing::debug!</span>(
                     <span class="question-mark">?</span><span class="ident">promised_id</span>,
                     <span class="string">&quot;convert_push_message: method {} is not safe and cacheable&quot;</span>,
                     <span class="ident">request</span>.<span class="ident">method</span>(),
                 ),
-                <span class="ident">InvalidContentLength</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">tracing::debug!</span>(
+                <span class="ident">InvalidContentLength</span>(<span class="ident">e</span>) =&gt; <span class="macro">tracing::debug!</span>(
                     <span class="question-mark">?</span><span class="ident">promised_id</span>,
                     <span class="string">&quot;convert_push_message; promised request has invalid content-length {:?}&quot;</span>,
                     <span class="ident">e</span>,
@@ -2842,7 +2954,7 @@
             <span class="kw">_</span>,
         ) <span class="op">=</span> <span class="ident">request</span>.<span class="ident">into_parts</span>();
 
-        <span class="kw">let</span> <span class="ident">pseudo</span> <span class="op">=</span> <span class="ident">Pseudo::request</span>(<span class="ident">method</span>, <span class="ident">uri</span>);
+        <span class="kw">let</span> <span class="ident">pseudo</span> <span class="op">=</span> <span class="ident">Pseudo::request</span>(<span class="ident">method</span>, <span class="ident">uri</span>, <span class="prelude-val">None</span>);
 
         <span class="prelude-val">Ok</span>(<span class="ident">frame::PushPromise::new</span>(
             <span class="ident">stream_id</span>,
@@ -2858,11 +2970,11 @@
 
     <span class="kw">const</span> <span class="ident">NAME</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;Server&quot;</span>;
 
-    <span class="kw">fn</span> <span class="ident">is_server</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">fn</span> <span class="ident">is_server</span>() -&gt; <span class="ident">bool</span> {
         <span class="bool-val">true</span>
     }
 
-    <span class="kw">fn</span> <span class="ident">r#dyn</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proto::DynPeer</span> {
+    <span class="kw">fn</span> <span class="ident">r#dyn</span>() -&gt; <span class="ident">proto::DynPeer</span> {
         <span class="ident">proto::DynPeer::Server</span>
     }
 
@@ -2870,35 +2982,35 @@
         <span class="ident">pseudo</span>: <span class="ident">Pseudo</span>,
         <span class="ident">fields</span>: <span class="ident">HeaderMap</span>,
         <span class="ident">stream_id</span>: <span class="ident">StreamId</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Poll</span>, <span class="ident">RecvError</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Poll</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">http</span>::{<span class="ident">uri</span>, <span class="ident">Version</span>};
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">b</span> <span class="op">=</span> <span class="ident">Request::builder</span>();
 
         <span class="macro">macro_rules!</span> <span class="ident">malformed</span> {
-            ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> {{
+            ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>:<span class="ident">tt</span>)<span class="kw-2">*</span>) =&gt; {{
                 <span class="macro">tracing::debug!</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">arg</span>)<span class="kw-2">*</span>);
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">RecvError::Stream</span> {
-                    <span class="ident">id</span>: <span class="ident">stream_id</span>,
-                    <span class="ident">reason</span>: <span class="ident">Reason::PROTOCOL_ERROR</span>,
-                });
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::library_reset</span>(<span class="ident">stream_id</span>, <span class="ident">Reason::PROTOCOL_ERROR</span>));
             }}
-        };
+        }
 
         <span class="ident">b</span> <span class="op">=</span> <span class="ident">b</span>.<span class="ident">version</span>(<span class="ident">Version::HTTP_2</span>);
 
         <span class="kw">let</span> <span class="ident">is_connect</span>;
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">method</span>) <span class="op">=</span> <span class="ident">pseudo</span>.<span class="ident">method</span> {
-            <span class="ident">is_connect</span> <span class="op">=</span> <span class="ident">method</span> <span class="op">=</span><span class="op">=</span> <span class="ident">Method::CONNECT</span>;
+            <span class="ident">is_connect</span> <span class="op">=</span> <span class="ident">method</span> <span class="op">==</span> <span class="ident">Method::CONNECT</span>;
             <span class="ident">b</span> <span class="op">=</span> <span class="ident">b</span>.<span class="ident">method</span>(<span class="ident">method</span>);
         } <span class="kw">else</span> {
             <span class="macro">malformed!</span>(<span class="string">&quot;malformed headers: missing method&quot;</span>);
         }
 
-        <span class="comment">// Specifying :status for a request is a protocol error</span>
+        <span class="kw">let</span> <span class="ident">has_protocol</span> <span class="op">=</span> <span class="ident">pseudo</span>.<span class="ident">protocol</span>.<span class="ident">is_some</span>();
+        <span class="kw">if</span> <span class="op">!</span><span class="ident">is_connect</span> <span class="op">&amp;&amp;</span> <span class="ident">has_protocol</span> {
+            <span class="macro">malformed!</span>(<span class="string">&quot;malformed headers: :protocol on non-CONNECT request&quot;</span>);
+        }
+
         <span class="kw">if</span> <span class="ident">pseudo</span>.<span class="ident">status</span>.<span class="ident">is_some</span>() {
-            <span class="macro">tracing::trace!</span>(<span class="string">&quot;malformed headers: :status field on request; PROTOCOL_ERROR&quot;</span>);
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">RecvError::Connection</span>(<span class="ident">Reason::PROTOCOL_ERROR</span>));
+            <span class="macro">malformed!</span>(<span class="string">&quot;malformed headers: :status field on request&quot;</span>);
         }
 
         <span class="comment">// Convert the URI</span>
@@ -2919,7 +3031,7 @@
 
         <span class="comment">// A :scheme is required, except CONNECT.</span>
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">scheme</span>) <span class="op">=</span> <span class="ident">pseudo</span>.<span class="ident">scheme</span> {
-            <span class="kw">if</span> <span class="ident">is_connect</span> {
+            <span class="kw">if</span> <span class="ident">is_connect</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">has_protocol</span> {
                 <span class="macro">malformed!</span>(<span class="string">&quot;:scheme in CONNECT&quot;</span>);
             }
             <span class="kw">let</span> <span class="ident">maybe_scheme</span> <span class="op">=</span> <span class="ident">scheme</span>.<span class="ident">parse</span>();
@@ -2937,12 +3049,12 @@
             <span class="kw">if</span> <span class="ident">parts</span>.<span class="ident">authority</span>.<span class="ident">is_some</span>() {
                 <span class="ident">parts</span>.<span class="ident">scheme</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">scheme</span>);
             }
-        } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">is_connect</span> {
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">is_connect</span> <span class="op">|</span><span class="op">|</span> <span class="ident">has_protocol</span> {
             <span class="macro">malformed!</span>(<span class="string">&quot;malformed headers: missing scheme&quot;</span>);
         }
 
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">path</span>) <span class="op">=</span> <span class="ident">pseudo</span>.<span class="ident">path</span> {
-            <span class="kw">if</span> <span class="ident">is_connect</span> {
+            <span class="kw">if</span> <span class="ident">is_connect</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">has_protocol</span> {
                 <span class="macro">malformed!</span>(<span class="string">&quot;:path in CONNECT&quot;</span>);
             }
 
@@ -2955,20 +3067,19 @@
             <span class="ident">parts</span>.<span class="ident">path_and_query</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">maybe_path</span>.<span class="ident">or_else</span>(<span class="op">|</span><span class="ident">why</span><span class="op">|</span> {
                 <span class="macro">malformed!</span>(<span class="string">&quot;malformed headers: malformed path ({:?}): {}&quot;</span>, <span class="ident">path</span>, <span class="ident">why</span>,)
             })<span class="question-mark">?</span>);
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">is_connect</span> <span class="op">&amp;&amp;</span> <span class="ident">has_protocol</span> {
+            <span class="macro">malformed!</span>(<span class="string">&quot;malformed headers: missing path in extended CONNECT&quot;</span>);
         }
 
         <span class="ident">b</span> <span class="op">=</span> <span class="ident">b</span>.<span class="ident">uri</span>(<span class="ident">parts</span>);
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">request</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">b</span>.<span class="ident">body</span>(()) {
-            <span class="prelude-val">Ok</span>(<span class="ident">request</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">request</span>,
-            <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="prelude-val">Ok</span>(<span class="ident">request</span>) =&gt; <span class="ident">request</span>,
+            <span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; {
                 <span class="comment">// TODO: Should there be more specialized handling for different</span>
                 <span class="comment">// kinds of errors</span>
                 <span class="macro">proto_err!</span>(<span class="ident">stream</span>: <span class="string">&quot;error building request: {}; stream={:?}&quot;</span>, <span class="ident">e</span>, <span class="ident">stream_id</span>);
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">RecvError::Stream</span> {
-                    <span class="ident">id</span>: <span class="ident">stream_id</span>,
-                    <span class="ident">reason</span>: <span class="ident">Reason::PROTOCOL_ERROR</span>,
-                });
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error::library_reset</span>(<span class="ident">stream_id</span>, <span class="ident">Reason::PROTOCOL_ERROR</span>));
             }
         };
 
@@ -2985,48 +3096,14 @@
     <span class="ident">B</span>: <span class="ident">Buf</span>,
 {
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">fmt::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">fmt::Error</span><span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Handshaking::Flushing</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Handshaking::Flushing(_)&quot;</span>),
-            <span class="ident">Handshaking::ReadingPreface</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Handshaking::ReadingPreface(_)&quot;</span>),
-            <span class="ident">Handshaking::Empty</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Handshaking::Empty&quot;</span>),
+            <span class="ident">Handshaking::Flushing</span>(<span class="kw">_</span>) =&gt; <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;Flushing(_)&quot;</span>),
+            <span class="ident">Handshaking::ReadingPreface</span>(<span class="kw">_</span>) =&gt; <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;ReadingPreface(_)&quot;</span>),
+            <span class="ident">Handshaking::Done</span> =&gt; <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;Done&quot;</span>),
         }
     }
 }
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> <span class="ident">convert::From</span><span class="op">&lt;</span><span class="ident">Flush</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Handshaking</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span>,
-    <span class="ident">B</span>: <span class="ident">Buf</span>,
-{
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">flush</span>: <span class="ident">Flush</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Handshaking::Flushing</span>(<span class="ident">flush</span>.<span class="ident">instrument</span>(<span class="macro">tracing::trace_span!</span>(<span class="string">&quot;flush&quot;</span>)))
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> <span class="ident">convert::From</span><span class="op">&lt;</span><span class="ident">ReadPreface</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Handshaking</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span>,
-    <span class="ident">B</span>: <span class="ident">Buf</span>,
-{
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">read</span>: <span class="ident">ReadPreface</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Handshaking::ReadingPreface</span>(<span class="ident">read</span>.<span class="ident">instrument</span>(<span class="macro">tracing::trace_span!</span>(<span class="string">&quot;read_preface&quot;</span>)))
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span> <span class="ident">convert::From</span><span class="op">&lt;</span><span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Handshaking</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">B</span><span class="op">&gt;</span>
-<span class="kw">where</span>
-    <span class="ident">T</span>: <span class="ident">AsyncRead</span> <span class="op">+</span> <span class="ident">AsyncWrite</span>,
-    <span class="ident">B</span>: <span class="ident">Buf</span>,
-{
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">codec</span>: <span class="ident">Codec</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">Prioritized</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Handshaking::from</span>(<span class="ident">Flush::new</span>(<span class="ident">codec</span>))
-    }
-}
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="h2" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
-    <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="h2" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

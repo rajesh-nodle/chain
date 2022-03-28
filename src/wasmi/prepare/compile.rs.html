@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;wasmi-0.6.2&#x2F;src&#x2F;prepare&#x2F;compile.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>compile.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../wasmi/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;wasmi-0.9.1&#x2F;src&#x2F;prepare&#x2F;compile.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>compile.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../../wasmi/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../wasmi/index.html"><img class="rust-logo" src="../../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1272,20 +1274,17 @@
 <span id="1272">1272</span>
 <span id="1273">1273</span>
 <span id="1274">1274</span>
-<span id="1275">1275</span>
-<span id="1276">1276</span>
 </pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">alloc</span>::{<span class="ident">string::String</span>, <span class="ident">vec::Vec</span>};
 
 <span class="kw">use</span> <span class="ident">parity_wasm::elements</span>::{<span class="ident">BlockType</span>, <span class="ident">FuncBody</span>, <span class="ident">Instruction</span>};
 
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::isa</span>;
 <span class="kw">use</span> <span class="ident">validation::func</span>::{
     <span class="ident">require_label</span>, <span class="ident">top_label</span>, <span class="ident">BlockFrame</span>, <span class="ident">FunctionValidationContext</span>, <span class="ident">StackValueType</span>, <span class="ident">StartedWith</span>,
 };
 <span class="kw">use</span> <span class="ident">validation::stack::StackWithLimit</span>;
 <span class="kw">use</span> <span class="ident">validation::util::Locals</span>;
 <span class="kw">use</span> <span class="ident">validation</span>::{<span class="ident">Error</span>, <span class="ident">FuncValidator</span>};
-
-<span class="kw">use</span> <span class="ident">isa</span>;
 
 <span class="doccomment">/// Type of block frame.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
@@ -1313,12 +1312,12 @@
 
 <span class="kw">impl</span> <span class="ident">BlockFrameType</span> {
     <span class="doccomment">/// Returns a label which should be used as a branch destination.</span>
-    <span class="kw">fn</span> <span class="ident">br_destination</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">LabelId</span> {
+    <span class="kw">fn</span> <span class="ident">br_destination</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">LabelId</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">BlockFrameType::Block</span> { <span class="ident">end_label</span> } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">end_label</span>,
-            <span class="ident">BlockFrameType::Loop</span> { <span class="ident">header</span> } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">header</span>,
-            <span class="ident">BlockFrameType::IfTrue</span> { <span class="ident">end_label</span>, .. } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">end_label</span>,
-            <span class="ident">BlockFrameType::IfFalse</span> { <span class="ident">end_label</span> } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">end_label</span>,
+            <span class="ident">BlockFrameType::Block</span> { <span class="ident">end_label</span> } =&gt; <span class="ident">end_label</span>,
+            <span class="ident">BlockFrameType::Loop</span> { <span class="ident">header</span> } =&gt; <span class="ident">header</span>,
+            <span class="ident">BlockFrameType::IfTrue</span> { <span class="ident">end_label</span>, .. } =&gt; <span class="ident">end_label</span>,
+            <span class="ident">BlockFrameType::IfFalse</span> { <span class="ident">end_label</span> } =&gt; <span class="ident">end_label</span>,
         }
     }
 
@@ -1326,12 +1325,12 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// All block types have it except loops. Loops doesn&#39;t use end as a branch</span>
     <span class="doccomment">/// destination.</span>
-    <span class="kw">fn</span> <span class="ident">end_label</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">LabelId</span> {
+    <span class="kw">fn</span> <span class="ident">end_label</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">LabelId</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">BlockFrameType::Block</span> { <span class="ident">end_label</span> } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">end_label</span>,
-            <span class="ident">BlockFrameType::IfTrue</span> { <span class="ident">end_label</span>, .. } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">end_label</span>,
-            <span class="ident">BlockFrameType::IfFalse</span> { <span class="ident">end_label</span> } <span class="op">=</span><span class="op">&gt;</span> <span class="ident">end_label</span>,
-            <span class="ident">BlockFrameType::Loop</span> { .. } <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic!</span>(<span class="string">&quot;loop doesn&#39;t use end label&quot;</span>),
+            <span class="ident">BlockFrameType::Block</span> { <span class="ident">end_label</span> } =&gt; <span class="ident">end_label</span>,
+            <span class="ident">BlockFrameType::IfTrue</span> { <span class="ident">end_label</span>, .. } =&gt; <span class="ident">end_label</span>,
+            <span class="ident">BlockFrameType::IfFalse</span> { <span class="ident">end_label</span> } =&gt; <span class="ident">end_label</span>,
+            <span class="ident">BlockFrameType::Loop</span> { .. } =&gt; <span class="macro">panic!</span>(<span class="string">&quot;loop doesn&#39;t use end label&quot;</span>),
         }
     }
 }
@@ -1344,7 +1343,7 @@
 
 <span class="kw">impl</span> <span class="ident">FuncValidator</span> <span class="kw">for</span> <span class="ident">Compiler</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">isa::Instructions</span>;
-    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">_ctx</span>: <span class="kw-2">&amp;</span><span class="ident">FunctionValidationContext</span>, <span class="ident">body</span>: <span class="kw-2">&amp;</span><span class="ident">FuncBody</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">_ctx</span>: <span class="kw-2">&amp;</span><span class="ident">FunctionValidationContext</span>, <span class="ident">body</span>: <span class="kw-2">&amp;</span><span class="ident">FuncBody</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">code_len</span> <span class="op">=</span> <span class="ident">body</span>.<span class="ident">code</span>().<span class="ident">elements</span>().<span class="ident">len</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">compiler</span> <span class="op">=</span> <span class="ident">Compiler</span> {
             <span class="ident">sink</span>: <span class="ident">Sink::with_capacity</span>(<span class="ident">code_len</span>),
@@ -1360,37 +1359,37 @@
         <span class="ident">compiler</span>
     }
     <span class="kw">fn</span> <span class="ident">next_instruction</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-        <span class="ident">ctx</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">FunctionValidationContext</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+        <span class="ident">ctx</span>: <span class="kw-2">&amp;mut</span> <span class="ident">FunctionValidationContext</span>,
         <span class="ident">instruction</span>: <span class="kw-2">&amp;</span><span class="ident">Instruction</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">compile_instruction</span>(<span class="ident">ctx</span>, <span class="ident">instruction</span>)
     }
-    <span class="kw">fn</span> <span class="ident">finish</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident"><span class="self">Self</span>::Output</span> {
+    <span class="kw">fn</span> <span class="ident">finish</span>(<span class="self">self</span>) -&gt; <span class="ident"><span class="self">Self</span>::Output</span> {
         <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">into_inner</span>()
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Compiler</span> {
     <span class="kw">fn</span> <span class="ident">compile_instruction</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-        <span class="ident">context</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">FunctionValidationContext</span>,
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+        <span class="ident">context</span>: <span class="kw-2">&amp;mut</span> <span class="ident">FunctionValidationContext</span>,
         <span class="ident">instruction</span>: <span class="kw-2">&amp;</span><span class="ident">Instruction</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+    ) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident"><span class="self">self</span>::Instruction</span>::<span class="kw-2">*</span>;
 
         <span class="kw">match</span> <span class="kw-2">*</span><span class="ident">instruction</span> {
-            <span class="ident">Unreachable</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Unreachable</span> =&gt; {
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::Unreachable</span>);
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
             }
-            <span class="ident">Block</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Block</span>(<span class="kw">_</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
 
                 <span class="kw">let</span> <span class="ident">end_label</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">new_label</span>();
                 <span class="self">self</span>.<span class="ident">label_stack</span>.<span class="ident">push</span>(<span class="ident">BlockFrameType::Block</span> { <span class="ident">end_label</span> });
             }
-            <span class="ident">Loop</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Loop</span>(<span class="kw">_</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
 
                 <span class="comment">// Resolve loop header right away.</span>
@@ -1398,7 +1397,7 @@
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">resolve_label</span>(<span class="ident">header</span>);
                 <span class="self">self</span>.<span class="ident">label_stack</span>.<span class="ident">push</span>(<span class="ident">BlockFrameType::Loop</span> { <span class="ident">header</span> });
             }
-            <span class="ident">If</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">If</span>(<span class="kw">_</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
 
                 <span class="comment">// `if_not` will be resolved whenever `End` or `Else` operator will be met.</span>
@@ -1416,7 +1415,7 @@
                     },
                 });
             }
-            <span class="ident">Else</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Else</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
 
                 <span class="kw">let</span> <span class="ident">top_label</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">label_stack</span>.<span class="ident">pop</span>().<span class="ident">expect</span>(
@@ -1424,8 +1423,8 @@
                     frame stack is never empty while being processed; qed&quot;</span>,
                 );
                 <span class="kw">let</span> (<span class="ident">if_not</span>, <span class="ident">end_label</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">top_label</span> {
-                    <span class="ident">BlockFrameType::IfTrue</span> { <span class="ident">if_not</span>, <span class="ident">end_label</span> } <span class="op">=</span><span class="op">&gt;</span> (<span class="ident">if_not</span>, <span class="ident">end_label</span>),
-                    <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unreachable!</span>(
+                    <span class="ident">BlockFrameType::IfTrue</span> { <span class="ident">if_not</span>, <span class="ident">end_label</span> } =&gt; (<span class="ident">if_not</span>, <span class="ident">end_label</span>),
+                    <span class="kw">_</span> =&gt; <span class="macro">unreachable!</span>(
                         <span class="string">&quot;validation ensures that the top frame was opened by If block;
                         `top_label` should be `IfTrue` at this point;
                         this statement is unreachable;
@@ -1449,9 +1448,9 @@
 
                 <span class="self">self</span>.<span class="ident">label_stack</span>.<span class="ident">push</span>(<span class="ident">BlockFrameType::IfFalse</span> { <span class="ident">end_label</span> });
             }
-            <span class="ident">End</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">End</span> =&gt; {
                 <span class="kw">let</span> <span class="ident">started_with</span> <span class="op">=</span> <span class="ident">top_label</span>(<span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">frame_stack</span>).<span class="ident">started_with</span>;
-                <span class="kw">let</span> <span class="ident">return_drop_keep</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">context</span>.<span class="ident">frame_stack</span>.<span class="ident">len</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1</span> {
+                <span class="kw">let</span> <span class="ident">return_drop_keep</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">context</span>.<span class="ident">frame_stack</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">1</span> {
                     <span class="comment">// We are about to close the last frame.</span>
                     <span class="prelude-val">Some</span>(<span class="ident">drop_keep_return</span>(
                         <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">locals</span>,
@@ -1492,7 +1491,7 @@
                     <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::Return</span>(<span class="ident">drop_keep</span>));
                 }
             }
-            <span class="ident">Br</span>(<span class="ident">depth</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Br</span>(<span class="ident">depth</span>) =&gt; {
                 <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="ident">require_target</span>(
                     <span class="ident">depth</span>,
                     <span class="ident">context</span>.<span class="ident">value_stack</span>.<span class="ident">len</span>(),
@@ -1510,7 +1509,7 @@
                 );
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit_br</span>(<span class="ident">target</span>);
             }
-            <span class="ident">BrIf</span>(<span class="ident">depth</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">BrIf</span>(<span class="ident">depth</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
 
                 <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="ident">require_target</span>(
@@ -1527,7 +1526,7 @@
                 );
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit_br_nez</span>(<span class="ident">target</span>);
             }
-            <span class="ident">BrTable</span>(<span class="kw-2">ref</span> <span class="ident">br_table_data</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">BrTable</span>(<span class="kw-2">ref</span> <span class="ident">br_table_data</span>) =&gt; {
                 <span class="comment">// At this point, the condition value is at the top of the stack.</span>
                 <span class="comment">// But at the point of actual jump the condition will already be</span>
                 <span class="comment">// popped off.</span>
@@ -1555,7 +1554,7 @@
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
 
                 <span class="comment">// These two unwraps are guaranteed to succeed by validation.</span>
-                <span class="kw">const</span> <span class="ident">REQUIRE_TARGET_PROOF</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span> <span class="op">=</span>
+                <span class="kw">const</span> <span class="ident">REQUIRE_TARGET_PROOF</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span>
                     <span class="string">&quot;validation step ensures that the value stack underflows;
                     validation also ensures that the depth is correct;
                     qed&quot;</span>;
@@ -1564,7 +1563,7 @@
 
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit_br_table</span>(<span class="kw-2">&amp;</span><span class="ident">targets</span>, <span class="ident">default_target</span>);
             }
-            <span class="ident">Return</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Return</span> =&gt; {
                 <span class="kw">let</span> <span class="ident">drop_keep</span> <span class="op">=</span>
                     <span class="ident">drop_keep_return</span>(<span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">locals</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">value_stack</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">frame_stack</span>);
 
@@ -1578,673 +1577,673 @@
                 );
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::Return</span>(<span class="ident">drop_keep</span>));
             }
-            <span class="ident">Call</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Call</span>(<span class="ident">index</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::Call</span>(<span class="ident">index</span>));
             }
-            <span class="ident">CallIndirect</span>(<span class="ident">index</span>, <span class="ident">_reserved</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">CallIndirect</span>(<span class="ident">index</span>, <span class="ident">_reserved</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>
                     .<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::CallIndirect</span>(<span class="ident">index</span>));
             }
 
-            <span class="ident">Drop</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Drop</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::Drop</span>);
             }
-            <span class="ident">Select</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">Select</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::Select</span>);
             }
 
-            <span class="ident">GetLocal</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">GetLocal</span>(<span class="ident">index</span>) =&gt; {
                 <span class="comment">// We need to calculate relative depth before validation since</span>
                 <span class="comment">// it will change the value stack size.</span>
                 <span class="kw">let</span> <span class="ident">depth</span> <span class="op">=</span> <span class="ident">relative_local_depth</span>(<span class="ident">index</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">locals</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">value_stack</span>)<span class="question-mark">?</span>;
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::GetLocal</span>(<span class="ident">depth</span>));
             }
-            <span class="ident">SetLocal</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">SetLocal</span>(<span class="ident">index</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="kw">let</span> <span class="ident">depth</span> <span class="op">=</span> <span class="ident">relative_local_depth</span>(<span class="ident">index</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">locals</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">value_stack</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::SetLocal</span>(<span class="ident">depth</span>));
             }
-            <span class="ident">TeeLocal</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">TeeLocal</span>(<span class="ident">index</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="kw">let</span> <span class="ident">depth</span> <span class="op">=</span> <span class="ident">relative_local_depth</span>(<span class="ident">index</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">locals</span>, <span class="kw-2">&amp;</span><span class="ident">context</span>.<span class="ident">value_stack</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::TeeLocal</span>(<span class="ident">depth</span>));
             }
-            <span class="ident">GetGlobal</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">GetGlobal</span>(<span class="ident">index</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::GetGlobal</span>(<span class="ident">index</span>));
             }
-            <span class="ident">SetGlobal</span>(<span class="ident">index</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">SetGlobal</span>(<span class="ident">index</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::SetGlobal</span>(<span class="ident">index</span>));
             }
 
-            <span class="ident">I32Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Load</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">F32Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Load</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">F64Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Load</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Load</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I32Load8S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Load8S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Load8S</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I32Load8U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Load8U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Load8U</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I32Load16S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Load16S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Load16S</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I32Load16U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Load16U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Load16U</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load8S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load8S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load8S</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load8U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load8U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load8U</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load16S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load16S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load16S</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load16U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load16U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load16U</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load32S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load32S</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load32S</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Load32U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Load32U</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Load32U</span>(<span class="ident">offset</span>));
             }
 
-            <span class="ident">I32Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Store</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Store</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">F32Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Store</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">F64Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Store</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Store</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I32Store8</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Store8</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Store8</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I32Store16</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Store16</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Store16</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Store8</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Store8</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Store8</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Store16</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Store16</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Store16</span>(<span class="ident">offset</span>));
             }
-            <span class="ident">I64Store32</span>(<span class="kw">_</span>, <span class="ident">offset</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Store32</span>(<span class="kw">_</span>, <span class="ident">offset</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Store32</span>(<span class="ident">offset</span>));
             }
 
-            <span class="ident">CurrentMemory</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">CurrentMemory</span>(<span class="kw">_</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::CurrentMemory</span>);
             }
-            <span class="ident">GrowMemory</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">GrowMemory</span>(<span class="kw">_</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::GrowMemory</span>);
             }
 
-            <span class="ident">I32Const</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Const</span>(<span class="ident">v</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Const</span>(<span class="ident">v</span>));
             }
-            <span class="ident">I64Const</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Const</span>(<span class="ident">v</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Const</span>(<span class="ident">v</span>));
             }
-            <span class="ident">F32Const</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Const</span>(<span class="ident">v</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Const</span>(<span class="ident">v</span>));
             }
-            <span class="ident">F64Const</span>(<span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Const</span>(<span class="ident">v</span>) =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Const</span>(<span class="ident">v</span>));
             }
 
-            <span class="ident">I32Eqz</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Eqz</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Eqz</span>);
             }
-            <span class="ident">I32Eq</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Eq</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Eq</span>);
             }
-            <span class="ident">I32Ne</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Ne</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Ne</span>);
             }
-            <span class="ident">I32LtS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32LtS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32LtS</span>);
             }
-            <span class="ident">I32LtU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32LtU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32LtU</span>);
             }
-            <span class="ident">I32GtS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32GtS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32GtS</span>);
             }
-            <span class="ident">I32GtU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32GtU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32GtU</span>);
             }
-            <span class="ident">I32LeS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32LeS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32LeS</span>);
             }
-            <span class="ident">I32LeU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32LeU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32LeU</span>);
             }
-            <span class="ident">I32GeS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32GeS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32GeS</span>);
             }
-            <span class="ident">I32GeU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32GeU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32GeU</span>);
             }
 
-            <span class="ident">I64Eqz</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Eqz</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Eqz</span>);
             }
-            <span class="ident">I64Eq</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Eq</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Eq</span>);
             }
-            <span class="ident">I64Ne</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Ne</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Ne</span>);
             }
-            <span class="ident">I64LtS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64LtS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64LtS</span>);
             }
-            <span class="ident">I64LtU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64LtU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64LtU</span>);
             }
-            <span class="ident">I64GtS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64GtS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64GtS</span>);
             }
-            <span class="ident">I64GtU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64GtU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64GtU</span>);
             }
-            <span class="ident">I64LeS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64LeS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64LeS</span>);
             }
-            <span class="ident">I64LeU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64LeU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64LeU</span>);
             }
-            <span class="ident">I64GeS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64GeS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64GeS</span>);
             }
-            <span class="ident">I64GeU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64GeU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64GeU</span>);
             }
 
-            <span class="ident">F32Eq</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Eq</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Eq</span>);
             }
-            <span class="ident">F32Ne</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Ne</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Ne</span>);
             }
-            <span class="ident">F32Lt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Lt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Lt</span>);
             }
-            <span class="ident">F32Gt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Gt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Gt</span>);
             }
-            <span class="ident">F32Le</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Le</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Le</span>);
             }
-            <span class="ident">F32Ge</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Ge</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Ge</span>);
             }
 
-            <span class="ident">F64Eq</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Eq</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Eq</span>);
             }
-            <span class="ident">F64Ne</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Ne</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Ne</span>);
             }
-            <span class="ident">F64Lt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Lt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Lt</span>);
             }
-            <span class="ident">F64Gt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Gt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Gt</span>);
             }
-            <span class="ident">F64Le</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Le</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Le</span>);
             }
-            <span class="ident">F64Ge</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Ge</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Ge</span>);
             }
 
-            <span class="ident">I32Clz</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Clz</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Clz</span>);
             }
-            <span class="ident">I32Ctz</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Ctz</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Ctz</span>);
             }
-            <span class="ident">I32Popcnt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Popcnt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Popcnt</span>);
             }
-            <span class="ident">I32Add</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Add</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Add</span>);
             }
-            <span class="ident">I32Sub</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Sub</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Sub</span>);
             }
-            <span class="ident">I32Mul</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Mul</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Mul</span>);
             }
-            <span class="ident">I32DivS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32DivS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32DivS</span>);
             }
-            <span class="ident">I32DivU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32DivU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32DivU</span>);
             }
-            <span class="ident">I32RemS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32RemS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32RemS</span>);
             }
-            <span class="ident">I32RemU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32RemU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32RemU</span>);
             }
-            <span class="ident">I32And</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32And</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32And</span>);
             }
-            <span class="ident">I32Or</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Or</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Or</span>);
             }
-            <span class="ident">I32Xor</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Xor</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Xor</span>);
             }
-            <span class="ident">I32Shl</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Shl</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Shl</span>);
             }
-            <span class="ident">I32ShrS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32ShrS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32ShrS</span>);
             }
-            <span class="ident">I32ShrU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32ShrU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32ShrU</span>);
             }
-            <span class="ident">I32Rotl</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Rotl</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Rotl</span>);
             }
-            <span class="ident">I32Rotr</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32Rotr</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32Rotr</span>);
             }
 
-            <span class="ident">I64Clz</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Clz</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Clz</span>);
             }
-            <span class="ident">I64Ctz</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Ctz</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Ctz</span>);
             }
-            <span class="ident">I64Popcnt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Popcnt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Popcnt</span>);
             }
-            <span class="ident">I64Add</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Add</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Add</span>);
             }
-            <span class="ident">I64Sub</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Sub</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Sub</span>);
             }
-            <span class="ident">I64Mul</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Mul</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Mul</span>);
             }
-            <span class="ident">I64DivS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64DivS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64DivS</span>);
             }
-            <span class="ident">I64DivU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64DivU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64DivU</span>);
             }
-            <span class="ident">I64RemS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64RemS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64RemS</span>);
             }
-            <span class="ident">I64RemU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64RemU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64RemU</span>);
             }
-            <span class="ident">I64And</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64And</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64And</span>);
             }
-            <span class="ident">I64Or</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Or</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Or</span>);
             }
-            <span class="ident">I64Xor</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Xor</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Xor</span>);
             }
-            <span class="ident">I64Shl</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Shl</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Shl</span>);
             }
-            <span class="ident">I64ShrS</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64ShrS</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64ShrS</span>);
             }
-            <span class="ident">I64ShrU</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64ShrU</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64ShrU</span>);
             }
-            <span class="ident">I64Rotl</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Rotl</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Rotl</span>);
             }
-            <span class="ident">I64Rotr</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64Rotr</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64Rotr</span>);
             }
 
-            <span class="ident">F32Abs</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Abs</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Abs</span>);
             }
-            <span class="ident">F32Neg</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Neg</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Neg</span>);
             }
-            <span class="ident">F32Ceil</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Ceil</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Ceil</span>);
             }
-            <span class="ident">F32Floor</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Floor</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Floor</span>);
             }
-            <span class="ident">F32Trunc</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Trunc</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Trunc</span>);
             }
-            <span class="ident">F32Nearest</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Nearest</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Nearest</span>);
             }
-            <span class="ident">F32Sqrt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Sqrt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Sqrt</span>);
             }
-            <span class="ident">F32Add</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Add</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Add</span>);
             }
-            <span class="ident">F32Sub</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Sub</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Sub</span>);
             }
-            <span class="ident">F32Mul</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Mul</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Mul</span>);
             }
-            <span class="ident">F32Div</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Div</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Div</span>);
             }
-            <span class="ident">F32Min</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Min</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Min</span>);
             }
-            <span class="ident">F32Max</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Max</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Max</span>);
             }
-            <span class="ident">F32Copysign</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32Copysign</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32Copysign</span>);
             }
 
-            <span class="ident">F64Abs</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Abs</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Abs</span>);
             }
-            <span class="ident">F64Neg</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Neg</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Neg</span>);
             }
-            <span class="ident">F64Ceil</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Ceil</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Ceil</span>);
             }
-            <span class="ident">F64Floor</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Floor</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Floor</span>);
             }
-            <span class="ident">F64Trunc</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Trunc</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Trunc</span>);
             }
-            <span class="ident">F64Nearest</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Nearest</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Nearest</span>);
             }
-            <span class="ident">F64Sqrt</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Sqrt</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Sqrt</span>);
             }
-            <span class="ident">F64Add</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Add</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Add</span>);
             }
-            <span class="ident">F64Sub</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Sub</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Sub</span>);
             }
-            <span class="ident">F64Mul</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Mul</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Mul</span>);
             }
-            <span class="ident">F64Div</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Div</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Div</span>);
             }
-            <span class="ident">F64Min</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Min</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Min</span>);
             }
-            <span class="ident">F64Max</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Max</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Max</span>);
             }
-            <span class="ident">F64Copysign</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64Copysign</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64Copysign</span>);
             }
 
-            <span class="ident">I32WrapI64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32WrapI64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32WrapI64</span>);
             }
-            <span class="ident">I32TruncSF32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32TruncSF32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32TruncSF32</span>);
             }
-            <span class="ident">I32TruncUF32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32TruncUF32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32TruncUF32</span>);
             }
-            <span class="ident">I32TruncSF64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32TruncSF64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32TruncSF64</span>);
             }
-            <span class="ident">I32TruncUF64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32TruncUF64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32TruncUF64</span>);
             }
-            <span class="ident">I64ExtendSI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64ExtendSI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64ExtendSI32</span>);
             }
-            <span class="ident">I64ExtendUI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64ExtendUI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64ExtendUI32</span>);
             }
-            <span class="ident">I64TruncSF32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64TruncSF32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64TruncSF32</span>);
             }
-            <span class="ident">I64TruncUF32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64TruncUF32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64TruncUF32</span>);
             }
-            <span class="ident">I64TruncSF64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64TruncSF64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64TruncSF64</span>);
             }
-            <span class="ident">I64TruncUF64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64TruncUF64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64TruncUF64</span>);
             }
-            <span class="ident">F32ConvertSI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32ConvertSI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32ConvertSI32</span>);
             }
-            <span class="ident">F32ConvertUI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32ConvertUI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32ConvertUI32</span>);
             }
-            <span class="ident">F32ConvertSI64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32ConvertSI64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32ConvertSI64</span>);
             }
-            <span class="ident">F32ConvertUI64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32ConvertUI64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32ConvertUI64</span>);
             }
-            <span class="ident">F32DemoteF64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32DemoteF64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32DemoteF64</span>);
             }
-            <span class="ident">F64ConvertSI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64ConvertSI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64ConvertSI32</span>);
             }
-            <span class="ident">F64ConvertUI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64ConvertUI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64ConvertUI32</span>);
             }
-            <span class="ident">F64ConvertSI64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64ConvertSI64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64ConvertSI64</span>);
             }
-            <span class="ident">F64ConvertUI64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64ConvertUI64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64ConvertUI64</span>);
             }
-            <span class="ident">F64PromoteF32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64PromoteF32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64PromoteF32</span>);
             }
 
-            <span class="ident">I32ReinterpretF32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I32ReinterpretF32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I32ReinterpretF32</span>);
             }
-            <span class="ident">I64ReinterpretF64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">I64ReinterpretF64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::I64ReinterpretF64</span>);
             }
-            <span class="ident">F32ReinterpretI32</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F32ReinterpretI32</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F32ReinterpretI32</span>);
             }
-            <span class="ident">F64ReinterpretI64</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">F64ReinterpretI64</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
                 <span class="self">self</span>.<span class="ident">sink</span>.<span class="ident">emit</span>(<span class="ident">isa::InstructionInternal::F64ReinterpretI64</span>);
             }
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="kw">_</span> =&gt; {
                 <span class="ident">context</span>.<span class="ident">step</span>(<span class="ident">instruction</span>)<span class="question-mark">?</span>;
             }
         };
@@ -2264,15 +2263,15 @@
     <span class="ident">block_type</span>: <span class="ident">BlockType</span>,
     <span class="ident">actual_value_stack_height</span>: <span class="ident">usize</span>,
     <span class="ident">start_value_stack_height</span>: <span class="ident">usize</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">isa::DropKeep</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">isa::DropKeep</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
     <span class="comment">// Find out how many values we need to keep (copy to the new stack location after the drop).</span>
     <span class="kw">let</span> <span class="ident">keep</span>: <span class="ident">isa::Keep</span> <span class="op">=</span> <span class="kw">match</span> (<span class="ident">started_with</span>, <span class="ident">block_type</span>) {
         <span class="comment">// A loop doesn&#39;t take a value upon a branch. It can return value</span>
         <span class="comment">// only via reaching it&#39;s closing `End` operator.</span>
-        (<span class="ident">StartedWith::Loop</span>, <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">isa::Keep::None</span>,
+        (<span class="ident">StartedWith::Loop</span>, <span class="kw">_</span>) =&gt; <span class="ident">isa::Keep::None</span>,
 
-        (<span class="kw">_</span>, <span class="ident">BlockType::Value</span>(<span class="kw">_</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">isa::Keep::Single</span>,
-        (<span class="kw">_</span>, <span class="ident">BlockType::NoResult</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">isa::Keep::None</span>,
+        (<span class="kw">_</span>, <span class="ident">BlockType::Value</span>(<span class="kw">_</span>)) =&gt; <span class="ident">isa::Keep::Single</span>,
+        (<span class="kw">_</span>, <span class="ident">BlockType::NoResult</span>) =&gt; <span class="ident">isa::Keep::None</span>,
     };
 
     <span class="comment">// Find out how many values we need to discard.</span>
@@ -2311,7 +2310,7 @@
     <span class="ident">value_stack_height</span>: <span class="ident">usize</span>,
     <span class="ident">frame_stack</span>: <span class="kw-2">&amp;</span><span class="ident">StackWithLimit</span><span class="op">&lt;</span><span class="ident">BlockFrame</span><span class="op">&gt;</span>,
     <span class="ident">label_stack</span>: <span class="kw-2">&amp;</span>[<span class="ident">BlockFrameType</span>],
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Target</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Target</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">is_stack_polymorphic</span> <span class="op">=</span> <span class="ident">top_label</span>(<span class="ident">frame_stack</span>).<span class="ident">polymorphic_stack</span>;
     <span class="kw">let</span> <span class="ident">frame</span> <span class="op">=</span> <span class="ident">require_label</span>(<span class="ident">depth</span>, <span class="ident">frame_stack</span>)<span class="question-mark">?</span>;
 
@@ -2349,7 +2348,7 @@
     <span class="ident">locals</span>: <span class="kw-2">&amp;</span><span class="ident">Locals</span>,
     <span class="ident">value_stack</span>: <span class="kw-2">&amp;</span><span class="ident">StackWithLimit</span><span class="op">&lt;</span><span class="ident">StackValueType</span><span class="op">&gt;</span>,
     <span class="ident">frame_stack</span>: <span class="kw-2">&amp;</span><span class="ident">StackWithLimit</span><span class="op">&lt;</span><span class="ident">BlockFrame</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">isa::DropKeep</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">isa::DropKeep</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="ident">frame_stack</span>.<span class="ident">is_empty</span>() {
         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">Error</span>(
             <span class="string">&quot;drop_keep_return can&#39;t be called with the frame stack empty&quot;</span>.<span class="ident">into</span>(),
@@ -2384,7 +2383,7 @@
     <span class="ident">idx</span>: <span class="ident">u32</span>,
     <span class="ident">locals</span>: <span class="kw-2">&amp;</span><span class="ident">Locals</span>,
     <span class="ident">value_stack</span>: <span class="kw-2">&amp;</span><span class="ident">StackWithLimit</span><span class="op">&lt;</span><span class="ident">StackValueType</span><span class="op">&gt;</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
     <span class="kw">let</span> <span class="ident">value_stack_height</span> <span class="op">=</span> <span class="ident">value_stack</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u32</span>;
     <span class="kw">let</span> <span class="ident">locals_and_params_count</span> <span class="op">=</span> <span class="ident">locals</span>.<span class="ident">count</span>();
 
@@ -2421,68 +2420,68 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Sink</span> {
-    <span class="kw">fn</span> <span class="ident">with_capacity</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Sink</span> {
+    <span class="kw">fn</span> <span class="ident">with_capacity</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) -&gt; <span class="ident">Sink</span> {
         <span class="ident">Sink</span> {
             <span class="ident">ins</span>: <span class="ident">isa::Instructions::with_capacity</span>(<span class="ident">capacity</span>),
             <span class="ident">labels</span>: <span class="ident">Vec::new</span>(),
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">cur_pc</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
+    <span class="kw">fn</span> <span class="ident">cur_pc</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u32</span> {
         <span class="self">self</span>.<span class="ident">ins</span>.<span class="ident">current_pc</span>()
     }
 
-    <span class="kw">fn</span> <span class="ident">pc_or_placeholder</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">isa::Reloc</span><span class="op">&gt;</span>(
-        <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+    <span class="kw">fn</span> <span class="ident">pc_or_placeholder</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">isa::Reloc</span><span class="op">&gt;</span>(
+        <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
         <span class="ident">label</span>: <span class="ident">LabelId</span>,
         <span class="ident">reloc_creator</span>: <span class="ident">F</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u32</span> {
+    ) -&gt; <span class="ident">u32</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">labels</span>[<span class="ident">label</span>.<span class="number">0</span>] {
-            (<span class="ident">Label::Resolved</span>(<span class="ident">dst_pc</span>), <span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">dst_pc</span>,
-            (<span class="ident">Label::NotResolved</span>, <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">unresolved</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            (<span class="ident">Label::Resolved</span>(<span class="ident">dst_pc</span>), <span class="kw">_</span>) =&gt; <span class="ident">dst_pc</span>,
+            (<span class="ident">Label::NotResolved</span>, <span class="kw-2">ref</span> <span class="kw-2">mut</span> <span class="ident">unresolved</span>) =&gt; {
                 <span class="ident">unresolved</span>.<span class="ident">push</span>(<span class="ident">reloc_creator</span>());
                 <span class="ident">u32::max_value</span>()
             }
         }
     }
 
-    <span class="kw">fn</span> <span class="ident">emit</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">instruction</span>: <span class="ident">isa::InstructionInternal</span>) {
+    <span class="kw">fn</span> <span class="ident">emit</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">instruction</span>: <span class="ident">isa::InstructionInternal</span>) {
         <span class="self">self</span>.<span class="ident">ins</span>.<span class="ident">push</span>(<span class="ident">instruction</span>);
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_br</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">target</span>: <span class="ident">Target</span>) {
+    <span class="kw">fn</span> <span class="ident">emit_br</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">target</span>: <span class="ident">Target</span>) {
         <span class="kw">let</span> <span class="ident">Target</span> { <span class="ident">label</span>, <span class="ident">drop_keep</span> } <span class="op">=</span> <span class="ident">target</span>;
         <span class="kw">let</span> <span class="ident">pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cur_pc</span>();
         <span class="kw">let</span> <span class="ident">dst_pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pc_or_placeholder</span>(<span class="ident">label</span>, <span class="op">|</span><span class="op">|</span> <span class="ident">isa::Reloc::Br</span> { <span class="ident">pc</span> });
         <span class="self">self</span>.<span class="ident">ins</span>.<span class="ident">push</span>(<span class="ident">isa::InstructionInternal::Br</span>(<span class="ident">isa::Target</span> {
             <span class="ident">dst_pc</span>,
-            <span class="ident">drop_keep</span>: <span class="ident">drop_keep</span>.<span class="ident">into</span>(),
+            <span class="ident">drop_keep</span>,
         }));
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_br_eqz</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">target</span>: <span class="ident">Target</span>) {
+    <span class="kw">fn</span> <span class="ident">emit_br_eqz</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">target</span>: <span class="ident">Target</span>) {
         <span class="kw">let</span> <span class="ident">Target</span> { <span class="ident">label</span>, <span class="ident">drop_keep</span> } <span class="op">=</span> <span class="ident">target</span>;
         <span class="kw">let</span> <span class="ident">pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cur_pc</span>();
         <span class="kw">let</span> <span class="ident">dst_pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pc_or_placeholder</span>(<span class="ident">label</span>, <span class="op">|</span><span class="op">|</span> <span class="ident">isa::Reloc::Br</span> { <span class="ident">pc</span> });
         <span class="self">self</span>.<span class="ident">ins</span>
             .<span class="ident">push</span>(<span class="ident">isa::InstructionInternal::BrIfEqz</span>(<span class="ident">isa::Target</span> {
                 <span class="ident">dst_pc</span>,
-                <span class="ident">drop_keep</span>: <span class="ident">drop_keep</span>.<span class="ident">into</span>(),
+                <span class="ident">drop_keep</span>,
             }));
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_br_nez</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">target</span>: <span class="ident">Target</span>) {
+    <span class="kw">fn</span> <span class="ident">emit_br_nez</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">target</span>: <span class="ident">Target</span>) {
         <span class="kw">let</span> <span class="ident">Target</span> { <span class="ident">label</span>, <span class="ident">drop_keep</span> } <span class="op">=</span> <span class="ident">target</span>;
         <span class="kw">let</span> <span class="ident">pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cur_pc</span>();
         <span class="kw">let</span> <span class="ident">dst_pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">pc_or_placeholder</span>(<span class="ident">label</span>, <span class="op">|</span><span class="op">|</span> <span class="ident">isa::Reloc::Br</span> { <span class="ident">pc</span> });
         <span class="self">self</span>.<span class="ident">ins</span>
             .<span class="ident">push</span>(<span class="ident">isa::InstructionInternal::BrIfNez</span>(<span class="ident">isa::Target</span> {
                 <span class="ident">dst_pc</span>,
-                <span class="ident">drop_keep</span>: <span class="ident">drop_keep</span>.<span class="ident">into</span>(),
+                <span class="ident">drop_keep</span>,
             }));
     }
 
-    <span class="kw">fn</span> <span class="ident">emit_br_table</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">targets</span>: <span class="kw-2">&amp;</span>[<span class="ident">Target</span>], <span class="ident">default</span>: <span class="ident">Target</span>) {
+    <span class="kw">fn</span> <span class="ident">emit_br_table</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">targets</span>: <span class="kw-2">&amp;</span>[<span class="ident">Target</span>], <span class="ident">default</span>: <span class="ident">Target</span>) {
         <span class="kw">use</span> <span class="ident">core::iter</span>;
 
         <span class="kw">let</span> <span class="ident">pc</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cur_pc</span>();
@@ -2498,13 +2497,13 @@
             <span class="self">self</span>.<span class="ident">ins</span>
                 .<span class="ident">push</span>(<span class="ident">isa::InstructionInternal::BrTableTarget</span>(<span class="ident">isa::Target</span> {
                     <span class="ident">dst_pc</span>,
-                    <span class="ident">drop_keep</span>: <span class="ident">drop_keep</span>.<span class="ident">into</span>(),
+                    <span class="ident">drop_keep</span>,
                 }));
         }
     }
 
     <span class="doccomment">/// Create a new unresolved label.</span>
-    <span class="kw">fn</span> <span class="ident">new_label</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">LabelId</span> {
+    <span class="kw">fn</span> <span class="ident">new_label</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">LabelId</span> {
         <span class="kw">let</span> <span class="ident">label_idx</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">labels</span>.<span class="ident">len</span>();
         <span class="self">self</span>.<span class="ident">labels</span>.<span class="ident">push</span>((<span class="ident">Label::NotResolved</span>, <span class="ident">Vec::new</span>()));
         <span class="ident">LabelId</span>(<span class="ident">label_idx</span>)
@@ -2513,7 +2512,7 @@
     <span class="doccomment">/// Resolve the label at the current position.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Panics if the label is already resolved.</span>
-    <span class="kw">fn</span> <span class="ident">resolve_label</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">label</span>: <span class="ident">LabelId</span>) {
+    <span class="kw">fn</span> <span class="ident">resolve_label</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">label</span>: <span class="ident">LabelId</span>) {
         <span class="kw">use</span> <span class="ident">core::mem</span>;
 
         <span class="kw">if</span> <span class="kw">let</span> (<span class="ident">Label::Resolved</span>(<span class="kw">_</span>), <span class="kw">_</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">labels</span>[<span class="ident">label</span>.<span class="number">0</span>] {
@@ -2523,7 +2522,7 @@
 
         <span class="comment">// Patch all relocations that was previously recorded for this</span>
         <span class="comment">// particular label.</span>
-        <span class="kw">let</span> <span class="ident">unresolved_rels</span> <span class="op">=</span> <span class="ident">mem::replace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">labels</span>[<span class="ident">label</span>.<span class="number">0</span>].<span class="number">1</span>, <span class="ident">Vec::new</span>());
+        <span class="kw">let</span> <span class="ident">unresolved_rels</span> <span class="op">=</span> <span class="ident">mem::take</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>.<span class="ident">labels</span>[<span class="ident">label</span>.<span class="number">0</span>].<span class="number">1</span>);
         <span class="kw">for</span> <span class="ident">reloc</span> <span class="kw">in</span> <span class="ident">unresolved_rels</span> {
             <span class="self">self</span>.<span class="ident">ins</span>.<span class="ident">patch_relocation</span>(<span class="ident">reloc</span>, <span class="ident">dst_pc</span>);
         }
@@ -2533,15 +2532,14 @@
     }
 
     <span class="doccomment">/// Consume this Sink and returns isa::Instructions.</span>
-    <span class="kw">fn</span> <span class="ident">into_inner</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">isa::Instructions</span> {
+    <span class="kw">fn</span> <span class="ident">into_inner</span>(<span class="self">self</span>) -&gt; <span class="ident">isa::Instructions</span> {
         <span class="comment">// At this moment all labels should be resolved.</span>
         <span class="macro">assert!</span>(
             {
                 <span class="self">self</span>.<span class="ident">labels</span>
                     .<span class="ident">iter</span>()
-                    .<span class="ident">all</span>(<span class="op">|</span>(<span class="ident">state</span>, <span class="ident">unresolved</span>)<span class="op">|</span> <span class="kw">match</span> (<span class="ident">state</span>, <span class="ident">unresolved</span>) {
-                        (<span class="ident">Label::Resolved</span>(<span class="kw">_</span>), <span class="ident">unresolved</span>) <span class="kw">if</span> <span class="ident">unresolved</span>.<span class="ident">is_empty</span>() <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
-                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+                    .<span class="ident">all</span>(<span class="op">|</span>(<span class="ident">state</span>, <span class="ident">unresolved</span>)<span class="op">|</span> {
+                        <span class="macro">matches!</span>((<span class="ident">state</span>, <span class="ident">unresolved</span>), (<span class="ident">Label::Resolved</span>(<span class="kw">_</span>), <span class="ident">unresolved</span>) <span class="kw">if</span> <span class="ident">unresolved</span>.<span class="ident">is_empty</span>())
                     })
             },
             <span class="string">&quot;there are unresolved labels left: {:?}&quot;</span>,
@@ -2551,6 +2549,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="wasmi" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="wasmi" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

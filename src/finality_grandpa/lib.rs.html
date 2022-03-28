@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;finality-grandpa-0.13.0&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../finality_grandpa/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;finality-grandpa-0.14.4&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../finality_grandpa/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../finality_grandpa/index.html"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -595,15 +597,6 @@
 <span id="595">595</span>
 <span id="596">596</span>
 <span id="597">597</span>
-<span id="598">598</span>
-<span id="599">599</span>
-<span id="600">600</span>
-<span id="601">601</span>
-<span id="602">602</span>
-<span id="603">603</span>
-<span id="604">604</span>
-<span id="605">605</span>
-<span id="606">606</span>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2018-2019 Parity Technologies (UK) Ltd</span>
 <span class="comment">//</span>
 <span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
@@ -642,53 +635,51 @@
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">round</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">vote_graph</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">voter_set</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">voter</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">voter_set</span>;
 
 <span class="kw">mod</span> <span class="ident">bitfield</span>;
-<span class="kw">mod</span> <span class="ident">weights</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">bridge_state</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">test</span>))]</span>
-<span class="kw">mod</span> <span class="ident">testing</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">test</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;fuzz-helpers&quot;</span>))]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">fuzz_helpers</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">test</span>))]</span>
+<span class="kw">mod</span> <span class="ident">testing</span>;
+<span class="kw">mod</span> <span class="ident">weights</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>))]</span>
 <span class="kw">mod</span> <span class="ident">std</span> {
-	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::cmp</span>;
-	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::hash</span>;
-	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::iter</span>;
-	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::mem</span>;
-	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::num</span>;
-	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::ops</span>;
+	<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span>::{<span class="ident">cmp</span>, <span class="ident">hash</span>, <span class="ident">iter</span>, <span class="ident">mem</span>, <span class="ident">num</span>, <span class="ident">ops</span>};
 
 	<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">vec</span> {
 		<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
 	}
 
 	<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">collections</span> {
-		<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">alloc::collections::btree_map</span>::{<span class="self">self</span>, <span class="ident">BTreeMap</span>};
-		<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">alloc::collections::btree_set</span>::{<span class="self">self</span>, <span class="ident">BTreeSet</span>};
+		<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">alloc::collections</span>::{
+			<span class="ident">btree_map</span>::{<span class="self">self</span>, <span class="ident">BTreeMap</span>},
+			<span class="ident">btree_set</span>::{<span class="self">self</span>, <span class="ident">BTreeSet</span>},
+		};
 	}
 
 	<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">fmt</span> {
-		<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::fmt</span>::{<span class="ident">Display</span>, <span class="prelude-ty">Result</span>, <span class="ident">Formatter</span>};
+		<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core::fmt</span>::{<span class="ident">Display</span>, <span class="ident">Formatter</span>, <span class="prelude-ty">Result</span>};
 
 		<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Debug</span> {}
 		<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">T</span> {}
 	}
 }
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::std::vec::Vec</span>;
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::voter_set::VoterSet</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">std::vec::Vec</span>, <span class="ident">voter_set::VoterSet</span>};
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>)]</span>
-<span class="kw">use</span> <span class="ident">parity_scale_codec</span>::{<span class="ident">Encode</span>, <span class="ident">Decode</span>};
+<span class="kw">use</span> <span class="ident">parity_scale_codec</span>::{<span class="ident">Decode</span>, <span class="ident">Encode</span>};
 <span class="kw">use</span> <span class="ident">round::ImportResult</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>)]</span>
+<span class="kw">use</span> <span class="ident">scale_info::TypeInfo</span>;
 
 <span class="doccomment">/// A prevote for a block and its ancestors.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Prevote</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The target block&#39;s hash.</span>
 	<span class="kw">pub</span> <span class="ident">target_hash</span>: <span class="ident">H</span>,
@@ -698,14 +689,14 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> <span class="ident">Prevote</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Create a new prevote for the given block (hash and number).</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">target_hash</span>: <span class="ident">H</span>, <span class="ident">target_number</span>: <span class="ident">N</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">target_hash</span>: <span class="ident">H</span>, <span class="ident">target_number</span>: <span class="ident">N</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">Prevote</span> { <span class="ident">target_hash</span>, <span class="ident">target_number</span> }
 	}
 }
 
 <span class="doccomment">/// A precommit for a block and its ancestors.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Precommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The target block&#39;s hash.</span>
 	<span class="kw">pub</span> <span class="ident">target_hash</span>: <span class="ident">H</span>,
@@ -715,7 +706,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> <span class="ident">Precommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Create a new precommit for the given block (hash and number).</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">target_hash</span>: <span class="ident">H</span>, <span class="ident">target_number</span>: <span class="ident">N</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">target_hash</span>: <span class="ident">H</span>, <span class="ident">target_number</span>: <span class="ident">N</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">Precommit</span> { <span class="ident">target_hash</span>, <span class="ident">target_number</span> }
 	}
 }
@@ -723,7 +714,7 @@
 <span class="doccomment">/// A primary proposed block, this is a broadcast of the last round&#39;s estimate.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PrimaryPropose</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The target block&#39;s hash.</span>
 	<span class="kw">pub</span> <span class="ident">target_hash</span>: <span class="ident">H</span>,
@@ -733,7 +724,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> <span class="ident">PrimaryPropose</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Create a new primary proposal for the given block (hash and number).</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">target_hash</span>: <span class="ident">H</span>, <span class="ident">target_number</span>: <span class="ident">N</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">target_hash</span>: <span class="ident">H</span>, <span class="ident">target_number</span>: <span class="ident">N</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">PrimaryPropose</span> { <span class="ident">target_hash</span>, <span class="ident">target_number</span> }
 	}
 }
@@ -748,42 +739,45 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">impl</span> <span class="ident">std::fmt::Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
-	<span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">std::fmt::Result</span> {
+	<span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">std::fmt::Formatter</span>) -&gt; <span class="ident">std::fmt::Result</span> {
 		<span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-			<span class="ident">Error::NotDescendent</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Block not descendent of base&quot;</span>),
+			<span class="ident">Error::NotDescendent</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Block not descendent of base&quot;</span>),
 		}
 	}
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">impl</span> <span class="ident">std::error::Error</span> <span class="kw">for</span> <span class="ident">Error</span> {
-	<span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+	<span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="ident">str</span> {
 		<span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-			<span class="ident">Error::NotDescendent</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Block not descendent of base&quot;</span>,
+			<span class="ident">Error::NotDescendent</span> =&gt; <span class="string">&quot;Block not descendent of base&quot;</span>,
 		}
 	}
 }
 
 <span class="doccomment">/// Arithmetic necessary for a block number.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">BlockNumberOps</span>:
-	<span class="ident">std::fmt::Debug</span> <span class="op">+</span>
-	<span class="ident">std::cmp::Ord</span> <span class="op">+</span>
-	<span class="ident">std::ops::Add</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">=</span><span class="self">Self</span><span class="op">&gt;</span> <span class="op">+</span>
-	<span class="ident">std::ops::Sub</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">=</span><span class="self">Self</span><span class="op">&gt;</span> <span class="op">+</span>
-	<span class="ident">num::One</span> <span class="op">+</span>
-	<span class="ident">num::Zero</span> <span class="op">+</span>
-	<span class="ident">num::AsPrimitive</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>
-{}
+	<span class="ident">std::fmt::Debug</span>
+	<span class="op">+</span> <span class="ident">std::cmp::Ord</span>
+	<span class="op">+</span> <span class="ident">std::ops::Add</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span><span class="op">&gt;</span>
+	<span class="op">+</span> <span class="ident">std::ops::Sub</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span><span class="op">&gt;</span>
+	<span class="op">+</span> <span class="ident">num::One</span>
+	<span class="op">+</span> <span class="ident">num::Zero</span>
+	<span class="op">+</span> <span class="ident">num::AsPrimitive</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>
+{
+}
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">BlockNumberOps</span> <span class="kw">for</span> <span class="ident">T</span> <span class="kw">where</span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">BlockNumberOps</span> <span class="kw">for</span> <span class="ident">T</span>
+<span class="kw">where</span>
 	<span class="ident">T</span>: <span class="ident">std::fmt::Debug</span>,
 	<span class="ident">T</span>: <span class="ident">std::cmp::Ord</span>,
-	<span class="ident">T</span>: <span class="ident">std::ops::Add</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">=</span><span class="self">Self</span><span class="op">&gt;</span>,
-	<span class="ident">T</span>: <span class="ident">std::ops::Sub</span><span class="op">&lt;</span><span class="ident">Output</span><span class="op">=</span><span class="self">Self</span><span class="op">&gt;</span>,
+	<span class="ident">T</span>: <span class="ident">std::ops::Add</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span><span class="op">&gt;</span>,
+	<span class="ident">T</span>: <span class="ident">std::ops::Sub</span><span class="op">&lt;</span><span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span><span class="op">&gt;</span>,
 	<span class="ident">T</span>: <span class="ident">num::One</span>,
 	<span class="ident">T</span>: <span class="ident">num::Zero</span>,
 	<span class="ident">T</span>: <span class="ident">num::AsPrimitive</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>,
-{}
+{
+}
 
 <span class="doccomment">/// Chain context necessary for implementation of the finality gadget.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Chain</span><span class="op">&lt;</span><span class="ident">H</span>: <span class="ident">Eq</span>, <span class="ident">N</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">BlockNumberOps</span><span class="op">&gt;</span> {
@@ -791,31 +785,27 @@
 	<span class="doccomment">/// Should be in reverse order from `block`&#39;s parent.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// If the block is not a descendent of `base`, returns an error.</span>
-	<span class="kw">fn</span> <span class="ident">ancestry</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">base</span>: <span class="ident">H</span>, <span class="ident">block</span>: <span class="ident">H</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>, <span class="ident">Error</span><span class="op">&gt;</span>;
-
-	<span class="doccomment">/// Return the hash of the best block whose chain contains the given block hash,</span>
-	<span class="doccomment">/// even if that block is `base` itself.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// If `base` is unknown, return `None`.</span>
-	<span class="kw">fn</span> <span class="ident">best_chain_containing</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">base</span>: <span class="ident">H</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span>(<span class="ident">H</span>, <span class="ident">N</span>)<span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">ancestry</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">base</span>: <span class="ident">H</span>, <span class="ident">block</span>: <span class="ident">H</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>, <span class="ident">Error</span><span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Returns true if `block` is a descendent of or equal to the given `base`.</span>
-	<span class="kw">fn</span> <span class="ident">is_equal_or_descendent_of</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">base</span>: <span class="ident">H</span>, <span class="ident">block</span>: <span class="ident">H</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		<span class="kw">if</span> <span class="ident">base</span> <span class="op">=</span><span class="op">=</span> <span class="ident">block</span> { <span class="kw">return</span> <span class="bool-val">true</span>; }
+	<span class="kw">fn</span> <span class="ident">is_equal_or_descendent_of</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">base</span>: <span class="ident">H</span>, <span class="ident">block</span>: <span class="ident">H</span>) -&gt; <span class="ident">bool</span> {
+		<span class="kw">if</span> <span class="ident">base</span> <span class="op">==</span> <span class="ident">block</span> {
+			<span class="kw">return</span> <span class="bool-val">true</span>
+		}
 
 		<span class="comment">// TODO: currently this function always succeeds since the only error</span>
 		<span class="comment">// variant is `Error::NotDescendent`, this may change in the future as</span>
 		<span class="comment">// other errors (e.g. IO) are not being exposed.</span>
 		<span class="kw">match</span> <span class="self">self</span>.<span class="ident">ancestry</span>(<span class="ident">base</span>, <span class="ident">block</span>) {
-			<span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
-			<span class="prelude-val">Err</span>(<span class="ident">Error::NotDescendent</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
+			<span class="prelude-val">Ok</span>(<span class="kw">_</span>) =&gt; <span class="bool-val">true</span>,
+			<span class="prelude-val">Err</span>(<span class="ident">Error::NotDescendent</span>) =&gt; <span class="bool-val">false</span>,
 		}
 	}
 }
 
 <span class="doccomment">/// An equivocation (double-vote) in a given round.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Equivocation</span><span class="op">&lt;</span><span class="ident">Id</span>, <span class="ident">V</span>, <span class="ident">S</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The round number equivocated in.</span>
 	<span class="kw">pub</span> <span class="ident">round_number</span>: <span class="ident">u64</span>,
@@ -830,7 +820,7 @@
 <span class="doccomment">/// A protocol message or vote.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Message</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// A prevote message.</span>
 	<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">codec</span>(<span class="ident">index</span> <span class="op">=</span> <span class="number">0</span>))]</span>
@@ -845,11 +835,11 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>: <span class="ident">Copy</span><span class="op">&gt;</span> <span class="ident">Message</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Get the target block of the vote.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span><span class="ident">H</span>, <span class="ident">N</span>) {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="kw-2">&amp;</span><span class="ident">H</span>, <span class="ident">N</span>) {
 		<span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-			<span class="ident">Message::Prevote</span>(<span class="kw-2">ref</span> <span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">target_hash</span>, <span class="ident">v</span>.<span class="ident">target_number</span>),
-			<span class="ident">Message::Precommit</span>(<span class="kw-2">ref</span> <span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">target_hash</span>, <span class="ident">v</span>.<span class="ident">target_number</span>),
-			<span class="ident">Message::PrimaryPropose</span>(<span class="kw-2">ref</span> <span class="ident">v</span>) <span class="op">=</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">target_hash</span>, <span class="ident">v</span>.<span class="ident">target_number</span>),
+			<span class="ident">Message::Prevote</span>(<span class="kw-2">ref</span> <span class="ident">v</span>) =&gt; (<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">target_hash</span>, <span class="ident">v</span>.<span class="ident">target_number</span>),
+			<span class="ident">Message::Precommit</span>(<span class="kw-2">ref</span> <span class="ident">v</span>) =&gt; (<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">target_hash</span>, <span class="ident">v</span>.<span class="ident">target_number</span>),
+			<span class="ident">Message::PrimaryPropose</span>(<span class="kw-2">ref</span> <span class="ident">v</span>) =&gt; (<span class="kw-2">&amp;</span><span class="ident">v</span>.<span class="ident">target_hash</span>, <span class="ident">v</span>.<span class="ident">target_number</span>),
 		}
 	}
 }
@@ -857,7 +847,7 @@
 <span class="doccomment">/// A signed message.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The internal message which has been signed.</span>
 	<span class="kw">pub</span> <span class="ident">message</span>: <span class="ident">Message</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span>,
@@ -871,7 +861,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>: <span class="ident">Copy</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> <span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Get the target block of the vote.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span><span class="ident">H</span>, <span class="ident">N</span>) {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">target</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; (<span class="kw-2">&amp;</span><span class="ident">H</span>, <span class="ident">N</span>) {
 		<span class="self">self</span>.<span class="ident">message</span>.<span class="ident">target</span>()
 	}
 }
@@ -879,7 +869,7 @@
 <span class="doccomment">/// A commit message which is an aggregate of precommits.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The target block&#39;s hash.</span>
 	<span class="kw">pub</span> <span class="ident">target_hash</span>: <span class="ident">H</span>,
@@ -892,7 +882,7 @@
 <span class="doccomment">/// A signed prevote message.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SignedPrevote</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The prevote message which has been signed.</span>
 	<span class="kw">pub</span> <span class="ident">prevote</span>: <span class="ident">Prevote</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span>,
@@ -905,7 +895,7 @@
 <span class="doccomment">/// A signed precommit message.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SignedPrecommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The precommit message which has been signed.</span>
 	<span class="kw">pub</span> <span class="ident">precommit</span>: <span class="ident">Precommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span>,
@@ -918,7 +908,7 @@
 <span class="doccomment">/// A commit message with compact representation of authentication data.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// The target block&#39;s hash.</span>
 	<span class="kw">pub</span> <span class="ident">target_hash</span>: <span class="ident">H</span>,
@@ -937,7 +927,7 @@
 <span class="doccomment">/// a descendent of.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CatchUp</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Round number.</span>
 	<span class="kw">pub</span> <span class="ident">round_number</span>: <span class="ident">u64</span>,
@@ -956,25 +946,31 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">MultiAuthData</span><span class="op">&lt;</span><span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">S</span>, <span class="ident">Id</span>)<span class="op">&gt;</span>;
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">commit</span>: <span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">commit</span>: <span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>) -&gt; <span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 		<span class="ident">Commit</span> {
 			<span class="ident">target_hash</span>: <span class="ident">commit</span>.<span class="ident">target_hash</span>,
 			<span class="ident">target_number</span>: <span class="ident">commit</span>.<span class="ident">target_number</span>,
-			<span class="ident">precommits</span>: <span class="ident">commit</span>.<span class="ident">precommits</span>.<span class="ident">into_iter</span>()
+			<span class="ident">precommits</span>: <span class="ident">commit</span>
+				.<span class="ident">precommits</span>
+				.<span class="ident">into_iter</span>()
 				.<span class="ident">zip</span>(<span class="ident">commit</span>.<span class="ident">auth_data</span>.<span class="ident">into_iter</span>())
 				.<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">precommit</span>, (<span class="ident">signature</span>, <span class="ident">id</span>))<span class="op">|</span> <span class="ident">SignedPrecommit</span> { <span class="ident">precommit</span>, <span class="ident">signature</span>, <span class="ident">id</span> })
-				.<span class="ident">collect</span>()
+				.<span class="ident">collect</span>(),
 		}
 	}
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>: <span class="ident">Clone</span>, <span class="ident">N</span>: <span class="ident">Clone</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">commit</span>: <span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">commit</span>: <span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>) -&gt; <span class="ident">CompactCommit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 		<span class="ident">CompactCommit</span> {
 			<span class="ident">target_hash</span>: <span class="ident">commit</span>.<span class="ident">target_hash</span>,
 			<span class="ident">target_number</span>: <span class="ident">commit</span>.<span class="ident">target_number</span>,
 			<span class="ident">precommits</span>: <span class="ident">commit</span>.<span class="ident">precommits</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">signed</span><span class="op">|</span> <span class="ident">signed</span>.<span class="ident">precommit</span>.<span class="ident">clone</span>()).<span class="ident">collect</span>(),
-			<span class="ident">auth_data</span>: <span class="ident">commit</span>.<span class="ident">precommits</span>.<span class="ident">into_iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">signed</span><span class="op">|</span> (<span class="ident">signed</span>.<span class="ident">signature</span>, <span class="ident">signed</span>.<span class="ident">id</span>)).<span class="ident">collect</span>(),
+			<span class="ident">auth_data</span>: <span class="ident">commit</span>
+				.<span class="ident">precommits</span>
+				.<span class="ident">into_iter</span>()
+				.<span class="ident">map</span>(<span class="op">|</span><span class="ident">signed</span><span class="op">|</span> (<span class="ident">signed</span>.<span class="ident">signature</span>, <span class="ident">signed</span>.<span class="ident">id</span>))
+				.<span class="ident">collect</span>(),
 		}
 	}
 }
@@ -993,33 +989,33 @@
 	<span class="doccomment">/// Returns the commit GHOST i.e. the block with highest number for which</span>
 	<span class="doccomment">/// the cumulative votes of descendents and itself reach finalization</span>
 	<span class="doccomment">/// threshold.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ghost</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>(<span class="ident">H</span>, <span class="ident">N</span>)<span class="op">&gt;</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ghost</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>(<span class="ident">H</span>, <span class="ident">N</span>)<span class="op">&gt;</span> {
 		<span class="self">self</span>.<span class="ident">ghost</span>.<span class="ident">as_ref</span>()
 	}
 
 	<span class="doccomment">/// Returns the number of precommits in the commit.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_precommits</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_precommits</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
 		<span class="self">self</span>.<span class="ident">num_precommits</span>
 	}
 
 	<span class="doccomment">/// Returns the number of duplicate precommits in the commit.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_duplicated_precommits</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_duplicated_precommits</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
 		<span class="self">self</span>.<span class="ident">num_duplicated_precommits</span>
 	}
 
 	<span class="doccomment">/// Returns the number of equivocated precommits in the commit.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_equivocations</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_equivocations</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
 		<span class="self">self</span>.<span class="ident">num_equivocations</span>
 	}
 
 	<span class="doccomment">/// Returns the number of invalid voters in the commit.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_invalid_voters</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_invalid_voters</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
 		<span class="self">self</span>.<span class="ident">num_invalid_voters</span>
 	}
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">CommitValidationResult</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="self">Self</span> {
 		<span class="ident">CommitValidationResult</span> {
 			<span class="ident">ghost</span>: <span class="prelude-val">None</span>,
 			<span class="ident">num_precommits</span>: <span class="number">0</span>,
@@ -1042,8 +1038,8 @@
 	<span class="ident">commit</span>: <span class="kw-2">&amp;</span><span class="ident">Commit</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">I</span><span class="op">&gt;</span>,
 	<span class="ident">voters</span>: <span class="kw-2">&amp;</span><span class="ident">VoterSet</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>,
 	<span class="ident">chain</span>: <span class="kw-2">&amp;</span><span class="ident">C</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CommitValidationResult</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span>
-	<span class="kw">where</span>
+) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CommitValidationResult</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span><span class="op">&gt;</span>, <span class="ident"><span class="kw">crate</span>::Error</span><span class="op">&gt;</span>
+<span class="kw">where</span>
 	<span class="ident">H</span>: <span class="ident">Clone</span> <span class="op">+</span> <span class="ident">Eq</span> <span class="op">+</span> <span class="ident">Ord</span> <span class="op">+</span> <span class="ident">std::fmt::Debug</span>,
 	<span class="ident">N</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">BlockNumberOps</span> <span class="op">+</span> <span class="ident">std::fmt::Debug</span>,
 	<span class="ident">I</span>: <span class="ident">Clone</span> <span class="op">+</span> <span class="ident">Ord</span> <span class="op">+</span> <span class="ident">Eq</span> <span class="op">+</span> <span class="ident">std::fmt::Debug</span>,
@@ -1063,7 +1059,7 @@
 	});
 
 	<span class="kw">if</span> <span class="op">!</span><span class="ident">all_precommits_higher_than_target</span> {
-		<span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">validation_result</span>);
+		<span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">validation_result</span>)
 	}
 
 	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">equivocated</span> <span class="op">=</span> <span class="ident">std::collections::BTreeSet::new</span>();
@@ -1078,21 +1074,21 @@
 
 	<span class="kw">for</span> <span class="ident">SignedPrecommit</span> { <span class="ident">precommit</span>, <span class="ident">id</span>, <span class="ident">signature</span> } <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">commit</span>.<span class="ident">precommits</span> {
 		<span class="kw">match</span> <span class="ident">round</span>.<span class="ident">import_precommit</span>(<span class="ident">chain</span>, <span class="ident">precommit</span>.<span class="ident">clone</span>(), <span class="ident">id</span>.<span class="ident">clone</span>(), <span class="ident">signature</span>.<span class="ident">clone</span>())<span class="question-mark">?</span> {
-			<span class="ident">ImportResult</span> { <span class="ident">equivocation</span>: <span class="prelude-val">Some</span>(<span class="kw">_</span>), .. } <span class="op">=</span><span class="op">&gt;</span> {
+			<span class="ident">ImportResult</span> { <span class="ident">equivocation</span>: <span class="prelude-val">Some</span>(<span class="kw">_</span>), .. } =&gt; {
 				<span class="ident">validation_result</span>.<span class="ident">num_equivocations</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
 				<span class="comment">// allow only one equivocation per voter, as extras are redundant.</span>
 				<span class="kw">if</span> <span class="op">!</span><span class="ident">equivocated</span>.<span class="ident">insert</span>(<span class="ident">id</span>) {
 					<span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">validation_result</span>)
 				}
 			},
-			<span class="ident">ImportResult</span> { <span class="ident">duplicated</span>, <span class="ident">valid_voter</span>, .. } <span class="op">=</span><span class="op">&gt;</span> {
+			<span class="ident">ImportResult</span> { <span class="ident">duplicated</span>, <span class="ident">valid_voter</span>, .. } =&gt; {
 				<span class="kw">if</span> <span class="ident">duplicated</span> {
 					<span class="ident">validation_result</span>.<span class="ident">num_duplicated_precommits</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
 				}
 				<span class="kw">if</span> <span class="op">!</span><span class="ident">valid_voter</span> {
 					<span class="ident">validation_result</span>.<span class="ident">num_invalid_voters</span> <span class="op">+</span><span class="op">=</span> <span class="number">1</span>;
 				}
-			}
+			},
 		}
 	}
 
@@ -1111,20 +1107,16 @@
 	<span class="kw-2">mut</span> <span class="ident">callback</span>: <span class="ident">voter::Callback</span><span class="op">&lt;</span><span class="ident">voter::CommitProcessingOutcome</span><span class="op">&gt;</span>,
 ) {
 	<span class="kw">if</span> <span class="ident">validation_result</span>.<span class="ident">ghost</span>.<span class="ident">is_some</span>() {
-		<span class="ident">callback</span>.<span class="ident">run</span>(
-			<span class="ident">voter::CommitProcessingOutcome::Good</span>(<span class="ident">voter::GoodCommit::new</span>())
-		)
+		<span class="ident">callback</span>.<span class="ident">run</span>(<span class="ident">voter::CommitProcessingOutcome::Good</span>(<span class="ident">voter::GoodCommit::new</span>()))
 	} <span class="kw">else</span> {
-		<span class="ident">callback</span>.<span class="ident">run</span>(
-			<span class="ident">voter::CommitProcessingOutcome::Bad</span>(<span class="ident">voter::BadCommit::from</span>(<span class="ident">validation_result</span>))
-		)
+		<span class="ident">callback</span>.<span class="ident">run</span>(<span class="ident">voter::CommitProcessingOutcome::Bad</span>(<span class="ident">voter::BadCommit::from</span>(<span class="ident">validation_result</span>)))
 	}
 }
 
 <span class="doccomment">/// Historical votes seen in a round.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>), <span class="ident">derive</span>(<span class="ident">Debug</span>))]</span>
-<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>, <span class="ident">derive</span>(<span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">TypeInfo</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HistoricalVotes</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="ident">seen</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 	<span class="ident">prevote_idx</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>,
@@ -1133,57 +1125,49 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> <span class="ident">HistoricalVotes</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Create a new HistoricalVotes.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		<span class="ident">HistoricalVotes</span> {
-			<span class="ident">seen</span>: <span class="ident">Vec::new</span>(),
-			<span class="ident">prevote_idx</span>: <span class="prelude-val">None</span>,
-			<span class="ident">precommit_idx</span>: <span class="prelude-val">None</span>,
-		}
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() -&gt; <span class="self">Self</span> {
+		<span class="ident">HistoricalVotes</span> { <span class="ident">seen</span>: <span class="ident">Vec::new</span>(), <span class="ident">prevote_idx</span>: <span class="prelude-val">None</span>, <span class="ident">precommit_idx</span>: <span class="prelude-val">None</span> }
 	}
 
 	<span class="doccomment">/// Create a new HistoricalVotes initialized from the parameters.</span>
 	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_with</span>(
 		<span class="ident">seen</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 		<span class="ident">prevote_idx</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>,
-		<span class="ident">precommit_idx</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		<span class="ident">HistoricalVotes</span> {
-			<span class="ident">seen</span>,
-			<span class="ident">prevote_idx</span>,
-			<span class="ident">precommit_idx</span>,
-		}
+		<span class="ident">precommit_idx</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span>,
+	) -&gt; <span class="self">Self</span> {
+		<span class="ident">HistoricalVotes</span> { <span class="ident">seen</span>, <span class="ident">prevote_idx</span>, <span class="ident">precommit_idx</span> }
 	}
 
 	<span class="doccomment">/// Push a vote into the list. The value of `self` before this call</span>
 	<span class="doccomment">/// is considered to be a prefix of the value post-call.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_vote</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">msg</span>: <span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>) {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">push_vote</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">msg</span>: <span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>) {
 		<span class="self">self</span>.<span class="ident">seen</span>.<span class="ident">push</span>(<span class="ident">msg</span>)
 	}
 
 	<span class="doccomment">/// Return the messages seen so far.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>] {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seen</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[<span class="ident">SignedMessage</span><span class="op">&lt;</span><span class="ident">H</span>, <span class="ident">N</span>, <span class="ident">S</span>, <span class="ident">Id</span><span class="op">&gt;</span>] {
 		<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">seen</span>
 	}
 
 	<span class="doccomment">/// Return the number of messages seen before prevoting.</span>
 	<span class="doccomment">/// None in case we didn&#39;t prevote yet.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prevote_idx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">prevote_idx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
 		<span class="self">self</span>.<span class="ident">prevote_idx</span>
 	}
 
 	<span class="doccomment">/// Return the number of messages seen before precommiting.</span>
 	<span class="doccomment">/// None in case we didn&#39;t precommit yet.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">precommit_idx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">precommit_idx</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
 		<span class="self">self</span>.<span class="ident">precommit_idx</span>
 	}
 
 	<span class="doccomment">/// Set the number of messages seen before prevoting.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_prevoted_idx</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_prevoted_idx</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
 		<span class="self">self</span>.<span class="ident">prevote_idx</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">seen</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>)
 	}
 
 	<span class="doccomment">/// Set the number of messages seen before precommiting.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_precommitted_idx</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_precommitted_idx</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
 		<span class="self">self</span>.<span class="ident">precommit_idx</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">seen</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u64</span>)
 	}
 }
@@ -1194,7 +1178,7 @@
 	<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;derive-codec&quot;</span>)]</span>
 	<span class="attribute">#[<span class="ident">test</span>]</span>
 	<span class="kw">fn</span> <span class="ident">codec_was_derived</span>() {
-		<span class="kw">use</span> <span class="ident">parity_scale_codec</span>::{<span class="ident">Encode</span>, <span class="ident">Decode</span>};
+		<span class="kw">use</span> <span class="ident">parity_scale_codec</span>::{<span class="ident">Decode</span>, <span class="ident">Encode</span>};
 
 		<span class="kw">let</span> <span class="ident">signed</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::SignedMessage</span> {
 			<span class="ident">message</span>: <span class="ident"><span class="kw">crate</span>::Message::Prevote</span>(<span class="ident"><span class="kw">crate</span>::Prevote</span> {
@@ -1206,11 +1190,10 @@
 		};
 
 		<span class="kw">let</span> <span class="ident">encoded</span> <span class="op">=</span> <span class="ident">signed</span>.<span class="ident">encode</span>();
-		<span class="kw">let</span> <span class="ident">signed2</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::SignedMessage::decode</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">&amp;</span><span class="ident">encoded</span>[..]).<span class="ident">unwrap</span>();
+		<span class="kw">let</span> <span class="ident">signed2</span> <span class="op">=</span> <span class="ident"><span class="kw">crate</span>::SignedMessage::decode</span>(<span class="kw-2">&amp;mut</span> <span class="kw-2">&amp;</span><span class="ident">encoded</span>[..]).<span class="ident">unwrap</span>();
 		<span class="macro">assert_eq!</span>(<span class="ident">signed</span>, <span class="ident">signed2</span>);
 	}
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="finality_grandpa" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
-    <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="finality_grandpa" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

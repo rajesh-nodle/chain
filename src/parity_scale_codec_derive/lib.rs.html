@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;parity-scale-codec-derive-2.2.0&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../parity_scale_codec_derive/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;parity-scale-codec-derive-2.3.1&#x2F;src&#x2F;lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../parity_scale_codec_derive/index.html"><div class="logo-container"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../parity_scale_codec_derive/index.html"><img class="rust-logo" src="../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -341,6 +343,31 @@
 <span id="341">341</span>
 <span id="342">342</span>
 <span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2017-2021 Parity Technologies</span>
 <span class="comment">//</span>
 <span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
@@ -370,7 +397,7 @@
 <span class="kw">use</span> <span class="ident">proc_macro_crate</span>::{<span class="ident">crate_name</span>, <span class="ident">FoundCrate</span>};
 <span class="kw">use</span> <span class="ident">syn::spanned::Spanned</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">Data</span>, <span class="ident">Field</span>, <span class="ident">Fields</span>, <span class="ident">DeriveInput</span>, <span class="ident">Error</span>};
-
+<span class="kw">use</span> <span class="ident">proc_macro2::TokenStream</span> <span class="kw">as</span> <span class="ident">TokenStream2</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::utils::is_lint_attribute</span>;
 
 <span class="kw">mod</span> <span class="ident">decode</span>;
@@ -379,34 +406,35 @@
 <span class="kw">mod</span> <span class="ident">utils</span>;
 <span class="kw">mod</span> <span class="ident">trait_bounds</span>;
 
-<span class="doccomment">/// Include the `parity-scale-codec` crate under a known name (`_parity_scale_codec`).</span>
-<span class="kw">fn</span> <span class="ident">include_parity_scale_codec_crate</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+<span class="doccomment">/// Returns the identifier of the `parity-scale-codec` crate as used.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The identifier might change if the depending crate imported it</span>
+<span class="doccomment">/// using a custom package name.</span>
+<span class="kw">fn</span> <span class="ident">parity_scale_codec_ident</span>() -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">TokenStream2</span>, <span class="ident">Error</span><span class="op">&gt;</span> {
+	<span class="kw">static</span> <span class="ident">CRATE_NAME</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;parity-scale-codec&quot;</span>;
+	<span class="kw">fn</span> <span class="ident">root_import</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="ident">TokenStream2</span> {
+		<span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">Ident::new</span>(<span class="ident">name</span>, <span class="ident">Span::call_site</span>());
+		<span class="macro">quote!</span>{ :: #<span class="ident">ident</span> }
+	}
 	<span class="comment">// This &quot;hack&quot; is required for the tests.</span>
-	<span class="kw">if</span> <span class="ident">std::env::var</span>(<span class="string">&quot;CARGO_PKG_NAME&quot;</span>).<span class="ident">unwrap</span>() <span class="op">=</span><span class="op">=</span> <span class="string">&quot;parity-scale-codec&quot;</span> {
-		<span class="macro">quote!</span>( <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">parity_scale_codec</span> <span class="kw">as</span> <span class="ident">_parity_scale_codec</span>; )
+	<span class="kw">if</span> <span class="ident">std::env::var</span>(<span class="string">&quot;CARGO_PKG_NAME&quot;</span>).<span class="ident">unwrap</span>() <span class="op">==</span> <span class="ident">CRATE_NAME</span> {
+		<span class="prelude-val">Ok</span>(<span class="ident">root_import</span>(<span class="string">&quot;parity_scale_codec&quot;</span>))
 	} <span class="kw">else</span> {
-		<span class="kw">match</span> <span class="ident">crate_name</span>(<span class="string">&quot;parity-scale-codec&quot;</span>) {
-			<span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Itself</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">quote!</span>( <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">parity_scale_codec</span> <span class="kw">as</span> <span class="ident">_parity_scale_codec</span>; ),
-			<span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Name</span>(<span class="ident">parity_codec_crate</span>)) <span class="op">=</span><span class="op">&gt;</span> {
-				<span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">Ident::new</span>(<span class="kw-2">&amp;</span><span class="ident">parity_codec_crate</span>, <span class="ident">Span::call_site</span>());
-				<span class="macro">quote!</span>( <span class="kw">extern</span> <span class="kw">crate</span> #<span class="ident">ident</span> <span class="kw">as</span> <span class="ident">_parity_scale_codec</span>; )
-			},
-			<span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Error::new</span>(<span class="ident">Span::call_site</span>(), <span class="kw-2">&amp;</span><span class="ident">e</span>).<span class="ident">to_compile_error</span>(),
+		<span class="kw">match</span> <span class="ident">crate_name</span>(<span class="ident">CRATE_NAME</span>) {
+			<span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Itself</span>) =&gt; {
+				<span class="prelude-val">Ok</span>(<span class="macro">quote!</span> { <span class="kw">crate</span> })
+			}
+			<span class="prelude-val">Ok</span>(<span class="ident">FoundCrate::Name</span>(<span class="ident">custom_name</span>)) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">root_import</span>(<span class="kw-2">&amp;</span><span class="ident">custom_name</span>)),
+			<span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="prelude-val">Err</span>(<span class="ident">Error::new</span>(<span class="ident">Span::call_site</span>(), <span class="kw-2">&amp;</span><span class="ident">e</span>)),
 		}
 	}
 }
 
 <span class="doccomment">/// Wraps the impl block in a &quot;dummy const&quot;</span>
-<span class="kw">fn</span> <span class="ident">wrap_with_dummy_const</span>(<span class="ident">input</span>: <span class="ident">DeriveInput</span>, <span class="ident">impl_block</span>: <span class="ident">proc_macro2::TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
-	<span class="kw">let</span> <span class="ident">parity_codec_crate</span> <span class="op">=</span> <span class="ident">include_parity_scale_codec_crate</span>();
+<span class="kw">fn</span> <span class="ident">wrap_with_dummy_const</span>(<span class="ident">input</span>: <span class="ident">DeriveInput</span>, <span class="ident">impl_block</span>: <span class="ident">proc_macro2::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
 	<span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">attrs</span>.<span class="ident">into_iter</span>().<span class="ident">filter</span>(<span class="ident">is_lint_attribute</span>);
-
 	<span class="kw">let</span> <span class="ident">generated</span> <span class="op">=</span> <span class="macro">quote!</span> {
 		<span class="kw">const</span> <span class="kw">_</span>: () <span class="op">=</span> {
-			<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unknown_lints</span>)]</span>
-			<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;cargo-clippy&quot;</span>, <span class="ident">allow</span>(<span class="ident">useless_attribute</span>))]</span>
-			<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">rust_2018_idioms</span>)]</span>
-			#<span class="ident">parity_codec_crate</span>
 			#(#<span class="ident">attrs</span>)<span class="op">*</span>
 			#<span class="ident">impl_block</span>
 		};
@@ -481,25 +509,33 @@
 <span class="doccomment">/// assert_eq!(EnumType::D.encode(), vec![2]);</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Encode</span>, <span class="ident">attributes</span>(<span class="ident">codec</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_derive</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encode_derive</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
 	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">input</span>: <span class="ident">DeriveInput</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">syn::parse</span>(<span class="ident">input</span>) {
-		<span class="prelude-val">Ok</span>(<span class="ident">input</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">input</span>,
-		<span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>(),
+		<span class="prelude-val">Ok</span>(<span class="ident">input</span>) =&gt; <span class="ident">input</span>,
+		<span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>(),
 	};
 
 	<span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">utils::check_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>) {
 		<span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 	}
 
+	<span class="kw">let</span> <span class="ident">crate_ident</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident"><span class="kw">crate</span>::parity_scale_codec_ident</span>() {
+		<span class="prelude-val">Ok</span>(<span class="ident">crate_ident</span>) =&gt; <span class="ident">crate_ident</span>,
+		<span class="prelude-val">Err</span>(<span class="ident">error</span>) =&gt; {
+			<span class="kw">return</span> <span class="ident">error</span>.<span class="ident">into_compile_error</span>().<span class="ident">into</span>()
+		}
+	};
+
 	<span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">custom_bound</span>) <span class="op">=</span> <span class="ident">utils::custom_encode_trait_bound</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>) {
 		<span class="ident">input</span>.<span class="ident">generics</span>.<span class="ident">make_where_clause</span>().<span class="ident">predicates</span>.<span class="ident">extend</span>(<span class="ident">custom_bound</span>);
 	} <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">trait_bounds::add</span>(
 		<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>,
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">input</span>.<span class="ident">generics</span>,
+		<span class="kw-2">&amp;mut</span> <span class="ident">input</span>.<span class="ident">generics</span>,
 		<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>,
-		<span class="macro">parse_quote!</span>(<span class="ident">_parity_scale_codec::Encode</span>),
+		<span class="macro">parse_quote!</span>(#<span class="ident">crate_ident::Encode</span>),
 		<span class="prelude-val">None</span>,
 		<span class="ident">utils::has_dumb_trait_bound</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>),
+		<span class="kw-2">&amp;</span><span class="ident">crate_ident</span>,
 	) {
 		<span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 	}
@@ -507,14 +543,14 @@
 	<span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>;
 	<span class="kw">let</span> (<span class="ident">impl_generics</span>, <span class="ident">ty_generics</span>, <span class="ident">where_clause</span>) <span class="op">=</span> <span class="ident">input</span>.<span class="ident">generics</span>.<span class="ident">split_for_impl</span>();
 
-	<span class="kw">let</span> <span class="ident">encode_impl</span> <span class="op">=</span> <span class="ident">encode::quote</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>, <span class="ident">name</span>);
+	<span class="kw">let</span> <span class="ident">encode_impl</span> <span class="op">=</span> <span class="ident">encode::quote</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>, <span class="ident">name</span>, <span class="kw-2">&amp;</span><span class="ident">crate_ident</span>);
 
 	<span class="kw">let</span> <span class="ident">impl_block</span> <span class="op">=</span> <span class="macro">quote!</span> {
-		<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">_parity_scale_codec::Encode</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
+		<span class="kw">impl</span> #<span class="ident">impl_generics</span> #<span class="ident">crate_ident::Encode</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
 			#<span class="ident">encode_impl</span>
 		}
 
-		<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">_parity_scale_codec::EncodeLike</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {}
+		<span class="kw">impl</span> #<span class="ident">impl_generics</span> #<span class="ident">crate_ident::EncodeLike</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {}
 	};
 
 	<span class="ident">wrap_with_dummy_const</span>(<span class="ident">input</span>, <span class="ident">impl_block</span>)
@@ -524,25 +560,33 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// see derive `Encode` documentation.</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Decode</span>, <span class="ident">attributes</span>(<span class="ident">codec</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">decode_derive</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">decode_derive</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
 	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">input</span>: <span class="ident">DeriveInput</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">syn::parse</span>(<span class="ident">input</span>) {
-		<span class="prelude-val">Ok</span>(<span class="ident">input</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">input</span>,
-		<span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>(),
+		<span class="prelude-val">Ok</span>(<span class="ident">input</span>) =&gt; <span class="ident">input</span>,
+		<span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>(),
 	};
 
 	<span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">utils::check_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>) {
 		<span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 	}
 
+	<span class="kw">let</span> <span class="ident">crate_ident</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident"><span class="kw">crate</span>::parity_scale_codec_ident</span>() {
+		<span class="prelude-val">Ok</span>(<span class="ident">crate_ident</span>) =&gt; <span class="ident">crate_ident</span>,
+		<span class="prelude-val">Err</span>(<span class="ident">error</span>) =&gt; {
+			<span class="kw">return</span> <span class="ident">error</span>.<span class="ident">into_compile_error</span>().<span class="ident">into</span>()
+		}
+	};
+
 	<span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">custom_bound</span>) <span class="op">=</span> <span class="ident">utils::custom_decode_trait_bound</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>) {
 		<span class="ident">input</span>.<span class="ident">generics</span>.<span class="ident">make_where_clause</span>().<span class="ident">predicates</span>.<span class="ident">extend</span>(<span class="ident">custom_bound</span>);
 	} <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">trait_bounds::add</span>(
 		<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>,
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">input</span>.<span class="ident">generics</span>,
+		<span class="kw-2">&amp;mut</span> <span class="ident">input</span>.<span class="ident">generics</span>,
 		<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>,
-		<span class="macro">parse_quote!</span>(<span class="ident">_parity_scale_codec::Decode</span>),
+		<span class="macro">parse_quote!</span>(#<span class="ident">crate_ident::Decode</span>),
 		<span class="prelude-val">Some</span>(<span class="macro">parse_quote!</span>(<span class="ident">Default</span>)),
 		<span class="ident">utils::has_dumb_trait_bound</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>),
+		<span class="kw-2">&amp;</span><span class="ident">crate_ident</span>,
 	) {
 		<span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 	}
@@ -552,13 +596,13 @@
 	<span class="kw">let</span> <span class="ident">ty_gen_turbofish</span> <span class="op">=</span> <span class="ident">ty_generics</span>.<span class="ident">as_turbofish</span>();
 
 	<span class="kw">let</span> <span class="ident">input_</span> <span class="op">=</span> <span class="macro">quote!</span>(<span class="ident">__codec_input_edqy</span>);
-	<span class="kw">let</span> <span class="ident">decoding</span> <span class="op">=</span> <span class="ident">decode::quote</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>, <span class="ident">name</span>, <span class="kw-2">&amp;</span><span class="macro">quote!</span>(#<span class="ident">ty_gen_turbofish</span>), <span class="kw-2">&amp;</span><span class="ident">input_</span>);
+	<span class="kw">let</span> <span class="ident">decoding</span> <span class="op">=</span> <span class="ident">decode::quote</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>, <span class="ident">name</span>, <span class="kw-2">&amp;</span><span class="macro">quote!</span>(#<span class="ident">ty_gen_turbofish</span>), <span class="kw-2">&amp;</span><span class="ident">input_</span>, <span class="kw-2">&amp;</span><span class="ident">crate_ident</span>);
 
 	<span class="kw">let</span> <span class="ident">impl_block</span> <span class="op">=</span> <span class="macro">quote!</span> {
-		<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">_parity_scale_codec::Decode</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
-			<span class="kw">fn</span> <span class="ident">decode</span><span class="op">&lt;</span><span class="ident">__CodecInputEdqy</span>: <span class="ident">_parity_scale_codec::Input</span><span class="op">&gt;</span>(
-				#<span class="ident">input_</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">__CodecInputEdqy</span>
-			) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::core::result::Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">_parity_scale_codec::Error</span><span class="op">&gt;</span> {
+		<span class="kw">impl</span> #<span class="ident">impl_generics</span> #<span class="ident">crate_ident::Decode</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
+			<span class="kw">fn</span> <span class="ident">decode</span><span class="op">&lt;</span><span class="ident">__CodecInputEdqy</span>: #<span class="ident">crate_ident::Input</span><span class="op">&gt;</span>(
+				#<span class="ident">input_</span>: <span class="kw-2">&amp;mut</span> <span class="ident">__CodecInputEdqy</span>
+			) -&gt; <span class="ident">::core::result::Result</span><span class="op">&lt;</span><span class="self">Self</span>, #<span class="ident">crate_ident::Error</span><span class="op">&gt;</span> {
 				#<span class="ident">decoding</span>
 			}
 		}
@@ -582,23 +626,31 @@
 <span class="doccomment">/// struct MyWrapper&lt;T&gt;(u32, #[codec(skip)] PhantomData&lt;T&gt;);</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">CompactAs</span>, <span class="ident">attributes</span>(<span class="ident">codec</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compact_as_derive</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compact_as_derive</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
 	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">input</span>: <span class="ident">DeriveInput</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">syn::parse</span>(<span class="ident">input</span>) {
-		<span class="prelude-val">Ok</span>(<span class="ident">input</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">input</span>,
-		<span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>(),
+		<span class="prelude-val">Ok</span>(<span class="ident">input</span>) =&gt; <span class="ident">input</span>,
+		<span class="prelude-val">Err</span>(<span class="ident">e</span>) =&gt; <span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>(),
 	};
 
 	<span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">utils::check_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>) {
 		<span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 	}
 
+	<span class="kw">let</span> <span class="ident">crate_ident</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident"><span class="kw">crate</span>::parity_scale_codec_ident</span>() {
+		<span class="prelude-val">Ok</span>(<span class="ident">crate_ident</span>) =&gt; <span class="ident">crate_ident</span>,
+		<span class="prelude-val">Err</span>(<span class="ident">error</span>) =&gt; {
+			<span class="kw">return</span> <span class="ident">error</span>.<span class="ident">into_compile_error</span>().<span class="ident">into</span>()
+		}
+	};
+
 	<span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span> <span class="ident">trait_bounds::add</span>(
 		<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>,
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">input</span>.<span class="ident">generics</span>,
+		<span class="kw-2">&amp;mut</span> <span class="ident">input</span>.<span class="ident">generics</span>,
 		<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">data</span>,
-		<span class="macro">parse_quote!</span>(<span class="ident">_parity_scale_codec::CompactAs</span>),
+		<span class="macro">parse_quote!</span>(#<span class="ident">crate_ident::CompactAs</span>),
 		<span class="prelude-val">None</span>,
 		<span class="ident">utils::has_dumb_trait_bound</span>(<span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">attrs</span>),
+		<span class="kw-2">&amp;</span><span class="ident">crate_ident</span>,
 	) {
 		<span class="kw">return</span> <span class="ident">e</span>.<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 	}
@@ -606,40 +658,40 @@
 	<span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">input</span>.<span class="ident">ident</span>;
 	<span class="kw">let</span> (<span class="ident">impl_generics</span>, <span class="ident">ty_generics</span>, <span class="ident">where_clause</span>) <span class="op">=</span> <span class="ident">input</span>.<span class="ident">generics</span>.<span class="ident">split_for_impl</span>();
 
-	<span class="kw">fn</span> <span class="ident">val_or_default</span>(<span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2::TokenStream</span> {
+	<span class="kw">fn</span> <span class="ident">val_or_default</span>(<span class="ident">field</span>: <span class="kw-2">&amp;</span><span class="ident">Field</span>) -&gt; <span class="ident">proc_macro2::TokenStream</span> {
 		<span class="kw">let</span> <span class="ident">skip</span> <span class="op">=</span> <span class="ident">utils::should_skip</span>(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">attrs</span>);
 		<span class="kw">if</span> <span class="ident">skip</span> {
-			<span class="macro">quote_spanned!</span>(<span class="ident">field</span>.<span class="ident">span</span>()<span class="op">=</span><span class="op">&gt;</span> <span class="ident">Default::default</span>())
+			<span class="macro">quote_spanned!</span>(<span class="ident">field</span>.<span class="ident">span</span>()=&gt; <span class="ident">Default::default</span>())
 		} <span class="kw">else</span> {
-			<span class="macro">quote_spanned!</span>(<span class="ident">field</span>.<span class="ident">span</span>()<span class="op">=</span><span class="op">&gt;</span> <span class="ident">x</span>)
+			<span class="macro">quote_spanned!</span>(<span class="ident">field</span>.<span class="ident">span</span>()=&gt; <span class="ident">x</span>)
 		}
 	}
 
 	<span class="kw">let</span> (<span class="ident">inner_ty</span>, <span class="ident">inner_field</span>, <span class="ident">constructor</span>) <span class="op">=</span> <span class="kw">match</span> <span class="ident">input</span>.<span class="ident">data</span> {
-		<span class="ident">Data::Struct</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=</span><span class="op">&gt;</span> {
+		<span class="ident">Data::Struct</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) =&gt; {
 			<span class="kw">match</span> <span class="ident">data</span>.<span class="ident">fields</span> {
-				<span class="ident">Fields::Named</span>(<span class="kw-2">ref</span> <span class="ident">fields</span>) <span class="kw">if</span> <span class="ident">utils::filter_skip_named</span>(<span class="ident">fields</span>).<span class="ident">count</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> {
+				<span class="ident">Fields::Named</span>(<span class="kw-2">ref</span> <span class="ident">fields</span>) <span class="kw">if</span> <span class="ident">utils::filter_skip_named</span>(<span class="ident">fields</span>).<span class="ident">count</span>() <span class="op">==</span> <span class="number">1</span> =&gt; {
 					<span class="kw">let</span> <span class="ident">recurse</span> <span class="op">=</span> <span class="ident">fields</span>.<span class="ident">named</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> {
 						<span class="kw">let</span> <span class="ident">name_ident</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">f</span>.<span class="ident">ident</span>;
 						<span class="kw">let</span> <span class="ident">val_or_default</span> <span class="op">=</span> <span class="ident">val_or_default</span>(<span class="kw-2">&amp;</span><span class="ident">f</span>);
-						<span class="macro">quote_spanned!</span>(<span class="ident">f</span>.<span class="ident">span</span>()<span class="op">=</span><span class="op">&gt;</span> #<span class="ident">name_ident</span>: #<span class="ident">val_or_default</span>)
+						<span class="macro">quote_spanned!</span>(<span class="ident">f</span>.<span class="ident">span</span>()=&gt; #<span class="ident">name_ident</span>: #<span class="ident">val_or_default</span>)
 					});
 					<span class="kw">let</span> <span class="ident">field</span> <span class="op">=</span> <span class="ident">utils::filter_skip_named</span>(<span class="ident">fields</span>).<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Exactly one field&quot;</span>);
 					<span class="kw">let</span> <span class="ident">field_name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ident</span>;
 					<span class="kw">let</span> <span class="ident">constructor</span> <span class="op">=</span> <span class="macro">quote!</span>( #<span class="ident">name</span> { #( #<span class="ident">recurse</span>, )<span class="op">*</span> });
 					(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>, <span class="macro">quote!</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">field_name</span>), <span class="ident">constructor</span>)
 				},
-				<span class="ident">Fields::Unnamed</span>(<span class="kw-2">ref</span> <span class="ident">fields</span>) <span class="kw">if</span> <span class="ident">utils::filter_skip_unnamed</span>(<span class="ident">fields</span>).<span class="ident">count</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> {
+				<span class="ident">Fields::Unnamed</span>(<span class="kw-2">ref</span> <span class="ident">fields</span>) <span class="kw">if</span> <span class="ident">utils::filter_skip_unnamed</span>(<span class="ident">fields</span>).<span class="ident">count</span>() <span class="op">==</span> <span class="number">1</span> =&gt; {
 					<span class="kw">let</span> <span class="ident">recurse</span> <span class="op">=</span> <span class="ident">fields</span>.<span class="ident">unnamed</span>.<span class="ident">iter</span>().<span class="ident">enumerate</span>().<span class="ident">map</span>(<span class="op">|</span>(<span class="kw">_</span>, <span class="ident">f</span>) <span class="op">|</span> {
 						<span class="kw">let</span> <span class="ident">val_or_default</span> <span class="op">=</span> <span class="ident">val_or_default</span>(<span class="kw-2">&amp;</span><span class="ident">f</span>);
-						<span class="macro">quote_spanned!</span>(<span class="ident">f</span>.<span class="ident">span</span>()<span class="op">=</span><span class="op">&gt;</span> #<span class="ident">val_or_default</span>)
+						<span class="macro">quote_spanned!</span>(<span class="ident">f</span>.<span class="ident">span</span>()=&gt; #<span class="ident">val_or_default</span>)
 					});
 					<span class="kw">let</span> (<span class="ident">id</span>, <span class="ident">field</span>) <span class="op">=</span> <span class="ident">utils::filter_skip_unnamed</span>(<span class="ident">fields</span>).<span class="ident">next</span>().<span class="ident">expect</span>(<span class="string">&quot;Exactly one field&quot;</span>);
 					<span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">syn::Index::from</span>(<span class="ident">id</span>);
 					<span class="kw">let</span> <span class="ident">constructor</span> <span class="op">=</span> <span class="macro">quote!</span>( #<span class="ident">name</span>(#( #<span class="ident">recurse</span>, )<span class="kw-2">*</span>));
 					(<span class="kw-2">&amp;</span><span class="ident">field</span>.<span class="ident">ty</span>, <span class="macro">quote!</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.#<span class="ident">id</span>), <span class="ident">constructor</span>)
 				},
-				<span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+				<span class="kw">_</span> =&gt; {
 					<span class="kw">return</span> <span class="ident">Error::new</span>(
 						<span class="ident">data</span>.<span class="ident">fields</span>.<span class="ident">span</span>(),
 						<span class="string">&quot;Only structs with a single non-skipped field can derive CompactAs&quot;</span>
@@ -648,28 +700,28 @@
 			}
 		},
 		<span class="ident">Data::Enum</span>(<span class="ident">syn::DataEnum</span> { <span class="ident">enum_token</span>: <span class="ident">syn::token::Enum</span> { <span class="ident">span</span> }, .. }) <span class="op">|</span>
-		<span class="ident">Data::Union</span>(<span class="ident">syn::DataUnion</span> { <span class="ident">union_token</span>: <span class="ident">syn::token::Union</span> { <span class="ident">span</span> }, .. }) <span class="op">=</span><span class="op">&gt;</span> {
+		<span class="ident">Data::Union</span>(<span class="ident">syn::DataUnion</span> { <span class="ident">union_token</span>: <span class="ident">syn::token::Union</span> { <span class="ident">span</span> }, .. }) =&gt; {
 			<span class="kw">return</span> <span class="ident">Error::new</span>(<span class="ident">span</span>, <span class="string">&quot;Only structs can derive CompactAs&quot;</span>).<span class="ident">to_compile_error</span>().<span class="ident">into</span>();
 		},
 	};
 
 	<span class="kw">let</span> <span class="ident">impl_block</span> <span class="op">=</span> <span class="macro">quote!</span> {
-		<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">_parity_scale_codec::CompactAs</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
+		<span class="kw">impl</span> #<span class="ident">impl_generics</span> #<span class="ident">crate_ident::CompactAs</span> <span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span> {
 			<span class="kw">type</span> <span class="ident">As</span> <span class="op">=</span> #<span class="ident">inner_ty</span>;
-			<span class="kw">fn</span> <span class="ident">encode_as</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>#<span class="ident">inner_ty</span> {
+			<span class="kw">fn</span> <span class="ident">encode_as</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>#<span class="ident">inner_ty</span> {
 				#<span class="ident">inner_field</span>
 			}
 			<span class="kw">fn</span> <span class="ident">decode_from</span>(<span class="ident">x</span>: #<span class="ident">inner_ty</span>)
-				<span class="op">-</span><span class="op">&gt;</span> <span class="ident">::core::result::Result</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_generics</span>, <span class="ident">_parity_scale_codec::Error</span><span class="op">&gt;</span>
+				-&gt; <span class="ident">::core::result::Result</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_generics</span>, #<span class="ident">crate_ident::Error</span><span class="op">&gt;</span>
 			{
 				<span class="ident">::core::result::Result::Ok</span>(#<span class="ident">constructor</span>)
 			}
 		}
 
-		<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">_parity_scale_codec::Compact</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_generics</span><span class="op">&gt;</span><span class="op">&gt;</span>
+		<span class="kw">impl</span> #<span class="ident">impl_generics</span> <span class="ident">From</span><span class="op">&lt;</span>#<span class="ident">crate_ident::Compact</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_generics</span><span class="op">&gt;</span><span class="op">&gt;</span>
 			<span class="kw">for</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> #<span class="ident">where_clause</span>
 		{
-			<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">x</span>: <span class="ident">_parity_scale_codec::Compact</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_generics</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> #<span class="ident">name</span> #<span class="ident">ty_generics</span> {
+			<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">x</span>: #<span class="ident">crate_ident::Compact</span><span class="op">&lt;</span>#<span class="ident">name</span> #<span class="ident">ty_generics</span><span class="op">&gt;</span>) -&gt; #<span class="ident">name</span> #<span class="ident">ty_generics</span> {
 				<span class="ident">x</span>.<span class="number">0</span>
 			}
 		}
@@ -681,10 +733,9 @@
 <span class="doccomment">/// Derive `MaxEncodedLen`.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;max-encoded-len&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">MaxEncodedLen</span>, <span class="ident">attributes</span>(<span class="ident">max_encoded_len_mod</span>))]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_max_encoded_len</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro::TokenStream</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">derive_max_encoded_len</span>(<span class="ident">input</span>: <span class="ident">proc_macro::TokenStream</span>) -&gt; <span class="ident">proc_macro::TokenStream</span> {
 	<span class="ident">max_encoded_len::derive_max_encoded_len</span>(<span class="ident">input</span>)
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="parity_scale_codec_derive" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
-    <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="parity_scale_codec_derive" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

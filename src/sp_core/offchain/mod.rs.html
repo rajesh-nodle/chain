@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;sp-core-3.0.0&#x2F;src&#x2F;offchain&#x2F;mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../sp_core/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;git&#x2F;checkouts&#x2F;substrate-7e08433d4c370a21&#x2F;22d40c7&#x2F;primitives&#x2F;core&#x2F;src&#x2F;offchain&#x2F;mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../../sp_core/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../sp_core/index.html"><img class="rust-logo" src="../../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -781,9 +783,27 @@
 <span id="781">781</span>
 <span id="782">782</span>
 <span id="783">783</span>
+<span id="784">784</span>
+<span id="785">785</span>
+<span id="786">786</span>
+<span id="787">787</span>
+<span id="788">788</span>
+<span id="789">789</span>
+<span id="790">790</span>
+<span id="791">791</span>
+<span id="792">792</span>
+<span id="793">793</span>
+<span id="794">794</span>
+<span id="795">795</span>
+<span id="796">796</span>
+<span id="797">797</span>
+<span id="798">798</span>
+<span id="799">799</span>
+<span id="800">800</span>
+<span id="801">801</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
-<span class="comment">// Copyright (C) 2019-2021 Parity Technologies (UK) Ltd.</span>
+<span class="comment">// Copyright (C) 2019-2022 Parity Technologies (UK) Ltd.</span>
 <span class="comment">// SPDX-License-Identifier: Apache-2.0</span>
 
 <span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
@@ -800,10 +820,14 @@
 
 <span class="doccomment">//! Offchain workers types</span>
 
-<span class="kw">use</span> <span class="ident">codec</span>::{<span class="ident">Encode</span>, <span class="ident">Decode</span>};
-<span class="kw">use</span> <span class="ident">sp_std</span>::{<span class="ident">prelude</span>::{<span class="ident">Vec</span>, <span class="ident">Box</span>}, <span class="ident">convert::TryFrom</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">OpaquePeerId</span>, <span class="ident">RuntimeDebug</span>};
-<span class="kw">use</span> <span class="ident">sp_runtime_interface::pass_by</span>::{<span class="ident">PassByCodec</span>, <span class="ident">PassByInner</span>, <span class="ident">PassByEnum</span>};
+<span class="kw">use</span> <span class="ident">codec</span>::{<span class="ident">Decode</span>, <span class="ident">Encode</span>};
+<span class="kw">use</span> <span class="ident">scale_info::TypeInfo</span>;
+<span class="kw">use</span> <span class="ident">sp_runtime_interface::pass_by</span>::{<span class="ident">PassByCodec</span>, <span class="ident">PassByEnum</span>, <span class="ident">PassByInner</span>};
+<span class="kw">use</span> <span class="ident">sp_std</span>::{
+	<span class="ident">convert::TryFrom</span>,
+	<span class="ident">prelude</span>::{<span class="ident">Box</span>, <span class="ident">Vec</span>},
+};
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::crypto::KeyTypeId</span>;
 
@@ -812,30 +836,30 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">testing</span>;
 
-<span class="doccomment">/// Local storage prefix used by the Offchain Worker API to</span>
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STORAGE_PREFIX</span> : <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> [<span class="ident">u8</span>] <span class="op">=</span> <span class="string">b&quot;storage&quot;</span>;
+<span class="doccomment">/// Persistent storage prefix used by the Offchain Worker API when creating a DB key.</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">STORAGE_PREFIX</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="string">b&quot;storage&quot;</span>;
 
-<span class="doccomment">/// Offchain workers local storage.</span>
+<span class="doccomment">/// Offchain DB persistent (non-fork-aware) storage.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">OffchainStorage</span>: <span class="ident">Clone</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> {
 	<span class="doccomment">/// Persist a value in storage under given key and prefix.</span>
-	<span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
+	<span class="kw">fn</span> <span class="ident">set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
 
 	<span class="doccomment">/// Clear a storage entry under given key and prefix.</span>
-	<span class="kw">fn</span> <span class="ident">remove</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
+	<span class="kw">fn</span> <span class="ident">remove</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
 
 	<span class="doccomment">/// Retrieve a value from storage under given key and prefix.</span>
-	<span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Replace the value in storage if given old_value matches the current one.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Returns `true` if the value has been set and false otherwise.</span>
 	<span class="kw">fn</span> <span class="ident">compare_and_set</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">prefix</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
 		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
 		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
 		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
+	) -&gt; <span class="ident">bool</span>;
 }
 
 <span class="doccomment">/// A type of supported crypto.</span>
@@ -849,39 +873,41 @@
 	<span class="doccomment">/// that is re-run at block `N(hash2)`.</span>
 	<span class="doccomment">/// This storage can be used by offchain workers to handle forks</span>
 	<span class="doccomment">/// and coordinate offchain workers running on different forks.</span>
-	<span class="ident">PERSISTENT</span> <span class="op">=</span> <span class="number">1</span>,
+	<span class="ident">PERSISTENT</span> <span class="op">=</span> <span class="number">1_isize</span>,
 	<span class="doccomment">/// Local storage is revertible and fork-aware. It means that any value</span>
 	<span class="doccomment">/// set by the offchain worker triggered at block `N(hash1)` is reverted</span>
 	<span class="doccomment">/// if that block is reverted as non-canonical and is NOT available for the worker</span>
 	<span class="doccomment">/// that is re-run at block `N(hash2)`.</span>
-	<span class="ident">LOCAL</span> <span class="op">=</span> <span class="number">2</span>,
+	<span class="ident">LOCAL</span> <span class="op">=</span> <span class="number">2_isize</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">TryFrom</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">StorageKind</span> {
 	<span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> ();
 
-	<span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">kind</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">kind</span>: <span class="ident">u32</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
 		<span class="kw">match</span> <span class="ident">kind</span> {
-			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">=</span><span class="op">=</span> <span class="ident">u32::from</span>(<span class="ident">StorageKind::PERSISTENT</span> <span class="kw">as</span> <span class="ident">u8</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">StorageKind::PERSISTENT</span>),
-			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">=</span><span class="op">=</span> <span class="ident">u32::from</span>(<span class="ident">StorageKind::LOCAL</span> <span class="kw">as</span> <span class="ident">u8</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">StorageKind::LOCAL</span>),
-			<span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(()),
+			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">==</span> <span class="ident">u32::from</span>(<span class="ident">StorageKind::PERSISTENT</span> <span class="kw">as</span> <span class="ident">u8</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">StorageKind::PERSISTENT</span>),
+			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">==</span> <span class="ident">u32::from</span>(<span class="ident">StorageKind::LOCAL</span> <span class="kw">as</span> <span class="ident">u8</span>) =&gt; <span class="prelude-val">Ok</span>(<span class="ident">StorageKind::LOCAL</span>),
+			<span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(()),
 		}
 	}
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">StorageKind</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">u32</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">StorageKind</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">StorageKind</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">c</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span>
 	}
 }
 
 <span class="doccomment">/// Opaque type for offchain http requests.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">PassByInner</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(
+	<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">PassByInner</span>,
+)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">derive</span>(<span class="ident">Hash</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HttpRequestId</span>(<span class="kw">pub</span> <span class="ident">u16</span>);
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">u32</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">HttpRequestId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">HttpRequestId</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">c</span>.<span class="number">0</span> <span class="kw">as</span> <span class="ident">u32</span>
 	}
 }
@@ -891,28 +917,28 @@
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">HttpError</span> {
 	<span class="doccomment">/// The requested action couldn&#39;t been completed within a deadline.</span>
-	<span class="ident">DeadlineReached</span> <span class="op">=</span> <span class="number">1</span>,
+	<span class="ident">DeadlineReached</span> <span class="op">=</span> <span class="number">1_isize</span>,
 	<span class="doccomment">/// There was an IO Error while processing the request.</span>
-	<span class="ident">IoError</span> <span class="op">=</span> <span class="number">2</span>,
+	<span class="ident">IoError</span> <span class="op">=</span> <span class="number">2_isize</span>,
 	<span class="doccomment">/// The ID of the request is invalid in this context.</span>
-	<span class="ident">Invalid</span> <span class="op">=</span> <span class="number">3</span>,
+	<span class="ident">Invalid</span> <span class="op">=</span> <span class="number">3_isize</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">TryFrom</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">HttpError</span> {
 	<span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> ();
 
-	<span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">error</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">error</span>: <span class="ident">u32</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
 		<span class="kw">match</span> <span class="ident">error</span> {
-			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">=</span><span class="op">=</span> <span class="ident">HttpError::DeadlineReached</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">HttpError::DeadlineReached</span>),
-			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">=</span><span class="op">=</span> <span class="ident">HttpError::IoError</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">HttpError::IoError</span>),
-			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">=</span><span class="op">=</span> <span class="ident">HttpError::Invalid</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">HttpError::Invalid</span>),
-			<span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(())
+			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">==</span> <span class="ident">HttpError::DeadlineReached</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">HttpError::DeadlineReached</span>),
+			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">==</span> <span class="ident">HttpError::IoError</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">HttpError::IoError</span>),
+			<span class="ident">e</span> <span class="kw">if</span> <span class="ident">e</span> <span class="op">==</span> <span class="ident">HttpError::Invalid</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">HttpError::Invalid</span>),
+			<span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(()),
 		}
 	}
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">HttpError</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">u32</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">HttpError</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">HttpError</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">c</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="kw">as</span> <span class="ident">u32</span>
 	}
 }
@@ -938,12 +964,12 @@
 }
 
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">u32</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">status</span>: <span class="ident">HttpRequestStatus</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">status</span>: <span class="ident">HttpRequestStatus</span>) -&gt; <span class="self">Self</span> {
 		<span class="kw">match</span> <span class="ident">status</span> {
-			<span class="ident">HttpRequestStatus::Invalid</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">0</span>,
-			<span class="ident">HttpRequestStatus::DeadlineReached</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">10</span>,
-			<span class="ident">HttpRequestStatus::IoError</span> <span class="op">=</span><span class="op">&gt;</span> <span class="number">20</span>,
-			<span class="ident">HttpRequestStatus::Finished</span>(<span class="ident">code</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">u32::from</span>(<span class="ident">code</span>),
+			<span class="ident">HttpRequestStatus::Invalid</span> =&gt; <span class="number">0</span>,
+			<span class="ident">HttpRequestStatus::DeadlineReached</span> =&gt; <span class="number">10</span>,
+			<span class="ident">HttpRequestStatus::IoError</span> =&gt; <span class="number">20</span>,
+			<span class="ident">HttpRequestStatus::Finished</span>(<span class="ident">code</span>) =&gt; <span class="ident">u32::from</span>(<span class="ident">code</span>),
 		}
 	}
 }
@@ -951,20 +977,20 @@
 <span class="kw">impl</span> <span class="ident">TryFrom</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">HttpRequestStatus</span> {
 	<span class="kw">type</span> <span class="ident">Error</span> <span class="op">=</span> ();
 
-	<span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">status</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">try_from</span>(<span class="ident">status</span>: <span class="ident">u32</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident"><span class="self">Self</span>::Error</span><span class="op">&gt;</span> {
 		<span class="kw">match</span> <span class="ident">status</span> {
-			<span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">HttpRequestStatus::Invalid</span>),
-			<span class="number">10</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">HttpRequestStatus::DeadlineReached</span>),
-			<span class="number">20</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">HttpRequestStatus::IoError</span>),
-			<span class="number">100</span>..<span class="op">=</span><span class="number">999</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">u16::try_from</span>(<span class="ident">status</span>).<span class="ident">map</span>(<span class="ident">HttpRequestStatus::Finished</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()),
-			<span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(()),
+			<span class="number">0</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">HttpRequestStatus::Invalid</span>),
+			<span class="number">10</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">HttpRequestStatus::DeadlineReached</span>),
+			<span class="number">20</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident">HttpRequestStatus::IoError</span>),
+			<span class="number">100</span>..<span class="op">=</span><span class="number">999</span> =&gt; <span class="ident">u16::try_from</span>(<span class="ident">status</span>).<span class="ident">map</span>(<span class="ident">HttpRequestStatus::Finished</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()),
+			<span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(()),
 		}
 	}
 }
 
 <span class="doccomment">/// A blob to hold information about the local node&#39;s network state</span>
 <span class="doccomment">/// without committing to its format.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByCodec</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByCodec</span>, <span class="ident">TypeInfo</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">derive</span>(<span class="ident">Default</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OpaqueNetworkState</span> {
 	<span class="doccomment">/// PeerId of the local node in SCALE encoded.</span>
@@ -974,126 +1000,98 @@
 }
 
 <span class="doccomment">/// Simple blob to hold a `Multiaddr` without committing to its format.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByInner</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Eq</span>, <span class="ident">PartialEq</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByInner</span>, <span class="ident">TypeInfo</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OpaqueMultiaddr</span>(<span class="kw">pub</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>);
 
 <span class="kw">impl</span> <span class="ident">OpaqueMultiaddr</span> {
 	<span class="doccomment">/// Create new `OpaqueMultiaddr`</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">vec</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">OpaqueMultiaddr</span>(<span class="ident">vec</span>)
 	}
 }
 
 <span class="doccomment">/// Opaque timestamp type</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Default</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByInner</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(
+	<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Default</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByInner</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>,
+)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Timestamp</span>(<span class="ident">u64</span>);
 
 <span class="doccomment">/// Duration type</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Default</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByInner</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>)]</span>
+<span class="attribute">#[<span class="ident">derive</span>(
+	<span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Default</span>, <span class="ident">RuntimeDebug</span>, <span class="ident">PassByInner</span>, <span class="ident">Encode</span>, <span class="ident">Decode</span>,
+)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Duration</span>(<span class="ident">u64</span>);
 
 <span class="kw">impl</span> <span class="ident">Duration</span> {
 	<span class="doccomment">/// Create new duration representing given number of milliseconds.</span>
-	<span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_millis</span>(<span class="ident">millis</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_millis</span>(<span class="ident">millis</span>: <span class="ident">u64</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">Duration</span>(<span class="ident">millis</span>)
 	}
 
 	<span class="doccomment">/// Returns number of milliseconds this Duration represents.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">millis</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">millis</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
 		<span class="self">self</span>.<span class="number">0</span>
 	}
 }
 
 <span class="kw">impl</span> <span class="ident">Timestamp</span> {
 	<span class="doccomment">/// Creates new `Timestamp` given unix timestamp in milliseconds.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_unix_millis</span>(<span class="ident">millis</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_unix_millis</span>(<span class="ident">millis</span>: <span class="ident">u64</span>) -&gt; <span class="self">Self</span> {
 		<span class="ident">Timestamp</span>(<span class="ident">millis</span>)
 	}
 
 	<span class="doccomment">/// Increase the timestamp by given `Duration`.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Timestamp</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) -&gt; <span class="ident">Timestamp</span> {
 		<span class="ident">Timestamp</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">saturating_add</span>(<span class="ident">duration</span>.<span class="number">0</span>))
 	}
 
 	<span class="doccomment">/// Decrease the timestamp by given `Duration`</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sub</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Timestamp</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sub</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">duration</span>: <span class="ident">Duration</span>) -&gt; <span class="ident">Timestamp</span> {
 		<span class="ident">Timestamp</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">saturating_sub</span>(<span class="ident">duration</span>.<span class="number">0</span>))
 	}
 
 	<span class="doccomment">/// Returns a saturated difference (Duration) between two Timestamps.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">diff</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Duration</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">diff</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="ident">Duration</span> {
 		<span class="ident">Duration</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">saturating_sub</span>(<span class="ident">other</span>.<span class="number">0</span>))
 	}
 
 	<span class="doccomment">/// Return number of milliseconds since UNIX epoch.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_millis</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unix_millis</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">u64</span> {
 		<span class="self">self</span>.<span class="number">0</span>
 	}
 }
 
-<span class="doccomment">/// Execution context extra capabilities.</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
-<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u8</span>)]</span>
-<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Capability</span> {
-	<span class="doccomment">/// Access to transaction pool.</span>
-	<span class="ident">TransactionPool</span> <span class="op">=</span> <span class="number">1</span>,
-	<span class="doccomment">/// External http calls.</span>
-	<span class="ident">Http</span> <span class="op">=</span> <span class="number">2</span>,
-	<span class="doccomment">/// Keystore access.</span>
-	<span class="ident">Keystore</span> <span class="op">=</span> <span class="number">4</span>,
-	<span class="doccomment">/// Randomness source.</span>
-	<span class="ident">Randomness</span> <span class="op">=</span> <span class="number">8</span>,
-	<span class="doccomment">/// Access to opaque network state.</span>
-	<span class="ident">NetworkState</span> <span class="op">=</span> <span class="number">16</span>,
-	<span class="doccomment">/// Access to offchain worker DB (read only).</span>
-	<span class="ident">OffchainWorkerDbRead</span> <span class="op">=</span> <span class="number">32</span>,
-	<span class="doccomment">/// Access to offchain worker DB (writes).</span>
-	<span class="ident">OffchainWorkerDbWrite</span> <span class="op">=</span> <span class="number">64</span>,
-	<span class="doccomment">/// Manage the authorized nodes</span>
-	<span class="ident">NodeAuthorization</span> <span class="op">=</span> <span class="number">128</span>,
+<span class="macro">bitflags::bitflags!</span> {
+	<span class="doccomment">/// Execution context extra capabilities.</span>
+	<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Capabilities</span>: <span class="ident">u32</span> {
+		<span class="doccomment">/// Access to transaction pool.</span>
+		<span class="kw">const</span> <span class="ident">TRANSACTION_POOL</span> <span class="op">=</span> <span class="number">0b0000_0000_0001</span>;
+		<span class="doccomment">/// External http calls.</span>
+		<span class="kw">const</span> <span class="ident">HTTP</span> <span class="op">=</span> <span class="number">0b0000_0000_0010</span>;
+		<span class="doccomment">/// Keystore access.</span>
+		<span class="kw">const</span> <span class="ident">KEYSTORE</span> <span class="op">=</span> <span class="number">0b0000_0000_0100</span>;
+		<span class="doccomment">/// Randomness source.</span>
+		<span class="kw">const</span> <span class="ident">RANDOMNESS</span> <span class="op">=</span> <span class="number">0b0000_0000_1000</span>;
+		<span class="doccomment">/// Access to opaque network state.</span>
+		<span class="kw">const</span> <span class="ident">NETWORK_STATE</span> <span class="op">=</span> <span class="number">0b0000_0001_0000</span>;
+		<span class="doccomment">/// Access to offchain worker DB (read only).</span>
+		<span class="kw">const</span> <span class="ident">OFFCHAIN_DB_READ</span> <span class="op">=</span> <span class="number">0b0000_0010_0000</span>;
+		<span class="doccomment">/// Access to offchain worker DB (writes).</span>
+		<span class="kw">const</span> <span class="ident">OFFCHAIN_DB_WRITE</span> <span class="op">=</span> <span class="number">0b0000_0100_0000</span>;
+		<span class="doccomment">/// Manage the authorized nodes</span>
+		<span class="kw">const</span> <span class="ident">NODE_AUTHORIZATION</span> <span class="op">=</span> <span class="number">0b0000_1000_0000</span>;
+		<span class="doccomment">/// Access time related functionality</span>
+		<span class="kw">const</span> <span class="ident">TIME</span> <span class="op">=</span> <span class="number">0b0001_0000_0000</span>;
+	}
 }
 
-<span class="doccomment">/// A set of capabilities</span>
-<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Capabilities</span>(<span class="ident">u8</span>);
-
 <span class="kw">impl</span> <span class="ident">Capabilities</span> {
-	<span class="doccomment">/// Return an object representing an empty set of capabilities.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">none</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		<span class="self">Self</span>(<span class="number">0</span>)
-	}
-
-	<span class="doccomment">/// Return an object representing all capabilities enabled.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">all</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		<span class="self">Self</span>(<span class="ident">u8::max_value</span>())
-	}
-
 	<span class="doccomment">/// Return capabilities for rich offchain calls.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Those calls should be allowed to sign and submit transactions</span>
 	<span class="doccomment">/// and access offchain workers database (but read only!).</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rich_offchain_call</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		[
-			<span class="ident">Capability::TransactionPool</span>,
-			<span class="ident">Capability::Keystore</span>,
-			<span class="ident">Capability::OffchainWorkerDbRead</span>,
-		][..].<span class="ident">into</span>()
-	}
-
-	<span class="doccomment">/// Check if particular capability is enabled.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">capability</span>: <span class="ident">Capability</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		<span class="self">self</span>.<span class="number">0</span> <span class="op">&amp;</span> <span class="ident">capability</span> <span class="kw">as</span> <span class="ident">u8</span> <span class="op">!</span><span class="op">=</span> <span class="number">0</span>
-	}
-
-	<span class="doccomment">/// Check if this capability object represents all capabilities.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">has_all</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		<span class="self">self</span> <span class="op">=</span><span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">Capabilities::all</span>()
-	}
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">Capability</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Capabilities</span> {
-	<span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">list</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">Capability</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		<span class="ident">Capabilities</span>(<span class="ident">list</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="number">0_u8</span>, <span class="op">|</span><span class="ident">a</span>, <span class="ident">b</span><span class="op">|</span> <span class="ident">a</span> <span class="op">|</span> <span class="kw-2">*</span><span class="ident">b</span> <span class="kw">as</span> <span class="ident">u8</span>))
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rich_offchain_call</span>() -&gt; <span class="self">Self</span> {
+		<span class="ident">Capabilities::TRANSACTION_POOL</span> <span class="op">|</span> <span class="ident">Capabilities::KEYSTORE</span> <span class="op">|</span> <span class="ident">Capabilities::OFFCHAIN_DB_READ</span>
 	}
 }
 
@@ -1103,74 +1101,37 @@
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Even if this function returns `true`, it does not mean that any keys are configured</span>
 	<span class="doccomment">/// and that the validator is registered in the chain.</span>
-	<span class="kw">fn</span> <span class="ident">is_validator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
+	<span class="kw">fn</span> <span class="ident">is_validator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span>;
 
 	<span class="doccomment">/// Returns information about the local node&#39;s network state.</span>
-	<span class="kw">fn</span> <span class="ident">network_state</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OpaqueNetworkState</span>, ()<span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">network_state</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OpaqueNetworkState</span>, ()<span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Returns current UNIX timestamp (in millis)</span>
-	<span class="kw">fn</span> <span class="ident">timestamp</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Timestamp</span>;
+	<span class="kw">fn</span> <span class="ident">timestamp</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Timestamp</span>;
 
 	<span class="doccomment">/// Pause the execution until `deadline` is reached.</span>
-	<span class="kw">fn</span> <span class="ident">sleep_until</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">deadline</span>: <span class="ident">Timestamp</span>);
+	<span class="kw">fn</span> <span class="ident">sleep_until</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">deadline</span>: <span class="ident">Timestamp</span>);
 
 	<span class="doccomment">/// Returns a random seed.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// This is a truly random non deterministic seed generated by host environment.</span>
 	<span class="doccomment">/// Obviously fine in the off-chain worker context.</span>
-	<span class="kw">fn</span> <span class="ident">random_seed</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> [<span class="ident">u8</span>; <span class="number">32</span>];
-
-	<span class="doccomment">/// Sets a value in the local storage.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
-	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
-	<span class="kw">fn</span> <span class="ident">local_storage_set</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
-
-	<span class="doccomment">/// Removes a value in the local storage.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
-	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
-	<span class="kw">fn</span> <span class="ident">local_storage_clear</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
-
-	<span class="doccomment">/// Sets a value in the local storage if it matches current value.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// Since multiple offchain workers may be running concurrently, to prevent</span>
-	<span class="doccomment">/// data races use CAS to coordinate between them.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// Returns `true` if the value has been set, `false` otherwise.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
-	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
-	<span class="kw">fn</span> <span class="ident">local_storage_compare_and_set</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-		<span class="ident">kind</span>: <span class="ident">StorageKind</span>,
-		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
-		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
-
-	<span class="doccomment">/// Gets a value from the local storage.</span>
-	<span class="doccomment">///</span>
-	<span class="doccomment">/// If the value does not exist in the storage `None` will be returned.</span>
-	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
-	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
-	<span class="kw">fn</span> <span class="ident">local_storage_get</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">random_seed</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; [<span class="ident">u8</span>; <span class="number">32</span>];
 
 	<span class="doccomment">/// Initiates a http request given HTTP verb and the URL.</span>
 	<span class="doccomment">///</span>
-	<span class="doccomment">/// Meta is a future-reserved field containing additional, parity-scale-codec encoded parameters.</span>
-	<span class="doccomment">/// Returns the id of newly started request.</span>
+	<span class="doccomment">/// Meta is a future-reserved field containing additional, parity-scale-codec encoded</span>
+	<span class="doccomment">/// parameters. Returns the id of newly started request.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Returns an error if:</span>
 	<span class="doccomment">/// - No new request identifier could be allocated.</span>
 	<span class="doccomment">/// - The method or URI contain invalid characters.</span>
-	<span class="doccomment">///</span>
 	<span class="kw">fn</span> <span class="ident">http_request_start</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
 		<span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-		<span class="ident">meta</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span>, ()<span class="op">&gt;</span>;
+		<span class="ident">meta</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span>, ()<span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Append header to the request.</span>
 	<span class="doccomment">///</span>
@@ -1184,13 +1145,12 @@
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// An error doesn&#39;t poison the request, and you can continue as if the call had never been</span>
 	<span class="doccomment">/// made.</span>
-	<span class="doccomment">///</span>
 	<span class="kw">fn</span> <span class="ident">http_request_add_header</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
 		<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-		<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span>;
+		<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Write a chunk of request body.</span>
 	<span class="doccomment">///</span>
@@ -1204,15 +1164,14 @@
 	<span class="doccomment">/// - The request identifier is invalid.</span>
 	<span class="doccomment">/// - `http_response_wait` has already been called on this request.</span>
 	<span class="doccomment">/// - The deadline is reached.</span>
-	<span class="doccomment">/// - An I/O error has happened, for example the remote has closed our</span>
-	<span class="doccomment">///   request. The request is then considered invalid.</span>
-	<span class="doccomment">///</span>
+	<span class="doccomment">/// - An I/O error has happened, for example the remote has closed our request. The request is</span>
+	<span class="doccomment">///   then considered invalid.</span>
 	<span class="kw">fn</span> <span class="ident">http_request_write_body</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
 		<span class="ident">chunk</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">HttpError</span><span class="op">&gt;</span>;
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">HttpError</span><span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Block and wait for the responses for given requests.</span>
 	<span class="doccomment">///</span>
@@ -1225,10 +1184,10 @@
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Passing `None` as deadline blocks forever.</span>
 	<span class="kw">fn</span> <span class="ident">http_response_wait</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">ids</span>: <span class="kw-2">&amp;</span>[<span class="ident">HttpRequestId</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span>;
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Read all response headers.</span>
 	<span class="doccomment">///</span>
@@ -1239,10 +1198,7 @@
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Returns an empty list if the identifier is unknown/invalid, hasn&#39;t</span>
 	<span class="doccomment">/// received a response, or has finished.</span>
-	<span class="kw">fn</span> <span class="ident">http_response_headers</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)<span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">http_response_headers</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)<span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Read a chunk of body response to given buffer.</span>
 	<span class="doccomment">///</span>
@@ -1260,15 +1216,14 @@
 	<span class="doccomment">/// Returns an error if:</span>
 	<span class="doccomment">/// - The request identifier is invalid.</span>
 	<span class="doccomment">/// - The deadline is reached.</span>
-	<span class="doccomment">/// - An I/O error has happened, for example the remote has closed our</span>
-	<span class="doccomment">///   request. The request is then considered invalid.</span>
-	<span class="doccomment">///</span>
+	<span class="doccomment">/// - An I/O error has happened, for example the remote has closed our request. The request is</span>
+	<span class="doccomment">///   then considered invalid.</span>
 	<span class="kw">fn</span> <span class="ident">http_response_read_body</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
-		<span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">HttpError</span><span class="op">&gt;</span>;
+		<span class="ident">buffer</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>],
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">HttpError</span><span class="op">&gt;</span>;
 
 	<span class="doccomment">/// Set the authorized nodes from runtime.</span>
 	<span class="doccomment">///</span>
@@ -1280,92 +1235,84 @@
 	<span class="doccomment">/// without any encoding. Invalid `OpaquePeerId`s are silently ignored.</span>
 	<span class="doccomment">/// - `authorized_only`: if true, only the authorized nodes are allowed to connect,</span>
 	<span class="doccomment">/// otherwise unauthorized nodes can also be connected through other mechanism.</span>
-	<span class="kw">fn</span> <span class="ident">set_authorized_nodes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">nodes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OpaquePeerId</span><span class="op">&gt;</span>, <span class="ident">authorized_only</span>: <span class="ident">bool</span>);
+	<span class="kw">fn</span> <span class="ident">set_authorized_nodes</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">nodes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OpaquePeerId</span><span class="op">&gt;</span>, <span class="ident">authorized_only</span>: <span class="ident">bool</span>);
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Externalities</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Externalities</span> <span class="kw">for</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">is_validator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		(<span class="op">&amp;</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">is_validator</span>()
+	<span class="kw">fn</span> <span class="ident">is_validator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
+		(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">is_validator</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">network_state</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OpaqueNetworkState</span>, ()<span class="op">&gt;</span> {
-		(<span class="op">&amp;</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">network_state</span>()
+	<span class="kw">fn</span> <span class="ident">network_state</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OpaqueNetworkState</span>, ()<span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">network_state</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">timestamp</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Timestamp</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">timestamp</span>()
+	<span class="kw">fn</span> <span class="ident">timestamp</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Timestamp</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">timestamp</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">sleep_until</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">deadline</span>: <span class="ident">Timestamp</span>) {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">sleep_until</span>(<span class="ident">deadline</span>)
+	<span class="kw">fn</span> <span class="ident">sleep_until</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">deadline</span>: <span class="ident">Timestamp</span>) {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">sleep_until</span>(<span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">random_seed</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> [<span class="ident">u8</span>; <span class="number">32</span>] {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">random_seed</span>()
+	<span class="kw">fn</span> <span class="ident">random_seed</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; [<span class="ident">u8</span>; <span class="number">32</span>] {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">random_seed</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">local_storage_set</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">value</span>)
+	<span class="kw">fn</span> <span class="ident">http_request_start</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+		<span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+		<span class="ident">meta</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span>, ()<span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_request_start</span>(<span class="ident">method</span>, <span class="ident">uri</span>, <span class="ident">meta</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">local_storage_clear</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_clear</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">local_storage_compare_and_set</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-		<span class="ident">kind</span>: <span class="ident">StorageKind</span>,
-		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
-		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_compare_and_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">old_value</span>, <span class="ident">new_value</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">local_storage_get</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_get</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">http_request_start</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">meta</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span>, ()<span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_request_start</span>(<span class="ident">method</span>, <span class="ident">uri</span>, <span class="ident">meta</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">http_request_add_header</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_request_add_header</span>(<span class="ident">request_id</span>, <span class="ident">name</span>, <span class="ident">value</span>)
+	<span class="kw">fn</span> <span class="ident">http_request_add_header</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
+		<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+		<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_request_add_header</span>(<span class="ident">request_id</span>, <span class="ident">name</span>, <span class="ident">value</span>)
 	}
 
 	<span class="kw">fn</span> <span class="ident">http_request_write_body</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
 		<span class="ident">chunk</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">HttpError</span><span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_request_write_body</span>(<span class="ident">request_id</span>, <span class="ident">chunk</span>, <span class="ident">deadline</span>)
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">HttpError</span><span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_request_write_body</span>(<span class="ident">request_id</span>, <span class="ident">chunk</span>, <span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">http_response_wait</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ids</span>: <span class="kw-2">&amp;</span>[<span class="ident">HttpRequestId</span>], <span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_response_wait</span>(<span class="ident">ids</span>, <span class="ident">deadline</span>)
+	<span class="kw">fn</span> <span class="ident">http_response_wait</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">ids</span>: <span class="kw-2">&amp;</span>[<span class="ident">HttpRequestId</span>],
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_response_wait</span>(<span class="ident">ids</span>, <span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">http_response_headers</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)<span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_response_headers</span>(<span class="ident">request_id</span>)
+	<span class="kw">fn</span> <span class="ident">http_response_headers</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)<span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_response_headers</span>(<span class="ident">request_id</span>)
 	}
 
 	<span class="kw">fn</span> <span class="ident">http_response_read_body</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
-		<span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">HttpError</span><span class="op">&gt;</span> {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_response_read_body</span>(<span class="ident">request_id</span>, <span class="ident">buffer</span>, <span class="ident">deadline</span>)
+		<span class="ident">buffer</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>],
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">HttpError</span><span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">http_response_read_body</span>(<span class="ident">request_id</span>, <span class="ident">buffer</span>, <span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">set_authorized_nodes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">nodes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OpaquePeerId</span><span class="op">&gt;</span>, <span class="ident">authorized_only</span>: <span class="ident">bool</span>) {
-		(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">set_authorized_nodes</span>(<span class="ident">nodes</span>, <span class="ident">authorized_only</span>)
+	<span class="kw">fn</span> <span class="ident">set_authorized_nodes</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">nodes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OpaquePeerId</span><span class="op">&gt;</span>, <span class="ident">authorized_only</span>: <span class="ident">bool</span>) {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">set_authorized_nodes</span>(<span class="ident">nodes</span>, <span class="ident">authorized_only</span>)
 	}
 }
 
-<span class="doccomment">/// An `OffchainExternalities` implementation with limited capabilities.</span>
+<span class="doccomment">/// An `*Externalities` implementation with limited capabilities.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LimitedExternalities</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
 	<span class="ident">capabilities</span>: <span class="ident">Capabilities</span>,
 	<span class="ident">externalities</span>: <span class="ident">T</span>,
@@ -1373,131 +1320,222 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">LimitedExternalities</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
 	<span class="doccomment">/// Create new externalities limited to given `capabilities`.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">capabilities</span>: <span class="ident">Capabilities</span>, <span class="ident">externalities</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-		<span class="self">Self</span> {
-			<span class="ident">capabilities</span>,
-			<span class="ident">externalities</span>,
-		}
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">capabilities</span>: <span class="ident">Capabilities</span>, <span class="ident">externalities</span>: <span class="ident">T</span>) -&gt; <span class="self">Self</span> {
+		<span class="self">Self</span> { <span class="ident">capabilities</span>, <span class="ident">externalities</span> }
 	}
 
 	<span class="doccomment">/// Check if given capability is allowed.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// Panics in case it is not.</span>
-	<span class="kw">fn</span> <span class="ident">check</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">capability</span>: <span class="ident">Capability</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) {
-		<span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">capabilities</span>.<span class="ident">has</span>(<span class="ident">capability</span>) {
+	<span class="kw">fn</span> <span class="ident">check</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">capability</span>: <span class="ident">Capabilities</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>) {
+		<span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">capabilities</span>.<span class="ident">contains</span>(<span class="ident">capability</span>) {
 			<span class="macro">panic!</span>(<span class="string">&quot;Accessing a forbidden API: {}. No: {:?} capability.&quot;</span>, <span class="ident">name</span>, <span class="ident">capability</span>);
 		}
 	}
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Externalities</span><span class="op">&gt;</span> <span class="ident">Externalities</span> <span class="kw">for</span> <span class="ident">LimitedExternalities</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-	<span class="kw">fn</span> <span class="ident">is_validator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Keystore</span>, <span class="string">&quot;is_validator&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">is_validator</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::KEYSTORE</span>, <span class="string">&quot;is_validator&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">is_validator</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">network_state</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OpaqueNetworkState</span>, ()<span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::NetworkState</span>, <span class="string">&quot;network_state&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">network_state</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">OpaqueNetworkState</span>, ()<span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::NETWORK_STATE</span>, <span class="string">&quot;network_state&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">network_state</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">timestamp</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Timestamp</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;timestamp&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">timestamp</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; <span class="ident">Timestamp</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::TIME</span>, <span class="string">&quot;timestamp&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">timestamp</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">sleep_until</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">deadline</span>: <span class="ident">Timestamp</span>) {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;sleep_until&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">sleep_until</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">deadline</span>: <span class="ident">Timestamp</span>) {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::TIME</span>, <span class="string">&quot;sleep_until&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">sleep_until</span>(<span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">random_seed</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> [<span class="ident">u8</span>; <span class="number">32</span>] {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Randomness</span>, <span class="string">&quot;random_seed&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">random_seed</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) -&gt; [<span class="ident">u8</span>; <span class="number">32</span>] {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::RANDOMNESS</span>, <span class="string">&quot;random_seed&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">random_seed</span>()
 	}
 
-	<span class="kw">fn</span> <span class="ident">local_storage_set</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::OffchainWorkerDbWrite</span>, <span class="string">&quot;local_storage_set&quot;</span>);
-		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">value</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">local_storage_clear</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::OffchainWorkerDbWrite</span>, <span class="string">&quot;local_storage_clear&quot;</span>);
-		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_clear</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">local_storage_compare_and_set</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
-		<span class="ident">kind</span>: <span class="ident">StorageKind</span>,
-		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
-		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::OffchainWorkerDbWrite</span>, <span class="string">&quot;local_storage_compare_and_set&quot;</span>);
-		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_compare_and_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">old_value</span>, <span class="ident">new_value</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">local_storage_get</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::OffchainWorkerDbRead</span>, <span class="string">&quot;local_storage_get&quot;</span>);
-		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_get</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
-	}
-
-	<span class="kw">fn</span> <span class="ident">http_request_start</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">meta</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span>, ()<span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;http_request_start&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">http_request_start</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">method</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+		<span class="ident">uri</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+		<span class="ident">meta</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HttpRequestId</span>, ()<span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::HTTP</span>, <span class="string">&quot;http_request_start&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">http_request_start</span>(<span class="ident">method</span>, <span class="ident">uri</span>, <span class="ident">meta</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">http_request_add_header</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;http_request_add_header&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">http_request_add_header</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
+		<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+		<span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::HTTP</span>, <span class="string">&quot;http_request_add_header&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">http_request_add_header</span>(<span class="ident">request_id</span>, <span class="ident">name</span>, <span class="ident">value</span>)
 	}
 
 	<span class="kw">fn</span> <span class="ident">http_request_write_body</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
 		<span class="ident">chunk</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">HttpError</span><span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;http_request_write_body&quot;</span>);
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">HttpError</span><span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::HTTP</span>, <span class="string">&quot;http_request_write_body&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">http_request_write_body</span>(<span class="ident">request_id</span>, <span class="ident">chunk</span>, <span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">http_response_wait</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">ids</span>: <span class="kw-2">&amp;</span>[<span class="ident">HttpRequestId</span>], <span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;http_response_wait&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">http_response_wait</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">ids</span>: <span class="kw-2">&amp;</span>[<span class="ident">HttpRequestId</span>],
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">HttpRequestStatus</span><span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::HTTP</span>, <span class="string">&quot;http_response_wait&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">http_response_wait</span>(<span class="ident">ids</span>, <span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">http_response_headers</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)<span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;http_response_headers&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">http_response_headers</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>)<span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::HTTP</span>, <span class="string">&quot;http_response_headers&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">http_response_headers</span>(<span class="ident">request_id</span>)
 	}
 
 	<span class="kw">fn</span> <span class="ident">http_response_read_body</span>(
-		<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
 		<span class="ident">request_id</span>: <span class="ident">HttpRequestId</span>,
-		<span class="ident">buffer</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
-		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>
-	) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">HttpError</span><span class="op">&gt;</span> {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::Http</span>, <span class="string">&quot;http_response_read_body&quot;</span>);
+		<span class="ident">buffer</span>: <span class="kw-2">&amp;mut</span> [<span class="ident">u8</span>],
+		<span class="ident">deadline</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Timestamp</span><span class="op">&gt;</span>,
+	) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">usize</span>, <span class="ident">HttpError</span><span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::HTTP</span>, <span class="string">&quot;http_response_read_body&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">http_response_read_body</span>(<span class="ident">request_id</span>, <span class="ident">buffer</span>, <span class="ident">deadline</span>)
 	}
 
-	<span class="kw">fn</span> <span class="ident">set_authorized_nodes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">nodes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OpaquePeerId</span><span class="op">&gt;</span>, <span class="ident">authorized_only</span>: <span class="ident">bool</span>) {
-		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capability::NodeAuthorization</span>, <span class="string">&quot;set_authorized_nodes&quot;</span>);
+	<span class="kw">fn</span> <span class="ident">set_authorized_nodes</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">nodes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">OpaquePeerId</span><span class="op">&gt;</span>, <span class="ident">authorized_only</span>: <span class="ident">bool</span>) {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::NODE_AUTHORIZATION</span>, <span class="string">&quot;set_authorized_nodes&quot;</span>);
 		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">set_authorized_nodes</span>(<span class="ident">nodes</span>, <span class="ident">authorized_only</span>)
 	}
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="macro">sp_externalities::decl_extension!</span> {
-	<span class="doccomment">/// The offchain extension that will be registered at the Substrate externalities.</span>
-	<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OffchainExt</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Externalities</span><span class="op">&gt;</span>);
+	<span class="doccomment">/// The offchain worker extension that will be registered at the Substrate externalities.</span>
+	<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OffchainWorkerExt</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">Externalities</span><span class="op">&gt;</span>);
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
-<span class="kw">impl</span> <span class="ident">OffchainExt</span> {
+<span class="kw">impl</span> <span class="ident">OffchainWorkerExt</span> {
 	<span class="doccomment">/// Create a new instance of `Self`.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">Externalities</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">offchain</span>: <span class="ident">O</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">Externalities</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">offchain</span>: <span class="ident">O</span>) -&gt; <span class="self">Self</span> {
+		<span class="self">Self</span>(<span class="ident">Box::new</span>(<span class="ident">offchain</span>))
+	}
+}
+
+<span class="doccomment">/// A externalities extension for accessing the Offchain DB.</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">DbExternalities</span>: <span class="ident">Send</span> {
+	<span class="doccomment">/// Sets a value in the local storage.</span>
+	<span class="doccomment">///</span>
+	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
+	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
+	<span class="kw">fn</span> <span class="ident">local_storage_set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
+
+	<span class="doccomment">/// Removes a value in the local storage.</span>
+	<span class="doccomment">///</span>
+	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
+	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
+	<span class="kw">fn</span> <span class="ident">local_storage_clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]);
+
+	<span class="doccomment">/// Sets a value in the local storage if it matches current value.</span>
+	<span class="doccomment">///</span>
+	<span class="doccomment">/// Since multiple offchain workers may be running concurrently, to prevent</span>
+	<span class="doccomment">/// data races use CAS to coordinate between them.</span>
+	<span class="doccomment">///</span>
+	<span class="doccomment">/// Returns `true` if the value has been set, `false` otherwise.</span>
+	<span class="doccomment">///</span>
+	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
+	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
+	<span class="kw">fn</span> <span class="ident">local_storage_compare_and_set</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">kind</span>: <span class="ident">StorageKind</span>,
+		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
+		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+	) -&gt; <span class="ident">bool</span>;
+
+	<span class="doccomment">/// Gets a value from the local storage.</span>
+	<span class="doccomment">///</span>
+	<span class="doccomment">/// If the value does not exist in the storage `None` will be returned.</span>
+	<span class="doccomment">/// Note this storage is not part of the consensus, it&#39;s only accessible by</span>
+	<span class="doccomment">/// offchain worker tasks running on the same machine. It _is_ persisted between runs.</span>
+	<span class="kw">fn</span> <span class="ident">local_storage_get</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>;
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">DbExternalities</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">DbExternalities</span> <span class="kw">for</span> <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">local_storage_set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">value</span>)
+	}
+
+	<span class="kw">fn</span> <span class="ident">local_storage_clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_clear</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
+	}
+
+	<span class="kw">fn</span> <span class="ident">local_storage_compare_and_set</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">kind</span>: <span class="ident">StorageKind</span>,
+		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
+		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+	) -&gt; <span class="ident">bool</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_compare_and_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">old_value</span>, <span class="ident">new_value</span>)
+	}
+
+	<span class="kw">fn</span> <span class="ident">local_storage_get</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+		(<span class="kw-2">&amp;mut</span> <span class="kw-2">*</span><span class="kw-2">*</span><span class="self">self</span>).<span class="ident">local_storage_get</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
+	}
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">DbExternalities</span><span class="op">&gt;</span> <span class="ident">DbExternalities</span> <span class="kw">for</span> <span class="ident">LimitedExternalities</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+	<span class="kw">fn</span> <span class="ident">local_storage_set</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::OFFCHAIN_DB_WRITE</span>, <span class="string">&quot;local_storage_set&quot;</span>);
+		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">value</span>)
+	}
+
+	<span class="kw">fn</span> <span class="ident">local_storage_clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::OFFCHAIN_DB_WRITE</span>, <span class="string">&quot;local_storage_clear&quot;</span>);
+		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_clear</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
+	}
+
+	<span class="kw">fn</span> <span class="ident">local_storage_compare_and_set</span>(
+		<span class="kw-2">&amp;mut</span> <span class="self">self</span>,
+		<span class="ident">kind</span>: <span class="ident">StorageKind</span>,
+		<span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+		<span class="ident">old_value</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
+		<span class="ident">new_value</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+	) -&gt; <span class="ident">bool</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::OFFCHAIN_DB_WRITE</span>, <span class="string">&quot;local_storage_compare_and_set&quot;</span>);
+		<span class="self">self</span>.<span class="ident">externalities</span>
+			.<span class="ident">local_storage_compare_and_set</span>(<span class="ident">kind</span>, <span class="ident">key</span>, <span class="ident">old_value</span>, <span class="ident">new_value</span>)
+	}
+
+	<span class="kw">fn</span> <span class="ident">local_storage_get</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">kind</span>: <span class="ident">StorageKind</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+		<span class="self">self</span>.<span class="ident">check</span>(<span class="ident">Capabilities::OFFCHAIN_DB_READ</span>, <span class="string">&quot;local_storage_get&quot;</span>);
+		<span class="self">self</span>.<span class="ident">externalities</span>.<span class="ident">local_storage_get</span>(<span class="ident">kind</span>, <span class="ident">key</span>)
+	}
+}
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
+<span class="macro">sp_externalities::decl_extension!</span> {
+	<span class="doccomment">/// The offchain database extension that will be registered at the Substrate externalities.</span>
+	<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OffchainDbExt</span>(<span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">DbExternalities</span><span class="op">&gt;</span>);
+}
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
+<span class="kw">impl</span> <span class="ident">OffchainDbExt</span> {
+	<span class="doccomment">/// Create a new instance of `OffchainDbExt`.</span>
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">DbExternalities</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">offchain</span>: <span class="ident">O</span>) -&gt; <span class="self">Self</span> {
 		<span class="self">Self</span>(<span class="ident">Box::new</span>(<span class="ident">offchain</span>))
 	}
 }
@@ -1512,7 +1550,7 @@
 	<span class="doccomment">/// Submit transaction.</span>
 	<span class="doccomment">///</span>
 	<span class="doccomment">/// The transaction will end up in the pool and be propagated to others.</span>
-	<span class="kw">fn</span> <span class="ident">submit_transaction</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">extrinsic</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span>;
+	<span class="kw">fn</span> <span class="ident">submit_transaction</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">extrinsic</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), ()<span class="op">&gt;</span>;
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
@@ -1524,7 +1562,7 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">impl</span> <span class="ident">TransactionPoolExt</span> {
 	<span class="doccomment">/// Create a new instance of `TransactionPoolExt`.</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">TransactionPool</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">pool</span>: <span class="ident">O</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">TransactionPool</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">pool</span>: <span class="ident">O</span>) -&gt; <span class="self">Self</span> {
 		<span class="self">Self</span>(<span class="ident">Box::new</span>(<span class="ident">pool</span>))
 	}
 }
@@ -1552,19 +1590,18 @@
 
 	<span class="attribute">#[<span class="ident">test</span>]</span>
 	<span class="kw">fn</span> <span class="ident">capabilities</span>() {
-		<span class="kw">let</span> <span class="ident">none</span> <span class="op">=</span> <span class="ident">Capabilities::none</span>();
+		<span class="kw">let</span> <span class="ident">none</span> <span class="op">=</span> <span class="ident">Capabilities::empty</span>();
 		<span class="kw">let</span> <span class="ident">all</span> <span class="op">=</span> <span class="ident">Capabilities::all</span>();
-		<span class="kw">let</span> <span class="ident">some</span> <span class="op">=</span> <span class="ident">Capabilities::from</span>(<span class="kw-2">&amp;</span>[<span class="ident">Capability::Keystore</span>, <span class="ident">Capability::Randomness</span>][..]);
+		<span class="kw">let</span> <span class="ident">some</span> <span class="op">=</span> <span class="ident">Capabilities::KEYSTORE</span> <span class="op">|</span> <span class="ident">Capabilities::RANDOMNESS</span>;
 
-		<span class="macro">assert!</span>(<span class="op">!</span><span class="ident">none</span>.<span class="ident">has</span>(<span class="ident">Capability::Keystore</span>));
-		<span class="macro">assert!</span>(<span class="ident">all</span>.<span class="ident">has</span>(<span class="ident">Capability::Keystore</span>));
-		<span class="macro">assert!</span>(<span class="ident">some</span>.<span class="ident">has</span>(<span class="ident">Capability::Keystore</span>));
-		<span class="macro">assert!</span>(<span class="op">!</span><span class="ident">none</span>.<span class="ident">has</span>(<span class="ident">Capability::TransactionPool</span>));
-		<span class="macro">assert!</span>(<span class="ident">all</span>.<span class="ident">has</span>(<span class="ident">Capability::TransactionPool</span>));
-		<span class="macro">assert!</span>(<span class="op">!</span><span class="ident">some</span>.<span class="ident">has</span>(<span class="ident">Capability::TransactionPool</span>));
+		<span class="macro">assert!</span>(<span class="op">!</span><span class="ident">none</span>.<span class="ident">contains</span>(<span class="ident">Capabilities::KEYSTORE</span>));
+		<span class="macro">assert!</span>(<span class="ident">all</span>.<span class="ident">contains</span>(<span class="ident">Capabilities::KEYSTORE</span>));
+		<span class="macro">assert!</span>(<span class="ident">some</span>.<span class="ident">contains</span>(<span class="ident">Capabilities::KEYSTORE</span>));
+		<span class="macro">assert!</span>(<span class="op">!</span><span class="ident">none</span>.<span class="ident">contains</span>(<span class="ident">Capabilities::TRANSACTION_POOL</span>));
+		<span class="macro">assert!</span>(<span class="ident">all</span>.<span class="ident">contains</span>(<span class="ident">Capabilities::TRANSACTION_POOL</span>));
+		<span class="macro">assert!</span>(<span class="op">!</span><span class="ident">some</span>.<span class="ident">contains</span>(<span class="ident">Capabilities::TRANSACTION_POOL</span>));
 	}
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="sp_core" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="sp_core" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

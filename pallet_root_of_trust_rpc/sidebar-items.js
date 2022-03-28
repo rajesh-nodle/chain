@@ -1,1 +1,0 @@
-initSidebarItems({"mod":[["gen_client","The generated client module."]],"struct":[["RootOfTrust",""]],"trait":[["RootOfTrustApi",""],["RootOfTrustRuntimeApi",""]]});

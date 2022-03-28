@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;cranelift-codegen-0.69.0&#x2F;src&#x2F;ir&#x2F;extfunc.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>extfunc.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../cranelift_codegen/index.html'><div class='logo-container rust-logo'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;cranelift-codegen-0.80.1&#x2F;src&#x2F;ir&#x2F;extfunc.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>extfunc.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../../cranelift_codegen/index.html"><div class="logo-container"><img class="rust-logo" src="../../../rust-logo.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../../cranelift_codegen/index.html"><img class="rust-logo" src="../../../rust-logo.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -472,64 +474,6 @@
 <span id="472">472</span>
 <span id="473">473</span>
 <span id="474">474</span>
-<span id="475">475</span>
-<span id="476">476</span>
-<span id="477">477</span>
-<span id="478">478</span>
-<span id="479">479</span>
-<span id="480">480</span>
-<span id="481">481</span>
-<span id="482">482</span>
-<span id="483">483</span>
-<span id="484">484</span>
-<span id="485">485</span>
-<span id="486">486</span>
-<span id="487">487</span>
-<span id="488">488</span>
-<span id="489">489</span>
-<span id="490">490</span>
-<span id="491">491</span>
-<span id="492">492</span>
-<span id="493">493</span>
-<span id="494">494</span>
-<span id="495">495</span>
-<span id="496">496</span>
-<span id="497">497</span>
-<span id="498">498</span>
-<span id="499">499</span>
-<span id="500">500</span>
-<span id="501">501</span>
-<span id="502">502</span>
-<span id="503">503</span>
-<span id="504">504</span>
-<span id="505">505</span>
-<span id="506">506</span>
-<span id="507">507</span>
-<span id="508">508</span>
-<span id="509">509</span>
-<span id="510">510</span>
-<span id="511">511</span>
-<span id="512">512</span>
-<span id="513">513</span>
-<span id="514">514</span>
-<span id="515">515</span>
-<span id="516">516</span>
-<span id="517">517</span>
-<span id="518">518</span>
-<span id="519">519</span>
-<span id="520">520</span>
-<span id="521">521</span>
-<span id="522">522</span>
-<span id="523">523</span>
-<span id="524">524</span>
-<span id="525">525</span>
-<span id="526">526</span>
-<span id="527">527</span>
-<span id="528">528</span>
-<span id="529">529</span>
-<span id="530">530</span>
-<span id="531">531</span>
-<span id="532">532</span>
 </pre><pre class="rust"><code><span class="doccomment">//! External function calls.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! To a Cranelift function, all functions are &quot;external&quot;. Directly called functions must be</span>
@@ -537,8 +481,8 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! This module declares the data types used to represent external functions and call signatures.</span>
 
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ir</span>::{<span class="ident">ArgumentLoc</span>, <span class="ident">ExternalName</span>, <span class="ident">SigRef</span>, <span class="ident">Type</span>};
-<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::isa</span>::{<span class="ident">CallConv</span>, <span class="ident">RegInfo</span>, <span class="ident">RegUnit</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::ir</span>::{<span class="ident">ExternalName</span>, <span class="ident">SigRef</span>, <span class="ident">Type</span>};
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::isa::CallConv</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::machinst::RelocDistance</span>;
 <span class="kw">use</span> <span class="ident">alloc::vec::Vec</span>;
 <span class="kw">use</span> <span class="ident">core::fmt</span>;
@@ -567,7 +511,7 @@
 
 <span class="kw">impl</span> <span class="ident">Signature</span> {
     <span class="doccomment">/// Create a new blank signature.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">call_conv</span>: <span class="ident">CallConv</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">call_conv</span>: <span class="ident">CallConv</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">params</span>: <span class="ident">Vec::new</span>(),
             <span class="ident">returns</span>: <span class="ident">Vec::new</span>(),
@@ -576,40 +520,35 @@
     }
 
     <span class="doccomment">/// Clear the signature so it is identical to a fresh one returned by `new()`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">call_conv</span>: <span class="ident">CallConv</span>) {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">clear</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">call_conv</span>: <span class="ident">CallConv</span>) {
         <span class="self">self</span>.<span class="ident">params</span>.<span class="ident">clear</span>();
         <span class="self">self</span>.<span class="ident">returns</span>.<span class="ident">clear</span>();
         <span class="self">self</span>.<span class="ident">call_conv</span> <span class="op">=</span> <span class="ident">call_conv</span>;
     }
 
-    <span class="doccomment">/// Return an object that can display `self` with correct register names.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RegInfo</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>, <span class="ident">regs</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">DisplaySignature</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="ident">DisplaySignature</span>(<span class="self">self</span>, <span class="ident">regs</span>.<span class="ident">into</span>())
+    <span class="doccomment">/// Find the index of a presumed unique special-purpose parameter.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special_param_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">params</span>.<span class="ident">iter</span>().<span class="ident">rposition</span>(<span class="op">|</span><span class="ident">arg</span><span class="op">|</span> <span class="ident">arg</span>.<span class="ident">purpose</span> <span class="op">==</span> <span class="ident">purpose</span>)
     }
 
     <span class="doccomment">/// Find the index of a presumed unique special-purpose parameter.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special_param_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">params</span>.<span class="ident">iter</span>().<span class="ident">rposition</span>(<span class="op">|</span><span class="ident">arg</span><span class="op">|</span> <span class="ident">arg</span>.<span class="ident">purpose</span> <span class="op">=</span><span class="op">=</span> <span class="ident">purpose</span>)
-    }
-
-    <span class="doccomment">/// Find the index of a presumed unique special-purpose parameter.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special_return_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-        <span class="self">self</span>.<span class="ident">returns</span>.<span class="ident">iter</span>().<span class="ident">rposition</span>(<span class="op">|</span><span class="ident">arg</span><span class="op">|</span> <span class="ident">arg</span>.<span class="ident">purpose</span> <span class="op">=</span><span class="op">=</span> <span class="ident">purpose</span>)
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special_return_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">returns</span>.<span class="ident">iter</span>().<span class="ident">rposition</span>(<span class="op">|</span><span class="ident">arg</span><span class="op">|</span> <span class="ident">arg</span>.<span class="ident">purpose</span> <span class="op">==</span> <span class="ident">purpose</span>)
     }
 
     <span class="doccomment">/// Does this signature have a parameter whose `ArgumentPurpose` is</span>
     <span class="doccomment">/// `purpose`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uses_special_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uses_special_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">special_param_index</span>(<span class="ident">purpose</span>).<span class="ident">is_some</span>()
     }
 
     <span class="doccomment">/// Does this signature have a return whose `ArgumentPurpose` is `purpose`?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uses_special_return</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uses_special_return</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">special_return_index</span>(<span class="ident">purpose</span>).<span class="ident">is_some</span>()
     }
 
     <span class="doccomment">/// How many special parameters does this function have?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_special_params</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_special_params</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
         <span class="self">self</span>.<span class="ident">params</span>
             .<span class="ident">iter</span>()
             .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> <span class="ident">p</span>.<span class="ident">purpose</span> <span class="op">!</span><span class="op">=</span> <span class="ident">ArgumentPurpose::Normal</span>)
@@ -617,7 +556,7 @@
     }
 
     <span class="doccomment">/// How many special returns does this function have?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_special_returns</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">usize</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_special_returns</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">usize</span> {
         <span class="self">self</span>.<span class="ident">returns</span>
             .<span class="ident">iter</span>()
             .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">purpose</span> <span class="op">!</span><span class="op">=</span> <span class="ident">ArgumentPurpose::Normal</span>)
@@ -625,53 +564,44 @@
     }
 
     <span class="doccomment">/// Does this signature take an struct return pointer parameter?</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uses_struct_return_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uses_struct_return_param</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">uses_special_param</span>(<span class="ident">ArgumentPurpose::StructReturn</span>)
     }
 
     <span class="doccomment">/// Does this return more than one normal value? (Pre-struct return</span>
     <span class="doccomment">/// legalization)</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_multi_return</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_multi_return</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
         <span class="self">self</span>.<span class="ident">returns</span>
             .<span class="ident">iter</span>()
-            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">purpose</span> <span class="op">=</span><span class="op">=</span> <span class="ident">ArgumentPurpose::Normal</span>)
+            .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">r</span><span class="op">|</span> <span class="ident">r</span>.<span class="ident">purpose</span> <span class="op">==</span> <span class="ident">ArgumentPurpose::Normal</span>)
             .<span class="ident">count</span>()
             <span class="op">&gt;</span> <span class="number">1</span>
     }
 }
 
-<span class="doccomment">/// Wrapper type capable of displaying a `Signature` with correct register names.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DisplaySignature</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Signature</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RegInfo</span><span class="op">&gt;</span>);
-
-<span class="kw">fn</span> <span class="ident">write_list</span>(<span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="ident">AbiParam</span>], <span class="ident">regs</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">RegInfo</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+<span class="kw">fn</span> <span class="ident">write_list</span>(<span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>, <span class="ident">args</span>: <span class="kw-2">&amp;</span>[<span class="ident">AbiParam</span>]) -&gt; <span class="ident">fmt::Result</span> {
     <span class="kw">match</span> <span class="ident">args</span>.<span class="ident">split_first</span>() {
-        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {}
-        <span class="prelude-val">Some</span>((<span class="ident">first</span>, <span class="ident">rest</span>)) <span class="op">=</span><span class="op">&gt;</span> {
-            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="ident">first</span>.<span class="ident">display</span>(<span class="ident">regs</span>))<span class="question-mark">?</span>;
+        <span class="prelude-val">None</span> =&gt; {}
+        <span class="prelude-val">Some</span>((<span class="ident">first</span>, <span class="ident">rest</span>)) =&gt; {
+            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="ident">first</span>)<span class="question-mark">?</span>;
             <span class="kw">for</span> <span class="ident">arg</span> <span class="kw">in</span> <span class="ident">rest</span> {
-                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;, {}&quot;</span>, <span class="ident">arg</span>.<span class="ident">display</span>(<span class="ident">regs</span>))<span class="question-mark">?</span>;
+                <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;, {}&quot;</span>, <span class="ident">arg</span>)<span class="question-mark">?</span>;
             }
         }
     }
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">DisplaySignature</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;(&quot;</span>)<span class="question-mark">?</span>;
-        <span class="ident">write_list</span>(<span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">params</span>, <span class="self">self</span>.<span class="number">1</span>)<span class="question-mark">?</span>;
-        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;)&quot;</span>)<span class="question-mark">?</span>;
-        <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">returns</span>.<span class="ident">is_empty</span>() {
-            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; -&gt; &quot;</span>)<span class="question-mark">?</span>;
-            <span class="ident">write_list</span>(<span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">returns</span>, <span class="self">self</span>.<span class="number">1</span>)<span class="question-mark">?</span>;
-        }
-        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; {}&quot;</span>, <span class="self">self</span>.<span class="number">0</span>.<span class="ident">call_conv</span>)
-    }
-}
-
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">Signature</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="self">self</span>.<span class="ident">display</span>(<span class="prelude-val">None</span>).<span class="ident">fmt</span>(<span class="ident">f</span>)
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;(&quot;</span>)<span class="question-mark">?</span>;
+        <span class="ident">write_list</span>(<span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">params</span>)<span class="question-mark">?</span>;
+        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;)&quot;</span>)<span class="question-mark">?</span>;
+        <span class="kw">if</span> <span class="op">!</span><span class="self">self</span>.<span class="ident">returns</span>.<span class="ident">is_empty</span>() {
+            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; -&gt; &quot;</span>)<span class="question-mark">?</span>;
+            <span class="ident">write_list</span>(<span class="ident">f</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">returns</span>)<span class="question-mark">?</span>;
+        }
+        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; {}&quot;</span>, <span class="self">self</span>.<span class="ident">call_conv</span>)
     }
 }
 
@@ -689,49 +619,33 @@
     <span class="doccomment">/// Method for extending argument to a full register.</span>
     <span class="kw">pub</span> <span class="ident">extension</span>: <span class="ident">ArgumentExtension</span>,
 
-    <span class="doccomment">/// ABI-specific location of this argument, or `Unassigned` for arguments that have not yet</span>
-    <span class="doccomment">/// been legalized.</span>
-    <span class="kw">pub</span> <span class="ident">location</span>: <span class="ident">ArgumentLoc</span>,
     <span class="doccomment">/// Was the argument converted to pointer during legalization?</span>
     <span class="kw">pub</span> <span class="ident">legalized_to_pointer</span>: <span class="ident">bool</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">AbiParam</span> {
     <span class="doccomment">/// Create a parameter with default flags.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">vt</span>: <span class="ident">Type</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">vt</span>: <span class="ident">Type</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">value_type</span>: <span class="ident">vt</span>,
             <span class="ident">extension</span>: <span class="ident">ArgumentExtension::None</span>,
             <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose::Normal</span>,
-            <span class="ident">location</span>: <span class="ident">Default::default</span>(),
             <span class="ident">legalized_to_pointer</span>: <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Create a special-purpose parameter that is not (yet) bound to a specific register.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special</span>(<span class="ident">vt</span>: <span class="ident">Type</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special</span>(<span class="ident">vt</span>: <span class="ident">Type</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>) -&gt; <span class="self">Self</span> {
         <span class="self">Self</span> {
             <span class="ident">value_type</span>: <span class="ident">vt</span>,
             <span class="ident">extension</span>: <span class="ident">ArgumentExtension::None</span>,
             <span class="ident">purpose</span>,
-            <span class="ident">location</span>: <span class="ident">Default::default</span>(),
-            <span class="ident">legalized_to_pointer</span>: <span class="bool-val">false</span>,
-        }
-    }
-
-    <span class="doccomment">/// Create a parameter for a special-purpose register.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">special_reg</span>(<span class="ident">vt</span>: <span class="ident">Type</span>, <span class="ident">purpose</span>: <span class="ident">ArgumentPurpose</span>, <span class="ident">regunit</span>: <span class="ident">RegUnit</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="self">Self</span> {
-            <span class="ident">value_type</span>: <span class="ident">vt</span>,
-            <span class="ident">extension</span>: <span class="ident">ArgumentExtension::None</span>,
-            <span class="ident">purpose</span>,
-            <span class="ident">location</span>: <span class="ident">ArgumentLoc::Reg</span>(<span class="ident">regunit</span>),
             <span class="ident">legalized_to_pointer</span>: <span class="bool-val">false</span>,
         }
     }
 
     <span class="doccomment">/// Convert `self` to a parameter with the `uext` flag set.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uext</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uext</span>(<span class="self">self</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="ident">value_type</span>.<span class="ident">is_int</span>(), <span class="string">&quot;uext on {} arg&quot;</span>, <span class="self">self</span>.<span class="ident">value_type</span>);
         <span class="self">Self</span> {
             <span class="ident">extension</span>: <span class="ident">ArgumentExtension::Uext</span>,
@@ -740,49 +654,30 @@
     }
 
     <span class="doccomment">/// Convert `self` to a parameter type with the `sext` flag set.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sext</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sext</span>(<span class="self">self</span>) -&gt; <span class="self">Self</span> {
         <span class="macro">debug_assert!</span>(<span class="self">self</span>.<span class="ident">value_type</span>.<span class="ident">is_int</span>(), <span class="string">&quot;sext on {} arg&quot;</span>, <span class="self">self</span>.<span class="ident">value_type</span>);
         <span class="self">Self</span> {
             <span class="ident">extension</span>: <span class="ident">ArgumentExtension::Sext</span>,
             ..<span class="self">self</span>
         }
     }
-
-    <span class="doccomment">/// Return an object that can display `self` with correct register names.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">display</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">R</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RegInfo</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="self">self</span>, <span class="ident">regs</span>: <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">DisplayAbiParam</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-        <span class="ident">DisplayAbiParam</span>(<span class="self">self</span>, <span class="ident">regs</span>.<span class="ident">into</span>())
-    }
-}
-
-<span class="doccomment">/// Wrapper type capable of displaying a `AbiParam` with correct register names.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">DisplayAbiParam</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">AbiParam</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RegInfo</span><span class="op">&gt;</span>);
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">DisplayAbiParam</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="self">self</span>.<span class="number">0</span>.<span class="ident">value_type</span>)<span class="question-mark">?</span>;
-        <span class="kw">if</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">legalized_to_pointer</span> {
-            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; ptr&quot;</span>)<span class="question-mark">?</span>;
-        }
-        <span class="kw">match</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">extension</span> {
-            <span class="ident">ArgumentExtension::None</span> <span class="op">=</span><span class="op">&gt;</span> {}
-            <span class="ident">ArgumentExtension::Uext</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; uext&quot;</span>)<span class="question-mark">?</span>,
-            <span class="ident">ArgumentExtension::Sext</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; sext&quot;</span>)<span class="question-mark">?</span>,
-        }
-        <span class="kw">if</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">purpose</span> <span class="op">!</span><span class="op">=</span> <span class="ident">ArgumentPurpose::Normal</span> {
-            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; {}&quot;</span>, <span class="self">self</span>.<span class="number">0</span>.<span class="ident">purpose</span>)<span class="question-mark">?</span>;
-        }
-
-        <span class="kw">if</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">location</span>.<span class="ident">is_assigned</span>() {
-            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; [{}]&quot;</span>, <span class="self">self</span>.<span class="number">0</span>.<span class="ident">location</span>.<span class="ident">display</span>(<span class="self">self</span>.<span class="number">1</span>))<span class="question-mark">?</span>;
-        }
-
-        <span class="prelude-val">Ok</span>(())
-    }
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">AbiParam</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
-        <span class="self">self</span>.<span class="ident">display</span>(<span class="prelude-val">None</span>).<span class="ident">fmt</span>(<span class="ident">f</span>)
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
+        <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="self">self</span>.<span class="ident">value_type</span>)<span class="question-mark">?</span>;
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">legalized_to_pointer</span> {
+            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; ptr&quot;</span>)<span class="question-mark">?</span>;
+        }
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">extension</span> {
+            <span class="ident">ArgumentExtension::None</span> =&gt; {}
+            <span class="ident">ArgumentExtension::Uext</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; uext&quot;</span>)<span class="question-mark">?</span>,
+            <span class="ident">ArgumentExtension::Sext</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; sext&quot;</span>)<span class="question-mark">?</span>,
+        }
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">purpose</span> <span class="op">!</span><span class="op">=</span> <span class="ident">ArgumentPurpose::Normal</span> {
+            <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot; {}&quot;</span>, <span class="self">self</span>.<span class="ident">purpose</span>)<span class="question-mark">?</span>;
+        }
+        <span class="prelude-val">Ok</span>(())
     }
 }
 
@@ -895,36 +790,36 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">ArgumentPurpose</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident"><span class="self">Self</span>::Normal</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;normal&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::StructArgument</span>(<span class="ident">size</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw">return</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;sarg({})&quot;</span>, <span class="ident">size</span>),
-            <span class="ident"><span class="self">Self</span>::StructReturn</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;sret&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::Link</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;link&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::FramePointer</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;fp&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::CalleeSaved</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;csr&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::VMContext</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;vmctx&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::SignatureId</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;sigid&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::StackLimit</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;stack_limit&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::CalleeTLS</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;callee_tls&quot;</span>,
-            <span class="ident"><span class="self">Self</span>::CallerTLS</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;caller_tls&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Normal</span> =&gt; <span class="string">&quot;normal&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::StructArgument</span>(<span class="ident">size</span>) =&gt; <span class="kw">return</span> <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;sarg({})&quot;</span>, <span class="ident">size</span>),
+            <span class="ident"><span class="self">Self</span>::StructReturn</span> =&gt; <span class="string">&quot;sret&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::Link</span> =&gt; <span class="string">&quot;link&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::FramePointer</span> =&gt; <span class="string">&quot;fp&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::CalleeSaved</span> =&gt; <span class="string">&quot;csr&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::VMContext</span> =&gt; <span class="string">&quot;vmctx&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::SignatureId</span> =&gt; <span class="string">&quot;sigid&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::StackLimit</span> =&gt; <span class="string">&quot;stack_limit&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::CalleeTLS</span> =&gt; <span class="string">&quot;callee_tls&quot;</span>,
+            <span class="ident"><span class="self">Self</span>::CallerTLS</span> =&gt; <span class="string">&quot;caller_tls&quot;</span>,
         })
     }
 }
 
 <span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">ArgumentPurpose</span> {
     <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> ();
-    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, ()<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, ()<span class="op">&gt;</span> {
         <span class="kw">match</span> <span class="ident">s</span> {
-            <span class="string">&quot;normal&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::Normal</span>),
-            <span class="string">&quot;sret&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::StructReturn</span>),
-            <span class="string">&quot;link&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::Link</span>),
-            <span class="string">&quot;fp&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::FramePointer</span>),
-            <span class="string">&quot;csr&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::CalleeSaved</span>),
-            <span class="string">&quot;vmctx&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::VMContext</span>),
-            <span class="string">&quot;sigid&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::SignatureId</span>),
-            <span class="string">&quot;stack_limit&quot;</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::StackLimit</span>),
-            <span class="kw">_</span> <span class="kw">if</span> <span class="ident">s</span>.<span class="ident">starts_with</span>(<span class="string">&quot;sarg(&quot;</span>) <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="string">&quot;normal&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::Normal</span>),
+            <span class="string">&quot;sret&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::StructReturn</span>),
+            <span class="string">&quot;link&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::Link</span>),
+            <span class="string">&quot;fp&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::FramePointer</span>),
+            <span class="string">&quot;csr&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::CalleeSaved</span>),
+            <span class="string">&quot;vmctx&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::VMContext</span>),
+            <span class="string">&quot;sigid&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::SignatureId</span>),
+            <span class="string">&quot;stack_limit&quot;</span> =&gt; <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::StackLimit</span>),
+            <span class="kw">_</span> <span class="kw">if</span> <span class="ident">s</span>.<span class="ident">starts_with</span>(<span class="string">&quot;sarg(&quot;</span>) =&gt; {
                 <span class="kw">if</span> <span class="op">!</span><span class="ident">s</span>.<span class="ident">ends_with</span>(<span class="string">&quot;)&quot;</span>) {
                     <span class="kw">return</span> <span class="prelude-val">Err</span>(());
                 }
@@ -932,7 +827,7 @@
                 <span class="kw">let</span> <span class="ident">size</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="ident">s</span>[<span class="string">&quot;sarg(&quot;</span>.<span class="ident">len</span>()..<span class="ident">s</span>.<span class="ident">len</span>() <span class="op">-</span> <span class="number">1</span>].<span class="ident">parse</span>().<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())<span class="question-mark">?</span>;
                 <span class="prelude-val">Ok</span>(<span class="ident"><span class="self">Self</span>::StructArgument</span>(<span class="ident">size</span>))
             }
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Err</span>(()),
+            <span class="kw">_</span> =&gt; <span class="prelude-val">Err</span>(()),
         }
     }
 }
@@ -941,6 +836,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Information about a function that can be called directly with a direct `call` instruction.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;enable-serde&quot;</span>, <span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ExtFuncData</span> {
     <span class="doccomment">/// Name of the external function.</span>
     <span class="kw">pub</span> <span class="ident">name</span>: <span class="ident">ExternalName</span>,
@@ -963,7 +859,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">fmt::Display</span> <span class="kw">for</span> <span class="ident">ExtFuncData</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">fmt::Formatter</span>) -&gt; <span class="ident">fmt::Result</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">colocated</span> {
             <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;colocated &quot;</span>)<span class="question-mark">?</span>;
         }
@@ -973,7 +869,7 @@
 
 <span class="kw">impl</span> <span class="ident">ExtFuncData</span> {
     <span class="doccomment">/// Return an estimate of the distance to the referred-to function symbol.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reloc_distance</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RelocDistance</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">reloc_distance</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">RelocDistance</span> {
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">colocated</span> {
             <span class="ident">RelocDistance::Near</span>
         } <span class="kw">else</span> {
@@ -1050,19 +946,8 @@
             <span class="ident">sig</span>.<span class="ident">to_string</span>(),
             <span class="string">&quot;(i32, i32x4) -&gt; f32, b8 baldrdash_system_v&quot;</span>
         );
-
-        <span class="comment">// Order does not matter.</span>
-        <span class="ident">sig</span>.<span class="ident">params</span>[<span class="number">0</span>].<span class="ident">location</span> <span class="op">=</span> <span class="ident">ArgumentLoc::Stack</span>(<span class="number">24</span>);
-        <span class="ident">sig</span>.<span class="ident">params</span>[<span class="number">1</span>].<span class="ident">location</span> <span class="op">=</span> <span class="ident">ArgumentLoc::Stack</span>(<span class="number">8</span>);
-
-        <span class="comment">// Writing ABI-annotated signatures.</span>
-        <span class="macro">assert_eq!</span>(
-            <span class="ident">sig</span>.<span class="ident">to_string</span>(),
-            <span class="string">&quot;(i32 [24], i32x4 [8]) -&gt; f32, b8 baldrdash_system_v&quot;</span>
-        );
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="cranelift_codegen" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
-    <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="cranelift_codegen" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;curve25519-dalek-3.1.0&#x2F;src&#x2F;ristretto.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ristretto.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../curve25519_dalek/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;doc.dalek.rs&#x2F;assets&#x2F;dalek-logo-clear.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;curve25519-dalek-3.2.0&#x2F;src&#x2F;ristretto.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>ristretto.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><script defer src="../../main.js"></script><script defer src="../../source-script.js"></script><script defer src="../../source-files.js"></script>
+    <noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a class="sidebar-logo" href="../../curve25519_dalek/index.html"><div class="logo-container"><img src="https:&#x2F;&#x2F;doc.dalek.rs&#x2F;assets&#x2F;dalek-logo-clear.png" alt="logo"></div>
+        </a></nav><main><div class="width-limiter"><div class="sub-container"><a class="sub-logo-container" href="../../curve25519_dalek/index.html"><img src="https:&#x2F;&#x2F;doc.dalek.rs&#x2F;assets&#x2F;dalek-logo-clear.png" alt="logo"></a><nav class="sub"><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav></div><section id="main-content" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1364,6 +1366,24 @@
 <span id="1364">1364</span>
 <span id="1365">1365</span>
 <span id="1366">1366</span>
+<span id="1367">1367</span>
+<span id="1368">1368</span>
+<span id="1369">1369</span>
+<span id="1370">1370</span>
+<span id="1371">1371</span>
+<span id="1372">1372</span>
+<span id="1373">1373</span>
+<span id="1374">1374</span>
+<span id="1375">1375</span>
+<span id="1376">1376</span>
+<span id="1377">1377</span>
+<span id="1378">1378</span>
+<span id="1379">1379</span>
+<span id="1380">1380</span>
+<span id="1381">1381</span>
+<span id="1382">1382</span>
+<span id="1383">1383</span>
+<span id="1384">1384</span>
 </pre><pre class="rust"><code><span class="comment">// -*- mode: rust; -*-</span>
 <span class="comment">//</span>
 <span class="comment">// This file is part of curve25519-dalek.</span>
@@ -1544,6 +1564,8 @@
 <span class="kw">use</span> <span class="ident">subtle::ConditionallyNegatable</span>;
 <span class="kw">use</span> <span class="ident">subtle::ConstantTimeEq</span>;
 
+<span class="kw">use</span> <span class="ident">zeroize::Zeroize</span>;
+
 <span class="kw">use</span> <span class="ident">edwards::EdwardsBasepointTable</span>;
 <span class="kw">use</span> <span class="ident">edwards::EdwardsPoint</span>;
 
@@ -1579,19 +1601,19 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CompressedRistretto</span>(<span class="kw">pub</span> [<span class="ident">u8</span>; <span class="number">32</span>]);
 
 <span class="kw">impl</span> <span class="ident">ConstantTimeEq</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
-    <span class="kw">fn</span> <span class="ident">ct_eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">CompressedRistretto</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Choice</span> {
+    <span class="kw">fn</span> <span class="ident">ct_eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">CompressedRistretto</span>) -&gt; <span class="ident">Choice</span> {
         <span class="self">self</span>.<span class="ident">as_bytes</span>().<span class="ident">ct_eq</span>(<span class="ident">other</span>.<span class="ident">as_bytes</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">CompressedRistretto</span> {
     <span class="doccomment">/// Copy the bytes of this `CompressedRistretto`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> [<span class="ident">u8</span>; <span class="number">32</span>] {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">u8</span>; <span class="number">32</span>] {
         <span class="self">self</span>.<span class="number">0</span>
     }
 
     <span class="doccomment">/// View this `CompressedRistretto` as an array of bytes.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">32</span>] {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_bytes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">32</span>] {
         <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>
     }
 
@@ -1600,7 +1622,7 @@
     <span class="doccomment">/// # Panics</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the input `bytes` slice does not have a length of 32.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_slice</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompressedRistretto</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_slice</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">CompressedRistretto</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tmp</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">32</span>];
 
         <span class="ident">tmp</span>.<span class="ident">copy_from_slice</span>(<span class="ident">bytes</span>);
@@ -1615,7 +1637,7 @@
     <span class="doccomment">/// - `Some(RistrettoPoint)` if `self` was the canonical encoding of a point;</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// - `None` if `self` was not the canonical encoding of a point.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">decompress</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">decompress</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span><span class="op">&gt;</span> {
         <span class="comment">// Step 1. Check s for validity:</span>
         <span class="comment">// 1.a) s must be 32 bytes (we get this from the type system)</span>
         <span class="comment">// 1.b) s &lt; p</span>
@@ -1633,7 +1655,7 @@
             <span class="kw-2">&amp;</span><span class="ident">s_bytes_check</span>[..].<span class="ident">ct_eq</span>(<span class="self">self</span>.<span class="ident">as_bytes</span>());
         <span class="kw">let</span> <span class="ident">s_is_negative</span> <span class="op">=</span> <span class="ident">s</span>.<span class="ident">is_negative</span>();
 
-        <span class="kw">if</span> <span class="ident">s_encoding_is_canonical</span>.<span class="ident">unwrap_u8</span>() <span class="op">=</span><span class="op">=</span> <span class="number">0u8</span> <span class="op">|</span><span class="op">|</span> <span class="ident">s_is_negative</span>.<span class="ident">unwrap_u8</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1u8</span> {
+        <span class="kw">if</span> <span class="ident">s_encoding_is_canonical</span>.<span class="ident">unwrap_u8</span>() <span class="op">==</span> <span class="number">0u8</span> <span class="op">|</span><span class="op">|</span> <span class="ident">s_is_negative</span>.<span class="ident">unwrap_u8</span>() <span class="op">==</span> <span class="number">1u8</span> {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
 
@@ -1663,7 +1685,7 @@
         <span class="comment">// t == ((1+as²) sqrt(4s²/(ad(1+as²)² - (1-as²)²)))/(1-as²)</span>
         <span class="kw">let</span> <span class="ident">t</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">x</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">y</span>;
 
-        <span class="kw">if</span> <span class="ident">ok</span>.<span class="ident">unwrap_u8</span>() <span class="op">=</span><span class="op">=</span> <span class="number">0u8</span> <span class="op">|</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">is_negative</span>().<span class="ident">unwrap_u8</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1u8</span> <span class="op">|</span><span class="op">|</span> <span class="ident">y</span>.<span class="ident">is_zero</span>().<span class="ident">unwrap_u8</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1u8</span> {
+        <span class="kw">if</span> <span class="ident">ok</span>.<span class="ident">unwrap_u8</span>() <span class="op">==</span> <span class="number">0u8</span> <span class="op">|</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">is_negative</span>().<span class="ident">unwrap_u8</span>() <span class="op">==</span> <span class="number">1u8</span> <span class="op">|</span><span class="op">|</span> <span class="ident">y</span>.<span class="ident">is_zero</span>().<span class="ident">unwrap_u8</span>() <span class="op">==</span> <span class="number">1u8</span> {
             <span class="prelude-val">None</span>
         } <span class="kw">else</span> {
             <span class="prelude-val">Some</span>(<span class="ident">RistrettoPoint</span>(<span class="ident">EdwardsPoint</span>{<span class="ident">X</span>: <span class="ident">x</span>, <span class="ident">Y</span>: <span class="ident">y</span>, <span class="ident">Z</span>: <span class="ident">one</span>, <span class="ident">T</span>: <span class="ident">t</span>}))
@@ -1672,13 +1694,13 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Identity</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
-    <span class="kw">fn</span> <span class="ident">identity</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompressedRistretto</span> {
+    <span class="kw">fn</span> <span class="ident">identity</span>() -&gt; <span class="ident">CompressedRistretto</span> {
         <span class="ident">CompressedRistretto</span>([<span class="number">0u8</span>; <span class="number">32</span>])
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompressedRistretto</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">CompressedRistretto</span> {
         <span class="ident">CompressedRistretto::identity</span>()
     }
 }
@@ -1698,7 +1720,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span> <span class="ident">Serialize</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">serialize</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">serializer</span>: <span class="ident">S</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S::Ok</span>, <span class="ident">S::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">serialize</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">serializer</span>: <span class="ident">S</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S::Ok</span>, <span class="ident">S::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">S</span>: <span class="ident">Serializer</span>
     {
         <span class="kw">use</span> <span class="ident">serde::ser::SerializeTuple</span>;
@@ -1712,7 +1734,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span> <span class="ident">Serialize</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
-    <span class="kw">fn</span> <span class="ident">serialize</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">serializer</span>: <span class="ident">S</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S::Ok</span>, <span class="ident">S::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">serialize</span><span class="op">&lt;</span><span class="ident">S</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">serializer</span>: <span class="ident">S</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">S::Ok</span>, <span class="ident">S::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">S</span>: <span class="ident">Serializer</span>
     {
         <span class="kw">use</span> <span class="ident">serde::ser::SerializeTuple</span>;
@@ -1726,7 +1748,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">D</span>: <span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
     {
         <span class="kw">struct</span> <span class="ident">RistrettoPointVisitor</span>;
@@ -1734,11 +1756,11 @@
         <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RistrettoPointVisitor</span> {
             <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-            <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::core::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::core::fmt::Result</span> {
+            <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::core::fmt::Formatter</span>) -&gt; <span class="ident">::core::fmt::Result</span> {
                 <span class="ident">formatter</span>.<span class="ident">write_str</span>(<span class="string">&quot;a valid point in Ristretto format&quot;</span>)
             }
 
-            <span class="kw">fn</span> <span class="ident">visit_seq</span><span class="op">&lt;</span><span class="ident">A</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">seq</span>: <span class="ident">A</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span>, <span class="ident">A::Error</span><span class="op">&gt;</span>
+            <span class="kw">fn</span> <span class="ident">visit_seq</span><span class="op">&lt;</span><span class="ident">A</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">seq</span>: <span class="ident">A</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span>, <span class="ident">A::Error</span><span class="op">&gt;</span>
                 <span class="kw">where</span> <span class="ident">A</span>: <span class="ident">serde::de::SeqAccess</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
             {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">32</span>];
@@ -1758,7 +1780,7 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
-    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">deserialize</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">deserializer</span>: <span class="ident">D</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">D::Error</span><span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">D</span>: <span class="ident">Deserializer</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
     {
         <span class="kw">struct</span> <span class="ident">CompressedRistrettoVisitor</span>;
@@ -1766,11 +1788,11 @@
         <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Visitor</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CompressedRistrettoVisitor</span> {
             <span class="kw">type</span> <span class="ident">Value</span> <span class="op">=</span> <span class="ident">CompressedRistretto</span>;
 
-            <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::core::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::core::fmt::Result</span> {
+            <span class="kw">fn</span> <span class="ident">expecting</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::core::fmt::Formatter</span>) -&gt; <span class="ident">::core::fmt::Result</span> {
                 <span class="ident">formatter</span>.<span class="ident">write_str</span>(<span class="string">&quot;32 bytes of data&quot;</span>)
             }
 
-            <span class="kw">fn</span> <span class="ident">visit_seq</span><span class="op">&lt;</span><span class="ident">A</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">seq</span>: <span class="ident">A</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CompressedRistretto</span>, <span class="ident">A::Error</span><span class="op">&gt;</span>
+            <span class="kw">fn</span> <span class="ident">visit_seq</span><span class="op">&lt;</span><span class="ident">A</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">seq</span>: <span class="ident">A</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">CompressedRistretto</span>, <span class="ident">A::Error</span><span class="op">&gt;</span>
                 <span class="kw">where</span> <span class="ident">A</span>: <span class="ident">serde::de::SeqAccess</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span>
             {
                 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">bytes</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">32</span>];
@@ -1806,7 +1828,7 @@
 
 <span class="kw">impl</span> <span class="ident">RistrettoPoint</span> {
     <span class="doccomment">/// Compress this point using the Ristretto encoding.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compress</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CompressedRistretto</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compress</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">CompressedRistretto</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">X</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">X</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">Y</span> <span class="op">=</span> <span class="self">self</span>.<span class="number">0</span>.<span class="ident">Y</span>;
         <span class="kw">let</span> <span class="ident">Z</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">Z</span>;
@@ -1870,7 +1892,7 @@
     <span class="doccomment">/// # }</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;alloc&quot;</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">double_and_compress_batch</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="ident">points</span>: <span class="ident">I</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">CompressedRistretto</span><span class="op">&gt;</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">double_and_compress_batch</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span><span class="op">&gt;</span>(<span class="ident">points</span>: <span class="ident">I</span>) -&gt; <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">CompressedRistretto</span><span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">I</span>: <span class="ident">IntoIterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span><span class="op">&gt;</span>
     {
         <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
@@ -1884,13 +1906,13 @@
         }
 
         <span class="kw">impl</span> <span class="ident">BatchCompressState</span> {
-            <span class="kw">fn</span> <span class="ident">efgh</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">FieldElement</span> {
+            <span class="kw">fn</span> <span class="ident">efgh</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">FieldElement</span> {
                 <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">eg</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">fh</span>
             }
         }
 
         <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">BatchCompressState</span> {
-            <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">P</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">BatchCompressState</span> {
+            <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">P</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">BatchCompressState</span> {
                 <span class="kw">let</span> <span class="ident">XX</span> <span class="op">=</span> <span class="ident">P</span>.<span class="number">0</span>.<span class="ident">X</span>.<span class="ident">square</span>();
                 <span class="kw">let</span> <span class="ident">YY</span> <span class="op">=</span> <span class="ident">P</span>.<span class="number">0</span>.<span class="ident">Y</span>.<span class="ident">square</span>();
                 <span class="kw">let</span> <span class="ident">ZZ</span> <span class="op">=</span> <span class="ident">P</span>.<span class="number">0</span>.<span class="ident">Z</span>.<span class="ident">square</span>();
@@ -1912,7 +1934,7 @@
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">invs</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">FieldElement</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">states</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">state</span><span class="op">|</span> <span class="ident">state</span>.<span class="ident">efgh</span>()).<span class="ident">collect</span>();
 
-        <span class="ident">FieldElement::batch_invert</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">invs</span>[..]);
+        <span class="ident">FieldElement::batch_invert</span>(<span class="kw-2">&amp;mut</span> <span class="ident">invs</span>[..]);
 
         <span class="ident">states</span>.<span class="ident">iter</span>().<span class="ident">zip</span>(<span class="ident">invs</span>.<span class="ident">iter</span>()).<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">state</span>, <span class="ident">inv</span>): (<span class="kw-2">&amp;</span><span class="ident">BatchCompressState</span>, <span class="kw-2">&amp;</span><span class="ident">FieldElement</span>)<span class="op">|</span> {
             <span class="kw">let</span> <span class="ident">Zinv</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">state</span>.<span class="ident">eg</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">inv</span>;
@@ -1950,7 +1972,7 @@
 
 
     <span class="doccomment">/// Return the coset self + E[4], for debugging.</span>
-    <span class="kw">fn</span> <span class="ident">coset4</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> [<span class="ident">EdwardsPoint</span>; <span class="number">4</span>] {
+    <span class="kw">fn</span> <span class="ident">coset4</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; [<span class="ident">EdwardsPoint</span>; <span class="number">4</span>] {
         [  <span class="self">self</span>.<span class="number">0</span>
         , <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span> <span class="op">+</span> <span class="kw-2">&amp;</span><span class="ident">constants::EIGHT_TORSION</span>[<span class="number">2</span>]
         , <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span> <span class="op">+</span> <span class="kw-2">&amp;</span><span class="ident">constants::EIGHT_TORSION</span>[<span class="number">4</span>]
@@ -1964,7 +1986,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// This method is not public because it&#39;s just used for hashing</span>
     <span class="doccomment">/// to a point -- proper elligator support is deferred for now.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">elligator_ristretto_flavor</span>(<span class="ident">r_0</span>: <span class="kw-2">&amp;</span><span class="ident">FieldElement</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">elligator_ristretto_flavor</span>(<span class="ident">r_0</span>: <span class="kw-2">&amp;</span><span class="ident">FieldElement</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="kw">let</span> <span class="ident">i</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">constants::SQRT_M1</span>;
         <span class="kw">let</span> <span class="ident">d</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">constants::EDWARDS_D</span>;
         <span class="kw">let</span> <span class="ident">one_minus_d_sq</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">constants::ONE_MINUS_EDWARDS_D_SQUARED</span>;
@@ -2015,9 +2037,9 @@
     <span class="doccomment">/// discrete log of the output point with respect to any other</span>
     <span class="doccomment">/// point should be unknown.  The map is applied twice and the</span>
     <span class="doccomment">/// results are added, to ensure a uniform distribution.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">random</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">RngCore</span> <span class="op">+</span> <span class="ident">CryptoRng</span><span class="op">&gt;</span>(<span class="ident">rng</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">R</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">random</span><span class="op">&lt;</span><span class="ident">R</span>: <span class="ident">RngCore</span> <span class="op">+</span> <span class="ident">CryptoRng</span><span class="op">&gt;</span>(<span class="ident">rng</span>: <span class="kw-2">&amp;mut</span> <span class="ident">R</span>) -&gt; <span class="self">Self</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">uniform_bytes</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">64</span>];
-        <span class="ident">rng</span>.<span class="ident">fill_bytes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">uniform_bytes</span>);
+        <span class="ident">rng</span>.<span class="ident">fill_bytes</span>(<span class="kw-2">&amp;mut</span> <span class="ident">uniform_bytes</span>);
 
         <span class="ident">RistrettoPoint::from_uniform_bytes</span>(<span class="kw-2">&amp;</span><span class="ident">uniform_bytes</span>)
     }
@@ -2052,7 +2074,7 @@
     <span class="doccomment">/// # }</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hash_from_bytes</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hash_from_bytes</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="ident">RistrettoPoint</span>
         <span class="kw">where</span> <span class="ident">D</span>: <span class="ident">Digest</span><span class="op">&lt;</span><span class="ident">OutputSize</span> <span class="op">=</span> <span class="ident">U64</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Default</span>
     {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">hash</span> <span class="op">=</span> <span class="ident">D::default</span>();
@@ -2065,7 +2087,7 @@
     <span class="doccomment">/// Use this instead of `hash_from_bytes` if it is more convenient</span>
     <span class="doccomment">/// to stream data into the `Digest` than to pass a single byte</span>
     <span class="doccomment">/// slice.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_hash</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">hash</span>: <span class="ident">D</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_hash</span><span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>(<span class="ident">hash</span>: <span class="ident">D</span>) -&gt; <span class="ident">RistrettoPoint</span>
         <span class="kw">where</span> <span class="ident">D</span>: <span class="ident">Digest</span><span class="op">&lt;</span><span class="ident">OutputSize</span> <span class="op">=</span> <span class="ident">U64</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Default</span>
     {
         <span class="comment">// dealing with generic arrays is clumsy, until const generics land</span>
@@ -2087,7 +2109,7 @@
     <span class="doccomment">/// This function splits the input array into two 32-byte halves,</span>
     <span class="doccomment">/// takes the low 255 bits of each half mod p, applies the</span>
     <span class="doccomment">/// Ristretto-flavored Elligator map to each, and adds the results.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_uniform_bytes</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">64</span>]) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_uniform_bytes</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="number">64</span>]) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">r_1_bytes</span> <span class="op">=</span> [<span class="number">0u8</span>; <span class="number">32</span>];
         <span class="ident">r_1_bytes</span>.<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">bytes</span>[<span class="number">0</span>..<span class="number">32</span>]);
         <span class="kw">let</span> <span class="ident">r_1</span> <span class="op">=</span> <span class="ident">FieldElement::from_bytes</span>(<span class="kw-2">&amp;</span><span class="ident">r_1_bytes</span>);
@@ -2105,13 +2127,13 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Identity</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">identity</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">identity</span>() -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="ident">EdwardsPoint::identity</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint::identity</span>()
     }
 }
@@ -2121,8 +2143,8 @@
 <span class="comment">// ------------------------------------------------------------------------</span>
 
 <span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-        <span class="self">self</span>.<span class="ident">ct_eq</span>(<span class="ident">other</span>).<span class="ident">unwrap_u8</span>() <span class="op">=</span><span class="op">=</span> <span class="number">1u8</span>
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">ct_eq</span>(<span class="ident">other</span>).<span class="ident">unwrap_u8</span>() <span class="op">==</span> <span class="number">1u8</span>
     }
 }
 
@@ -2133,7 +2155,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// * `Choice(1)` if the two `RistrettoPoint`s are equal;</span>
     <span class="doccomment">/// * `Choice(0)` otherwise.</span>
-    <span class="kw">fn</span> <span class="ident">ct_eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Choice</span> {
+    <span class="kw">fn</span> <span class="ident">ct_eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">Choice</span> {
         <span class="kw">let</span> <span class="ident">X1Y2</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">X</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="number">0</span>.<span class="ident">Y</span>;
         <span class="kw">let</span> <span class="ident">Y1X2</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">Y</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="number">0</span>.<span class="ident">X</span>;
         <span class="kw">let</span> <span class="ident">X1X2</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>.<span class="ident">X</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="number">0</span>.<span class="ident">X</span>;
@@ -2152,7 +2174,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">Add</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span> <span class="op">+</span> <span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="number">0</span>)
     }
 }
@@ -2160,7 +2182,7 @@
 <span class="macro">define_add_variants!</span>(<span class="ident">LHS</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>, <span class="ident">RHS</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>, <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">AddAssign</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">add_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">_rhs</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) {
+    <span class="kw">fn</span> <span class="ident">add_assign</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">_rhs</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) {
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> (<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) <span class="op">+</span> <span class="ident">_rhs</span>;
     }
 }
@@ -2170,7 +2192,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">Sub</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span> <span class="op">-</span> <span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="number">0</span>)
     }
 }
@@ -2178,7 +2200,7 @@
 <span class="macro">define_sub_variants!</span>(<span class="ident">LHS</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>, <span class="ident">RHS</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>, <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">SubAssign</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">sub_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">_rhs</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) {
+    <span class="kw">fn</span> <span class="ident">sub_assign</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">_rhs</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) {
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> (<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) <span class="op">-</span> <span class="ident">_rhs</span>;
     }
 }
@@ -2189,7 +2211,7 @@
 <span class="kw">where</span>
     <span class="ident">T</span>: <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span><span class="op">&gt;</span>
 {
-    <span class="kw">fn</span> <span class="ident">sum</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>(<span class="ident">iter</span>: <span class="ident">I</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="kw">fn</span> <span class="ident">sum</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>(<span class="ident">iter</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">Iterator</span><span class="op">&lt;</span><span class="ident">Item</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>
     {
@@ -2200,7 +2222,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Neg</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="op">-</span><span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
     }
 }
@@ -2208,13 +2230,13 @@
 <span class="kw">impl</span> <span class="ident">Neg</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">neg</span>(<span class="self">self</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="op">-</span><span class="kw-2">&amp;</span><span class="self">self</span>
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">MulAssign</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">mul_assign</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">scalar</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span>) {
+    <span class="kw">fn</span> <span class="ident">mul_assign</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>, <span class="ident">scalar</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span>) {
         <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> (<span class="self">self</span> <span class="kw">as</span> <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) <span class="op">*</span> <span class="ident">scalar</span>;
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="ident">result</span>;
     }
@@ -2223,7 +2245,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
     <span class="doccomment">/// Scalar multiplication: compute `scalar * self`.</span>
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">scalar</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">scalar</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="self">self</span>.<span class="number">0</span> <span class="op">*</span> <span class="ident">scalar</span>)
     }
 }
@@ -2232,7 +2254,7 @@
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
     <span class="doccomment">/// Scalar multiplication: compute `self * scalar`.</span>
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">point</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">point</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="self">self</span> <span class="op">*</span> <span class="ident">point</span>.<span class="number">0</span>)
     }
 }
@@ -2253,7 +2275,7 @@
 <span class="kw">impl</span> <span class="ident">MultiscalarMul</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Point</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">multiscalar_mul</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">J</span><span class="op">&gt;</span>(<span class="ident">scalars</span>: <span class="ident">I</span>, <span class="ident">points</span>: <span class="ident">J</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span>
+    <span class="kw">fn</span> <span class="ident">multiscalar_mul</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">J</span><span class="op">&gt;</span>(<span class="ident">scalars</span>: <span class="ident">I</span>, <span class="ident">points</span>: <span class="ident">J</span>) -&gt; <span class="ident">RistrettoPoint</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span>,
         <span class="ident">I::Item</span>: <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">Scalar</span><span class="op">&gt;</span>,
@@ -2271,7 +2293,7 @@
 <span class="kw">impl</span> <span class="ident">VartimeMultiscalarMul</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
     <span class="kw">type</span> <span class="ident">Point</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">optional_multiscalar_mul</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">J</span><span class="op">&gt;</span>(<span class="ident">scalars</span>: <span class="ident">I</span>, <span class="ident">points</span>: <span class="ident">J</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span><span class="op">&gt;</span>
+    <span class="kw">fn</span> <span class="ident">optional_multiscalar_mul</span><span class="op">&lt;</span><span class="ident">I</span>, <span class="ident">J</span><span class="op">&gt;</span>(<span class="ident">scalars</span>: <span class="ident">I</span>, <span class="ident">points</span>: <span class="ident">J</span>) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span>,
         <span class="ident">I::Item</span>: <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">Scalar</span><span class="op">&gt;</span>,
@@ -2294,7 +2316,7 @@
 <span class="kw">impl</span> <span class="ident">VartimePrecomputedMultiscalarMul</span> <span class="kw">for</span> <span class="ident">VartimeRistrettoPrecomputation</span> {
     <span class="kw">type</span> <span class="ident">Point</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>(<span class="ident">static_points</span>: <span class="ident">I</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span>
+    <span class="kw">fn</span> <span class="ident">new</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span>(<span class="ident">static_points</span>: <span class="ident">I</span>) -&gt; <span class="self">Self</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span>,
         <span class="ident">I::Item</span>: <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Point</span><span class="op">&gt;</span>,
@@ -2311,7 +2333,7 @@
         <span class="ident">static_scalars</span>: <span class="ident">I</span>,
         <span class="ident">dynamic_scalars</span>: <span class="ident">J</span>,
         <span class="ident">dynamic_points</span>: <span class="ident">K</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Point</span><span class="op">&gt;</span>
+    ) -&gt; <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident"><span class="self">Self</span>::Point</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">I</span>: <span class="ident">IntoIterator</span>,
         <span class="ident">I::Item</span>: <span class="ident">Borrow</span><span class="op">&lt;</span><span class="ident">Scalar</span><span class="op">&gt;</span>,
@@ -2336,7 +2358,7 @@
         <span class="ident">a</span>: <span class="kw-2">&amp;</span><span class="ident">Scalar</span>,
         <span class="ident">A</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>,
         <span class="ident">b</span>: <span class="kw-2">&amp;</span><span class="ident">Scalar</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    ) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(
             <span class="ident">EdwardsPoint::vartime_double_scalar_mul_basepoint</span>(<span class="ident">a</span>, <span class="kw-2">&amp;</span><span class="ident">A</span>.<span class="number">0</span>, <span class="ident">b</span>)
         )
@@ -2361,7 +2383,7 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoBasepointTable</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">scalar</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">scalar</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span> <span class="op">*</span> <span class="ident">scalar</span>)
     }
 }
@@ -2369,19 +2391,19 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">Mul</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoBasepointTable</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">Scalar</span> {
     <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="ident">RistrettoPoint</span>;
 
-    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">basepoint_table</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoBasepointTable</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">basepoint_table</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RistrettoBasepointTable</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="self">self</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">basepoint_table</span>.<span class="number">0</span>)
     }
 }
 
 <span class="kw">impl</span> <span class="ident">RistrettoBasepointTable</span> {
     <span class="doccomment">/// Create a precomputed table of multiples of the given `basepoint`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>(<span class="ident">basepoint</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoBasepointTable</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>(<span class="ident">basepoint</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>) -&gt; <span class="ident">RistrettoBasepointTable</span> {
         <span class="ident">RistrettoBasepointTable</span>(<span class="ident">EdwardsBasepointTable::create</span>(<span class="kw-2">&amp;</span><span class="ident">basepoint</span>.<span class="number">0</span>))
     }
 
     <span class="doccomment">/// Get the basepoint for this table as a `RistrettoPoint`.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">basepoint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">basepoint</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">basepoint</span>())
     }
 }
@@ -2422,7 +2444,7 @@
         <span class="ident">a</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>,
         <span class="ident">b</span>: <span class="kw-2">&amp;</span><span class="ident">RistrettoPoint</span>,
         <span class="ident">choice</span>: <span class="ident">Choice</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">RistrettoPoint</span> {
+    ) -&gt; <span class="ident">RistrettoPoint</span> {
         <span class="ident">RistrettoPoint</span>(<span class="ident">EdwardsPoint::conditional_select</span>(<span class="kw-2">&amp;</span><span class="ident">a</span>.<span class="number">0</span>, <span class="kw-2">&amp;</span><span class="ident">b</span>.<span class="number">0</span>, <span class="ident">choice</span>))
     }
 }
@@ -2432,16 +2454,32 @@
 <span class="comment">// ------------------------------------------------------------------------</span>
 
 <span class="kw">impl</span> <span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::core::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::core::fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::core::fmt::Formatter</span>) -&gt; <span class="ident">::core::fmt::Result</span> {
         <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;CompressedRistretto: {:?}&quot;</span>, <span class="self">self</span>.<span class="ident">as_bytes</span>())
     }
 }
 
 <span class="kw">impl</span> <span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">::core::fmt::Formatter</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">::core::fmt::Result</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;mut</span> <span class="ident">::core::fmt::Formatter</span>) -&gt; <span class="ident">::core::fmt::Result</span> {
         <span class="kw">let</span> <span class="ident">coset</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">coset4</span>();
         <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;RistrettoPoint: coset \n{:?}\n{:?}\n{:?}\n{:?}&quot;</span>,
                <span class="ident">coset</span>[<span class="number">0</span>], <span class="ident">coset</span>[<span class="number">1</span>], <span class="ident">coset</span>[<span class="number">2</span>], <span class="ident">coset</span>[<span class="number">3</span>])
+    }
+}
+
+<span class="comment">// ------------------------------------------------------------------------</span>
+<span class="comment">// Zeroize traits</span>
+<span class="comment">// ------------------------------------------------------------------------</span>
+
+<span class="kw">impl</span> <span class="ident">Zeroize</span> <span class="kw">for</span> <span class="ident">CompressedRistretto</span> {
+    <span class="kw">fn</span> <span class="ident">zeroize</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">zeroize</span>();
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Zeroize</span> <span class="kw">for</span> <span class="ident">RistrettoPoint</span> {
+    <span class="kw">fn</span> <span class="ident">zeroize</span>(<span class="kw-2">&amp;mut</span> <span class="self">self</span>) {
+        <span class="self">self</span>.<span class="number">0</span>.<span class="ident">zeroize</span>();
     }
 }
 
@@ -2491,7 +2529,7 @@
         <span class="kw">let</span> <span class="ident">P1</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">P</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">s</span>;
         <span class="kw">let</span> <span class="ident">P2</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">s</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">P</span>;
 
-        <span class="macro">assert!</span>(<span class="ident">P1</span>.<span class="ident">compress</span>().<span class="ident">as_bytes</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">P2</span>.<span class="ident">compress</span>().<span class="ident">as_bytes</span>());
+        <span class="macro">assert!</span>(<span class="ident">P1</span>.<span class="ident">compress</span>().<span class="ident">as_bytes</span>() <span class="op">==</span> <span class="ident">P2</span>.<span class="ident">compress</span>().<span class="ident">as_bytes</span>());
     }
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
@@ -2538,7 +2576,7 @@
         <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">compressed_id</span>.<span class="ident">decompress</span>().<span class="ident">unwrap</span>();
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">identity_in_coset</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="kw">for</span> <span class="ident">P</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">id</span>.<span class="ident">coset4</span>() {
-            <span class="kw">if</span> <span class="ident">P</span>.<span class="ident">compress</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">CompressedEdwardsY::identity</span>() {
+            <span class="kw">if</span> <span class="ident">P</span>.<span class="ident">compress</span>() <span class="op">==</span> <span class="ident">CompressedEdwardsY::identity</span>() {
                 <span class="ident">identity_in_coset</span> <span class="op">=</span> <span class="bool-val">true</span>;
             }
         }
@@ -2603,7 +2641,7 @@
     <span class="kw">fn</span> <span class="ident">four_torsion_random</span>() {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rng</span> <span class="op">=</span> <span class="ident">OsRng</span>;
         <span class="kw">let</span> <span class="ident">B</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">constants::RISTRETTO_BASEPOINT_TABLE</span>;
-        <span class="kw">let</span> <span class="ident">P</span> <span class="op">=</span> <span class="ident">B</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">Scalar::random</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rng</span>);
+        <span class="kw">let</span> <span class="ident">P</span> <span class="op">=</span> <span class="ident">B</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">Scalar::random</span>(<span class="kw-2">&amp;mut</span> <span class="ident">rng</span>);
         <span class="kw">let</span> <span class="ident">P_coset</span> <span class="op">=</span> <span class="ident">P</span>.<span class="ident">coset4</span>();
         <span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">4</span> {
             <span class="macro">assert_eq!</span>(<span class="ident">P</span>, <span class="ident">RistrettoPoint</span>(<span class="ident">P_coset</span>[<span class="ident">i</span>]));
@@ -2666,7 +2704,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rng</span> <span class="op">=</span> <span class="ident">OsRng</span>;
         <span class="kw">let</span> <span class="ident">B</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">constants::RISTRETTO_BASEPOINT_TABLE</span>;
         <span class="kw">for</span> <span class="kw">_</span> <span class="kw">in</span> <span class="number">0</span>..<span class="number">100</span> {
-            <span class="kw">let</span> <span class="ident">P</span> <span class="op">=</span> <span class="ident">B</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">Scalar::random</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rng</span>);
+            <span class="kw">let</span> <span class="ident">P</span> <span class="op">=</span> <span class="ident">B</span> <span class="op">*</span> <span class="kw-2">&amp;</span><span class="ident">Scalar::random</span>(<span class="kw-2">&amp;mut</span> <span class="ident">rng</span>);
             <span class="kw">let</span> <span class="ident">compressed_P</span> <span class="op">=</span> <span class="ident">P</span>.<span class="ident">compress</span>();
             <span class="kw">let</span> <span class="ident">Q</span> <span class="op">=</span> <span class="ident">compressed_P</span>.<span class="ident">decompress</span>().<span class="ident">unwrap</span>();
             <span class="macro">assert_eq!</span>(<span class="ident">P</span>, <span class="ident">Q</span>);
@@ -2678,7 +2716,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rng</span> <span class="op">=</span> <span class="ident">OsRng</span>;
 
         <span class="kw">let</span> <span class="ident">points</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">RistrettoPoint</span><span class="op">&gt;</span> <span class="op">=</span>
-            (<span class="number">0</span>..<span class="number">1024</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">RistrettoPoint::random</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rng</span>)).<span class="ident">collect</span>();
+            (<span class="number">0</span>..<span class="number">1024</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">RistrettoPoint::random</span>(<span class="kw-2">&amp;mut</span> <span class="ident">rng</span>)).<span class="ident">collect</span>();
 
         <span class="kw">let</span> <span class="ident">compressed</span> <span class="op">=</span> <span class="ident">RistrettoPoint::double_and_compress_batch</span>(<span class="kw-2">&amp;</span><span class="ident">points</span>);
 
@@ -2694,11 +2732,11 @@
         <span class="kw">let</span> <span class="ident">B</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">::constants::RISTRETTO_BASEPOINT_TABLE</span>;
 
         <span class="kw">let</span> <span class="ident">static_scalars</span> <span class="op">=</span> (<span class="number">0</span>..<span class="number">128</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">Scalar::random</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rng</span>))
+            .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">Scalar::random</span>(<span class="kw-2">&amp;mut</span> <span class="ident">rng</span>))
             .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
         <span class="kw">let</span> <span class="ident">dynamic_scalars</span> <span class="op">=</span> (<span class="number">0</span>..<span class="number">128</span>)
-            .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">Scalar::random</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rng</span>))
+            .<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">Scalar::random</span>(<span class="kw-2">&amp;mut</span> <span class="ident">rng</span>))
             .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
 
         <span class="kw">let</span> <span class="ident">check_scalar</span>: <span class="ident">Scalar</span> <span class="op">=</span> <span class="ident">static_scalars</span>
@@ -2731,6 +2769,5 @@
     }
 }
 </code></pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="curve25519_dalek" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
-    <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script>
+</section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../" data-current-crate="curve25519_dalek" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.59.0 (9d1b2106e 2022-02-23)" ></div>
 </body></html>

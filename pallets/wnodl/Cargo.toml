@@ -9,7 +9,7 @@ publish = false
 repository = "https://github.com/NodleCode/chain"
 
 [dependencies]
-parity-scale-codec = { version = "2.2.0", default-features = false, features = ["derive"] }
+parity-scale-codec = { version = "3.1.2", default-features = false, features = ["derive"] }
 scale-info = { version = "1.0", default-features = false, features = ["derive"] }
 ethereum-types = { version = "0.12.1", default-features = false }
 
